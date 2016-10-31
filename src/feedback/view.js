@@ -6,10 +6,21 @@ class Feedback extends Component {
 
         return (
             <li className="Feedback-item" key={key}>
-                icon: {item.icon}
-                name: {item.name}
-                stars: {item.stars}
-                text: {item.text}
+
+                <div className="Feedback-icon">
+                    {item.icon}
+                </div>
+
+                <div className="Feedback-content">
+                    <span className="Feedback-name">{item.name}</span>
+                    <span className="Feedback-text">{item.text}</span>
+                </div>
+
+                <div className="Feedback-options">
+                    <span className="Feedback-star">{item.stars}</span>
+                    <span className="Feedback-dropdown"></span>
+                </div>
+
             </li>
         );
 
@@ -17,10 +28,10 @@ class Feedback extends Component {
 
     render() {
 
-        const {items, key} = this.props.feedback;
+        const {items, color, key} = this.props.feedback;
 
         return (
-            <ul className="Feedback">
+            <ul className={`Feedback Feedback--${color}`}>
                 {items.map(this.generateItem)}
             </ul>
         );

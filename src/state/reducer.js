@@ -1,26 +1,18 @@
-import {IS_MOBILE, SHOW_TAB, HIDE_TAB} from './actions';
+import {ACTIVATE_FEEDBACK_DIALOG} from './actions';
 import * as defaultState from './default';
 
-const reducer = (state = defaultState, action) => {
+// state, action
+const reducer = (state = defaultState, {type, data}) => {
 
-	switch (action.type) {
+	switch (type) {
 
-		case IS_MOBILE:
+		case ACTIVATE_FEEDBACK_DIALOG:
 			return {
 				...state,
-				isMobile: action.data
-			};
-
-        case SHOW_TAB:
-			return {
-				...state,
-				showTab: action.data
-			};
-
-		case HIDE_TAB:
-			return {
-				...state,
-				hideTab: action.data
+				feedbackDialogState: {
+					active: true,
+					topicKey: data
+				}
 			};
 
 		default:

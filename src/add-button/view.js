@@ -4,13 +4,10 @@ class AddButton extends Component {
 
     render() {
 
-        const {onClick} = this.props.addButton;
-
-        console.log('onClick', onClick);
-        console.log('this', this);
+        const {onClick, color} = this.props.addButton;
 
         return (
-            <div className="AddButton">
+            <div className={`AddButton AddButton--${color}`}>
                 <button
                     className="AddButton-hitBox"
                     onClick={onClick}>New</button>

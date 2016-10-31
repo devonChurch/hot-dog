@@ -22,20 +22,4 @@ class App extends Component {
 
 }
 
-function assignAddFeedbackKey(key) {
-
-    // console.log('this', this);
-
-    const addFeedback = () => {
-
-        console.log('clicked', key);
-        console.log('this', App);
-
-    }
-
-    return addFeedback; // .bind(App);
-
-}
-
-export {assignAddFeedbackKey};
 export default App;

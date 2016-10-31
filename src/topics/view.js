@@ -1,9 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import {ACTIVATE_FEEDBACK_DIALOG} from '../state/actions';
 import Shell from '../shell/view';
 import Feedback from '../feedback/view';
 import AddButton from '../add-button/view';
-import {assignAddFeedbackKey} from '../app/view';
 
 class Topics extends Component {
 
@@ -14,18 +14,25 @@ class Topics extends Component {
 
     }
 
+    startAddFeedbackSequence(key) {
+
+        this.props.dispatch({
+            type: ACTIVATE_FEEDBACK_DIALOG,
+            data: key
+        });
+
+    }
+
     generateItem({heading, color}, key) {
 
-        console.log('this', this);
-
-        const items = this.props.topicsFeedback[key];
-        const onClick = assignAddFeedbackKey(key);
+        const items = this.props.topicsFeedbackState[key];
+        const onClick = () => this.startAddFeedbackSequence(key);
 
         return (
             <article className="Topics-topic" key={key}>
                 <Shell shell={{heading, color}}>
-                    <AddButton addButton={{onClick}}/>
-                    <Feedback feedback={{items, key}}/>
+                    <AddButton addButton={{onClick, color}}/>
+                    <Feedback feedback={{items, color, key}}/>
                 </Shell>
             </article>
         );
@@ -47,4 +54,4 @@ class Topics extends Component {
 }
 
 const mapStateToProps = (state) => state;
-export default connect(mapStateToProps)(Topics); // Topics;
+export default connect(mapStateToProps)(Topics);

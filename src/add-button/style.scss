@@ -1,8 +1,28 @@
 @import '../helpers/style';
 
+@mixin addButtonColor($color) {
+
+    &.AddButton--#{$color} .AddButton-hitBox {
+        background: color($color, 900);
+    }
+}
+
 .AddButton {
+    $colors: red, orange, green, blue;
+    height: 0;
+    position: relative;
+
+    @each $color in $colors {
+        @include addButtonColor($color);
+    }
 
     &-hitBox {
-        
+        @include buttonReset;
+        border-radius: 50%;
+        bottom: -#{space(300)};
+        height: space(700);
+        position: absolute;
+        right: space(500);
+        width: space(700);
     }
 }
