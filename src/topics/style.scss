@@ -1,0 +1,14 @@
+@import '../helpers/style';
+
+.Topics {
+    background: blue;
+    display: flex;
+    flex-wrap: wrap;
+    padding: space(300);
+
+    &-topic {
+        background: orange;
+        padding: space(300);
+        width: 50%;
+    }
+}

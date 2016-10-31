@@ -1,0 +1,15 @@
+$space: (
+    100: 0.3125,
+    200: 0.625rem,
+    300: 0.9375rem, // 15px
+    400: 1.25rem,
+    500: 1.875rem, // 30px
+    // 600: xxx,
+    // 700: xxx,
+    // 800: xxx,
+    // 900: xxx,
+);
+
+@function space($type: 500) {
+    @return map-get($space, $type);
+}

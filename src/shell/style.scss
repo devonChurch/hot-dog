@@ -1,0 +1,28 @@
+@import '../helpers/style';
+
+@mixin headerColor($color) {
+
+    .Shell--#{$color} & {
+        background: color($color, 500);
+    }
+}
+
+.Shell {
+    background: white;
+    box-shadow: 0 0 10px black;
+
+    &-header {
+        $colors: red, orange, green, blue;
+        background: color(gray, 500);
+
+        @each $color in $colors {
+            @include headerColor($color);
+        }
+    }
+
+    &-heading {
+        color: white;
+        margin: 0;
+        padding: space(500);
+    }
+}

@@ -1,0 +1,15 @@
+$speed: (
+    100: 100ms,
+    // 200: xxx,
+    300: 250ms,
+    // 400: xxx,
+    500: 500ms,
+    // 600: xxx,
+    700: 1000ms,
+    // 800: xxx,
+    900: 2000ms,
+);
+
+@function speed($type: medium) {
+    @return map-get($speed, $type);
+}
