@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {ACTIVATE_FEEDBACK_DIALOG} from '../state/actions';
+import {OPEN_CREATE_DIALOG} from '../state/actions';
 import Shell from '../shell/view';
 import Feedback from '../feedback/view';
 import AddButton from '../add-button/view';
@@ -17,7 +17,7 @@ class Topics extends Component {
     startAddFeedbackSequence(data) {
 
         this.props.dispatch({
-            type: ACTIVATE_FEEDBACK_DIALOG,
+            type: OPEN_CREATE_DIALOG,
             data
         });
 

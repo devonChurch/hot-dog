@@ -5,10 +5,11 @@ class Modal extends Component {
 
     render() {
 
-        const {children, modal: {heading, color, isActive = false}} = this.props;
+        const {children, modal: {heading, color, isActive = false, clickOutToFocus = () => {}}} = this.props;
 
         return (
             <div className={`Modal ${isActive && 'isActive'}`}>
+                <div className="Modal-overlay" onClick={clickOutToFocus}/>
                 <div className="Modal-content">
                     <Shell shell={{heading, color}}>
                         {children}
