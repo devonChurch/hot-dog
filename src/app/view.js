@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import Topics from '../topics/view';
+import Create from '../create/view';
 
 class App extends Component {
 
@@ -15,6 +16,7 @@ class App extends Component {
                 {/*<section>SECTION</section>*/}
                 <Topics topics={topics}/>
                 <footer>FOOTER</footer>
+                <Create/>
             </div>
         );
 

@@ -1,9 +1,10 @@
 const state = {
-    feedbackDialogState: {
-        active: false,
+    createState: {
+        isActive: false,
+        color: 'gray',
         topicKey: null
     },
-    topicsFeedbackState: [
+    topicsState: [
         [
             {
                 icon: 'apple',

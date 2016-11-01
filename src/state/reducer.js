@@ -9,9 +9,10 @@ const reducer = (state = defaultState, {type, data}) => {
 		case ACTIVATE_FEEDBACK_DIALOG:
 			return {
 				...state,
-				feedbackDialogState: {
-					active: true,
-					topicKey: data
+				createState: {
+					isActive: true,
+					color: data.color,
+					topicKey: data.key
 				}
 			};
 

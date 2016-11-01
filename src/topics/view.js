@@ -14,19 +14,19 @@ class Topics extends Component {
 
     }
 
-    startAddFeedbackSequence(key) {
+    startAddFeedbackSequence(data) {
 
         this.props.dispatch({
             type: ACTIVATE_FEEDBACK_DIALOG,
-            data: key
+            data
         });
 
     }
 
     generateItem({heading, color}, key) {
 
-        const items = this.props.topicsFeedbackState[key];
-        const onClick = () => this.startAddFeedbackSequence(key);
+        const items = this.props.topicsState[key];
+        const onClick = () => this.startAddFeedbackSequence({key, color});
 
         return (
             <article className="Topics-topic" key={key}>
