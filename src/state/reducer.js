@@ -1,4 +1,4 @@
-import {OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG} from './actions';
+import {OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, SUBMIT_CREATE_DIALOG} from './actions';
 import * as defaultState from './default';
 
 // state, action
@@ -7,6 +7,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 	switch (type) {
 
 		case OPEN_CREATE_DIALOG:
+
 			return {
 				...state,
 				createState: {
@@ -17,6 +18,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 			};
 
 		case CLOSE_CREATE_DIALOG:
+
 			return {
 				...state,
 				createState: {
@@ -24,6 +26,29 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 					isActive: false
 				}
 			};
+
+		case SUBMIT_CREATE_DIALOG:
+
+			return (() => {
+
+				const {topicKey} = state.createState;
+				const feedback = {
+					icon: 'apple',
+					name: 'Mr Potato',
+					stars: 0,
+					text: data
+				};
+
+				return {
+					...state,
+					topicsState: [...state.topicsState].map((items, i) => {
+						const clone = [...items];
+						if (topicKey === i) clone.push(feedback);
+						return clone;
+					})
+				}
+
+			})();
 
 		default:
 			return state;

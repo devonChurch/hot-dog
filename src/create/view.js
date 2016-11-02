@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {CLOSE_CREATE_DIALOG} from '../state/actions';
+import {CLOSE_CREATE_DIALOG, SUBMIT_CREATE_DIALOG} from '../state/actions';
 import Modal from '../modal/view';
 
 class Create extends Component {
@@ -9,6 +9,7 @@ class Create extends Component {
 
         super();
         this.clickOutToFocus = this.clickOutToFocus.bind(this);
+        this.submitForm = this.submitForm.bind(this);
 
     }
 
@@ -20,6 +21,26 @@ class Create extends Component {
 
     }
 
+    validateTextArea() {
+
+        // const {textarea} = this.refs;
+
+    }
+
+    submitForm(e) {
+
+        const {textarea} = this.refs;
+        const text = textarea.value;
+
+        this.clickOutToFocus();
+        this.props.dispatch({
+            type: SUBMIT_CREATE_DIALOG,
+            data: text
+        });
+        e.preventDefault();
+
+    }
+
     render() {
 
         const heading = 'Banana';
@@ -28,7 +49,15 @@ class Create extends Component {
 
         return (
             <Modal modal={{heading, color, isActive, clickOutToFocus}}>
-                apple
+                <form>
+                    <textarea
+                        ref="textarea"
+                        name="textarea"
+                        rows="10"
+                        placeholder="Apple"
+                        minLength="1" />
+                    <button onClick={this.submitForm} type="submit">Save</button>
+                </form>
             </Modal>
         );
 

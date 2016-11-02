@@ -1,9 +1,11 @@
 const state = {
+
     createState: {
         isActive: false,
         color: 'gray',
         topicKey: null
     },
+
     topicsState: [
         [
             {
@@ -23,6 +25,7 @@ const state = {
         [],
         []
     ]
+
 };
 
 export default state;
