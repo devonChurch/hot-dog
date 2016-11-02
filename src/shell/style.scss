@@ -8,16 +8,16 @@
 }
 
 .Shell {
-    $colors: red, orange, green, blue;
+    $colors: gray, red, orange, green, blue;
+    @include paperDepth;
     background: white;
-    box-shadow: 0 0 10px black;
 
     @each $color in $colors {
         @include shellColor($color);
     }
 
     &-header {
-        
+
     }
 
     &-heading {
