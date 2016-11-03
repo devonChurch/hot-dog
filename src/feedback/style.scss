@@ -5,8 +5,8 @@
     &.Feedback--#{$color} {
         color: color($color, 500);
 
-        .Feedback-icon {
-            background: $color;
+        .Feedback-badge {
+            background: color($color, 500);
         }
 
         .Feedback-item {
@@ -19,6 +19,10 @@
 
         .Feedback-text {
             color: color($color, 900);
+        }
+
+        .Feedback-starIcon .Icon {
+            fill: color($color, 500);
         }
     }
 }
@@ -42,12 +46,28 @@
         }
     }
 
-    &-icon {
-        $diameter: space(600);
+    &-badge {
+        $size: space(600);
         border-radius: 50%;
-        height: $diameter;
+        height: $size;
         overflow: hidden;
-        width: $diameter;
+        position: relative;
+        width: $size;
+    }
+
+    &-badgeIcon {
+        $size: 1.25rem;
+        $offset: $size / 2;
+        height: $size;
+        left: 50%;
+        margin: -#{$offset} 0 0 -#{$offset};
+        position: absolute;
+        top: 50%;
+        width: $size;
+
+        .Icon {
+            fill: white;
+        }
     }
 
     &-content {
@@ -65,14 +85,25 @@
     }
 
     &-options {
+        display: flex;
         width: 80px;
     }
 
     &-star {
+        width: 50%;
+    }
+
+    &-starIcon {
+        $size: 1.75rem;
+        height: $size;
+        width: $size;
+    }
+
+    &-starTally {
 
     }
 
-    &-dropdown {
-
+    &-miniMenu {
+        width: 50%;
     }
 }

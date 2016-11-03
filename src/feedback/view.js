@@ -1,4 +1,6 @@
 import React, {Component, PropTypes} from 'react';
+import MiniMenu from '../mini-menu/view';
+import Icon from '../icon/view';
 
 class Feedback extends Component {
 
@@ -7,8 +9,10 @@ class Feedback extends Component {
         return (
             <li className="Feedback-item" key={key}>
 
-                <div className="Feedback-icon">
-                    {item.icon}
+                <div className="Feedback-badge">
+                    <div className="Feedback-badgeIcon">
+                        <Icon icon={{type: item.badge}}/>
+                    </div>
                 </div>
 
                 <div className="Feedback-content">
@@ -17,8 +21,15 @@ class Feedback extends Component {
                 </div>
 
                 <div className="Feedback-options">
-                    <span className="Feedback-star">{item.stars}</span>
-                    <span className="Feedback-dropdown"></span>
+                    <div className="Feedback-star">
+                        <div className="Feedback-starIcon">
+                            <Icon icon={{type: 'star'}}/>
+                        </div>
+                        <div className="Feedback-starTally">{item.stars}</div>
+                    </div>
+                    <div className="Feedback-miniMenu">
+                        <MiniMenu/>
+                    </div>
                 </div>
 
             </li>

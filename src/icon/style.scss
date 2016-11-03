@@ -1,0 +1,8 @@
+@import '../helpers/style';
+
+.Icon {
+    $size: 100%;
+    fill: color(gray, 900);
+    height: $size;
+    width: $size;
+}

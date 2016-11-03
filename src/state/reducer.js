@@ -33,7 +33,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 				const {topicKey} = state.createState;
 				const feedback = {
-					icon: 'apple',
+					badge: 'cake',
 					name: 'Mr Potato',
 					stars: 0,
 					text: data

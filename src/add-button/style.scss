@@ -2,7 +2,7 @@
 
 @mixin addButtonColor($color) {
 
-    &.AddButton--#{$color} .AddButton-hitBox {
+    &.AddButton--#{$color} .AddButton-toggle {
         background: color($color, 900);
     }
 }
@@ -16,7 +16,7 @@
         @include addButtonColor($color);
     }
 
-    &-hitBox {
+    &-toggle {
         @include buttonReset;
         border-radius: 50%;
         bottom: -#{space(300)};
@@ -24,5 +24,16 @@
         position: absolute;
         right: space(500);
         width: space(700);
+    }
+
+    &-icon {
+        $size: 2.2rem;
+        display: inline-block;
+        height: $size;
+        width: $size;
+    }
+
+    .Icon {
+        fill: white;
     }
 }

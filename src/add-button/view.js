@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import Icon from '../icon/view';
 
 class AddButton extends Component {
 
@@ -9,8 +10,12 @@ class AddButton extends Component {
         return (
             <div className={`AddButton AddButton--${color}`}>
                 <button
-                    className="AddButton-hitBox"
-                    onClick={onClick}>New</button>
+                    className="AddButton-toggle"
+                    onClick={onClick}>
+                    <span className="AddButton-icon">
+                        <Icon icon={{type: 'plus'}}/>
+                    </span>
+                </button>
             </div>
         );
 
