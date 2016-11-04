@@ -78,10 +78,11 @@
 
     &-name {
         display: block;
+        font-weight: fontWeight(700);
     }
 
     &-text {
-
+        font-size: fontSize(300);
     }
 
     &-options {
@@ -96,11 +97,16 @@
     &-starIcon {
         $size: 1.75rem;
         height: $size;
+        margin: auto;
         width: $size;
     }
 
     &-starTally {
-
+        font: {
+            size: fontSize(300);
+            weight: fontWeight(700);
+        }
+        text-align: center;
     }
 
     &-miniMenu {

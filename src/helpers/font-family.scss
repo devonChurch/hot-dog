@@ -1,0 +1,15 @@
+$fontFamily: (
+    // 100: xxx,
+    // 200: xxx,
+    // 300: xxx,
+    // 400: xxx,
+    500: 'Roboto',
+    // 600: xxx,
+    // 700: xxx,
+    // 800: xxx,
+    // 900: xxx,
+);
+
+@function fontFamily($type: 300) {
+    @return #{map-get($fontFamily, $type)}, sans-serif;
+}

@@ -1,0 +1,15 @@
+$fontSize: (
+    // 100: xxx,
+    // 200: xxx,
+    300: 0.8125rem,
+    // 400: xxx,
+    500: 1rem,
+    // 600: xxx,
+    700: 1.375rem,
+    // 800: xxx,
+    // 900: xxx,
+);
+
+@function fontSize($type: 500) {
+    @return map-get($fontSize, $type);
+}
