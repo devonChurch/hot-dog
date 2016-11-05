@@ -1,4 +1,4 @@
-$fontFamily: (
+$G-fontFamily: (
     // 100: xxx,
     // 200: xxx,
     // 300: xxx,
@@ -11,5 +11,5 @@ $fontFamily: (
 );
 
 @function fontFamily($type: 300) {
-    @return #{map-get($fontFamily, $type)}, sans-serif;
+    @return #{map-get($G-fontFamily, $type)}, sans-serif;
 }

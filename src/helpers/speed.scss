@@ -1,4 +1,4 @@
-$speed: (
+$G-speed: (
     100: 100ms,
     // 200: xxx,
     300: 250ms,
@@ -11,5 +11,5 @@ $speed: (
 );
 
 @function speed($type: medium) {
-    @return map-get($speed, $type);
+    @return map-get($G-speed, $type);
 }

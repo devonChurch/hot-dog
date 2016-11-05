@@ -31,8 +31,15 @@ class Topics extends Component {
         return (
             <article className="Topics-topic" key={key}>
                 <Shell shell={{heading, color}}>
-                    <AddButton addButton={{onClick, color}}/>
-                    <Feedback feedback={{items, color, key}}/>
+                    <AddButton addButton={{
+                        onClick,
+                        color
+                    }}/>
+                    <Feedback feedback={{
+                        items,
+                        color,
+                        topicKey: key
+                    }}/>
                 </Shell>
             </article>
         );

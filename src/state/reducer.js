@@ -1,4 +1,4 @@
-import {OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, SUBMIT_CREATE_DIALOG} from './actions';
+import {OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, SUBMIT_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU} from './actions';
 import * as defaultState from './default';
 
 // state, action
@@ -36,6 +36,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 					badge: 'cake',
 					name: 'Mr Potato',
 					stars: 0,
+					isOptionsActive: false,
 					text: data
 				};
 
@@ -49,6 +50,19 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 				}
 
 			})();
+
+		// case TOGGLE_FEEDBACK_MINI_MENU:
+		//
+		// 	return (() => {
+		//
+		//
+		//
+		// 		return {
+		// 			..state,
+		//
+		// 		}
+		//
+		// 	})();
 
 		default:
 			return state;

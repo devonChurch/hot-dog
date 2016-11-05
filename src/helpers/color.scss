@@ -1,6 +1,6 @@
 // https://www.google.com/design/spec/style/color.html#color-color-palette
 
-$color: (
+$G-color: (
     gray: (
         100: #F5F5F5,
         200: #EEEEEE,
@@ -58,7 +58,9 @@ $color: (
     )
 );
 
+$G-allColors: gray, red, orange, green, blue;
+
 @function color($type, $tint: 500) {
-    $type: map-get($color, $type);
+    $type: map-get($G-color, $type);
     @return map-get($type, $tint);
 }

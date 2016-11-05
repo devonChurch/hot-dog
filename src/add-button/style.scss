@@ -8,11 +8,10 @@
 }
 
 .AddButton {
-    $colors: gray, red, orange, green, blue;
     height: 0;
     position: relative;
 
-    @each $color in $colors {
+    @each $color in $G-allColors {
         @include addButtonColor($color);
     }
 

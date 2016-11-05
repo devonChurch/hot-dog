@@ -8,11 +8,10 @@
 }
 
 .Shell {
-    $colors: gray, red, orange, green, blue;
     @include paperDepth;
     background: white;
 
-    @each $color in $colors {
+    @each $color in $G-allColors {
         @include shellColor($color);
     }
 

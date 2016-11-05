@@ -28,12 +28,11 @@
 }
 
 .Feedback {
-    $colors: gray, red, orange, green, blue;
     list-style: none;
     margin: 0;
     padding: 0 space(500);
 
-    @each $color in $colors {
+    @each $color in $G-allColors {
         @include feedbackColor($color);
     }
 
@@ -110,6 +109,7 @@
     }
 
     &-miniMenu {
+        margin-top: -0.2rem;
         width: 50%;
     }
 }

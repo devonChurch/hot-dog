@@ -1,5 +1,104 @@
 @import '../helpers/style';
 
+@mixin miniMenuColor($color) {
+
+    &.MiniMenu--#{$color} {
+        color: color($color, 500);
+
+        .MiniMenu-icon > .Icon {
+            fill: color($color, 500);
+        }
+
+        .MiniMenu-optionButton:before {
+            background: color($color, 100);
+        }
+    }
+}
+
 .MiniMenu {
-    
+    position: relative;
+
+    @each $color in $G-allColors {
+        @include miniMenuColor($color);
+    }
+
+    &.isActive {
+        z-index: zIndex(100);
+
+        .MiniMenu-options {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+    }
+
+    &-toggle {
+        $size: space(600);
+        @include buttonReset;
+        height: $size;
+        position: relative;
+        width: $size;
+    }
+
+    &-icon {
+        $size: 2.1rem;
+        display: block;
+        height: $size;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: $size;
+
+
+        > .Icon {
+
+        }
+    }
+
+    &-options {
+        @include paperDepth;
+        list-style: none;
+        opacity: 0;
+        padding: 0;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        transform: translateY(space(500));
+        transition: {
+            duration: speed(500);
+            property: opacity, transform;
+        }
+    }
+
+    &-option {
+        padding: 0;
+
+        &:nth-of-type(1n+2) .MiniMenu-optionButton:before {
+            content: '';
+            display: block;
+            height: 1px;
+            left: space(500);
+            position: absolute;
+            right: space(500);
+            top: 0;
+        }
+
+        &:first-of-type .MiniMenu-optionButton {
+            padding-top: space(500);
+        }
+
+        &:last-of-type .MiniMenu-optionButton {
+            padding-bottom: space(500);
+        }
+    }
+
+    &-optionButton {
+        @include buttonReset;
+        padding: space(300) space(500);
+        position: relative;
+        text-align: left;
+        width: 100%;
+    }
 }

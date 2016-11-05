@@ -1,4 +1,4 @@
-$fontWeight: (
+$G-fontWeight: (
     // 100: xxx,
     // 200: xxx,
     300: 300,
@@ -11,5 +11,5 @@ $fontWeight: (
 );
 
 @function fontWeight($type: 300) {
-    @return map-get($fontWeight, $type);
+    @return map-get($G-fontWeight, $type);
 }

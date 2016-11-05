@@ -1,5 +1,6 @@
 @mixin buttonReset {
     border: 0;
     background: transparent;
+    color: inherit;
     padding: 0;
 }

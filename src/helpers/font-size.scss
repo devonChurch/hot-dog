@@ -1,4 +1,4 @@
-$fontSize: (
+$G-fontSize: (
     // 100: xxx,
     // 200: xxx,
     300: 0.8125rem,
@@ -11,5 +11,5 @@ $fontSize: (
 );
 
 @function fontSize($type: 500) {
-    @return map-get($fontSize, $type);
+    @return map-get($G-fontSize, $type);
 }
