@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import Shell from '../shell/view';
+import Shell from '../shell/presentation';
 
 class Modal extends Component {
 
@@ -11,7 +11,7 @@ class Modal extends Component {
             <div className={`Modal ${isActive && 'isActive'}`}>
                 <div className="Modal-overlay" onClick={clickOutToFocus}/>
                 <div className="Modal-content">
-                    <Shell shell={{heading, color}}>
+                    <Shell heading={heading}>
                         {children}
                     </Shell>
                 </div>

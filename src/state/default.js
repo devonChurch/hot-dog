@@ -6,7 +6,26 @@ const state = {
         topicKey: null
     },
 
-    topicsState: [
+    topicState: [
+        {
+			heading: 'Positive',
+			color: 'green'
+		},
+        {
+			heading: 'Negative',
+			color: 'red'
+		},
+        {
+			heading: 'Ideas',
+			color: 'orange'
+		},
+        {
+			heading: 'Thanks',
+			color: 'blue'
+		}
+    ],
+
+    feedbackState: [
         [
             {
                 badge: 'cake',

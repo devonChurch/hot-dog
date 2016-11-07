@@ -2,12 +2,12 @@
 
 @mixin addButtonColor($color) {
 
-    &.AddButton--#{$color} .AddButton-toggle {
+    &.FeatureButton--#{$color} .FeatureButton-toggle {
         background: color($color, 900);
     }
 }
 
-.AddButton {
+.FeatureButton {
     height: 0;
     position: relative;
 

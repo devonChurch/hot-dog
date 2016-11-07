@@ -6,19 +6,19 @@ const props = {
 
 	topics: [
 
-		{
-			heading: 'Positive',
-			color: 'green'
-		}, {
-			heading: 'Negative',
-			color: 'red'
-		}, {
-			heading: 'Ideas',
-			color: 'orange'
-		}, {
-			heading: 'Thanks',
-			color: 'blue'
-		}
+		// {
+		// 	heading: 'Positive',
+		// 	color: 'green'
+		// }, {
+		// 	heading: 'Negative',
+		// 	color: 'red'
+		// }, {
+		// 	heading: 'Ideas',
+		// 	color: 'orange'
+		// }, {
+		// 	heading: 'Thanks',
+		// 	color: 'blue'
+		// }
 
 	]
 

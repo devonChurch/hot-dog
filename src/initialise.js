@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import reducer from './state/reducer';
 import defaultState from './state/default';
 import defaultProps from './props/default';
-import App from './app/view';
+import AppContainer from './app/container';
 const hotDog = document.getElementById('hot-dog');
 
 function renderMe(store) {
@@ -14,7 +14,7 @@ function renderMe(store) {
 
 	render(
 		<Provider store={store}>
-			<App app={defaultProps}/>
+			<AppContainer/>
 		</Provider>,
 		hotDog
 	);

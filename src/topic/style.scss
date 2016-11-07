@@ -1,0 +1,21 @@
+@import '../helpers/style';
+
+.Topics {
+    display: flex;
+    flex-wrap: wrap;
+    padding: space(300);
+
+    &-topic {
+        padding: space(300);
+        width: 50%;
+
+        // &.Topics-topic--red {
+        //     border-color: red;
+        //     color: red;
+        //
+        //     * {
+        //         color: inherit
+        //     };
+        // }
+    }
+}
