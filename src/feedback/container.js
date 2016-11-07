@@ -2,7 +2,9 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {TOGGLE_FEEDBACK_MINI_MENU} from '../state/actions';
 import Feedback from './presentation';
-import MiniMenu from '../mini-menu/view';
+import BadgeContainer from '../badge/container';
+import StarRatingContainer from '../star-rating/container';
+import MiniMenuContainer from '../mini-menu/container';
 import Icon from '../icon/view';
 
 class FeedbackContainer extends Component {
@@ -14,49 +16,69 @@ class FeedbackContainer extends Component {
 
     }
 
-    miniMenuToggle(FeedbackKey) {
+    generateBadge(feedback) {
 
-        const {topicKey} = this.props.feedback;
-
-        // this.props.dispatch({
-        //     type: TOGGLE_FEEDBACK_MINI_MENU,
-        //     data: {
-        //         topicKey,
-        //         FeedbackKey
-        //     }
-        // });
+        return (
+            <BadgeContainer
+                color={this.props.color}
+                icon={feedback.badge}/>
+        );
 
     }
 
-    miniMenuOptions() {
+    generateStarRating(feedback, key) {
 
-        return [
-            {
-                heading: 'Edit',
-                onClick: () => console.log('Edit')
-            },
-            {
-                heading: 'Remove',
-                onClick: () => console.log('Remove')
-            }
-        ];
+        return (
+            <StarRatingContainer
+                color={this.props.color}
+                rating={feedback.rating}
+                onToggleClick={() => {
+                    console.log('star rating', key);
+                }}/>
+        );
 
+    }
+
+    generateMiniMenu(feedback, key) {
+
+        return (
+            <MiniMenuContainer
+                color={this.props.color}
+                isActive={feedback.isOptionsActive}
+                onToggleClick={() => {
+                    console.log('menu | toggle', key)
+                }}
+                options={[
+                    {
+                        heading: 'Edit',
+                        onOptionClick: () => console.log('menu | edit', key)
+                    },
+                    {
+                        heading: 'Remove',
+                        onOptionClick: () => console.log('menu | remove', key)
+                    }
+                ]}/>
+        );
     }
 
     generateFeedback(feedback, key) {
 
         return (
-            <Feedback key={key}/>
+            <Feedback
+                color={this.props.color}
+                name={feedback.name}
+                text={feedback.text}
+                starRating={this.generateStarRating(feedback, key)}
+                miniMenu={this.generateMiniMenu(feedback, key)}
+                badge={this.generateBadge(feedback)}
+                key={key}>
+
+            </Feedback>
         );
 
     }
 
     render() {
-
-        // const {items, color} = this.props.feedback;
-        // <ul className={`Feedback Feedback--${color}`}>
-
-        // console.log('FEEDBACK', this);
 
         return (
             <ul className="Container-feedback">

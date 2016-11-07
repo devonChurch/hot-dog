@@ -9,7 +9,7 @@ const FeatureButton = (props) => {
                 className="FeatureButton-toggle"
                 onClick={props.onFeatureClick}>
                 <span className="FeatureButton-icon">
-                    <Icon icon={{type: 'plus'}}/>
+                    <Icon icon="plus"/>
                 </span>
             </button>
         </div>

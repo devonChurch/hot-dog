@@ -5,13 +5,11 @@ class Icon extends Component {
 
     render() {
 
-        const {type} = this.props.icon;
-
         return (
             <svg
                 className="Icon"
                 viewBox="0 0 24 24">
-                {svg[type]}
+                {svg[this.props.icon]}
             </svg>
         );
 

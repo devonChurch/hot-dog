@@ -1,16 +1,18 @@
 @import '../helpers/style';
 
+.Container-feedback {
+    list-style: none;
+    margin: 0;
+    padding: 0 space(500);
+}
+
 @mixin feedbackColor($color) {
 
     &.Feedback--#{$color} {
         color: color($color, 500);
 
-        .Feedback-badge {
-            background: color($color, 500);
-        }
-
-        .Feedback-item {
-            border-color: color($color, 100);
+        &:nth-of-type(1n+2) {
+            border-top: 1px solid color($color, 100);
         }
 
         .Feedback-name {
@@ -28,45 +30,17 @@
 }
 
 .Feedback {
-    list-style: none;
-    margin: 0;
-    padding: 0 space(500);
+    display: flex;
+    padding: space(500) 0;
 
     @each $color in $G-allColors {
         @include feedbackColor($color);
     }
 
-    &-item {
-        display: flex;
-        padding: space(500) 0;
-
-        &:nth-of-type(1n+2) {
-            border-top: 1px solid;
-        }
-    }
-
     &-badge {
         $size: space(600);
-        border-radius: 50%;
         height: $size;
-        overflow: hidden;
-        position: relative;
         width: $size;
-    }
-
-    &-badgeIcon {
-        $size: 1.25rem;
-        $offset: $size / 2;
-        height: $size;
-        left: 50%;
-        margin: -#{$offset} 0 0 -#{$offset};
-        position: absolute;
-        top: 50%;
-        width: $size;
-
-        .Icon {
-            fill: white;
-        }
     }
 
     &-content {
@@ -89,27 +63,8 @@
         width: 80px;
     }
 
-    &-star {
-        width: 50%;
-    }
-
-    &-starIcon {
-        $size: 1.75rem;
-        height: $size;
-        margin: auto;
-        width: $size;
-    }
-
-    &-starTally {
-        font: {
-            size: fontSize(300);
-            weight: fontWeight(700);
-        }
-        text-align: center;
-    }
-
+    &-starRating,
     &-miniMenu {
-        margin-top: -0.2rem;
         width: 50%;
     }
 }

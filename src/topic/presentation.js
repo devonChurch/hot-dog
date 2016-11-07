@@ -7,10 +7,10 @@ const Topic = (props) => {
 
     // <Shell shell={{heading, color}}>
 
-    console.log('Topic props', props);
+    // console.log('Topic props', props);
 
     return (
-        <article className="Topic-topic">
+        <article className="Topic">
             {props.children}
             {/*<Shell heading={props.heading}>
                 {props.children}

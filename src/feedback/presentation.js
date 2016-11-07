@@ -1,20 +1,15 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {TOGGLE_FEEDBACK_MINI_MENU} from '../state/actions';
-import MiniMenu from '../mini-menu/view';
 import Icon from '../icon/view';
 
 const Feedback = (props) => {
 
     return (
-        <li className="Feedback-item">
+        <li className={`Feedback Feedback--${props.color}`}>
 
             <div className="Feedback-badge">
-                <div className="Feedback-badgeIcon">
-                    <Icon icon={{
-                        type: props.badge
-                    }}/>
-                </div>
+                {props.badge}
             </div>
 
             <div className="Feedback-content">
@@ -23,19 +18,11 @@ const Feedback = (props) => {
             </div>
 
             <div className="Feedback-options">
-                <div className="Feedback-star">
-                    <div className="Feedback-starIcon">
-                        <Icon icon={{type: 'star'}}/>
-                    </div>
-                    <div className="Feedback-starTally">{props.stars}</div>
+                <div className="Feedback-starRating">
+                    {props.starRating}
                 </div>
                 <div className="Feedback-miniMenu">
-                    {/*<MiniMenu miniMenu={{
-                        color,
-                        onToggle: this.miniMenuToggle(key),
-                        options: this.miniMenuOptions(key),
-                        isActive: props.isOptionsActive
-                    }}/>*/}
+                    {props.miniMenu}
                 </div>
             </div>
 

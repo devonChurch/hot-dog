@@ -1,0 +1,42 @@
+@import '../helpers/style';
+
+@mixin starRatingColor($color) {
+
+    &.StarRating--#{$color} {
+
+        .Icon {
+            fill: color($color, 500);
+        }
+    }
+}
+
+.StarRating {
+
+    @each $color in $G-allColors {
+        @include starRatingColor($color);
+    }
+
+    &-toggle {
+        $size: space(600);
+        @include buttonReset;
+        height: $size;
+        position: relative;
+        width: $size;
+    }
+
+    &-icon {
+        $size: 1.75rem;
+        height: $size;
+        margin: auto;
+        width: $size;
+    }
+
+    &-rating {
+        font: {
+            size: fontSize(300);
+            weight: fontWeight(700);
+        }
+        text-align: center;
+    }
+
+}

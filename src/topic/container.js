@@ -2,8 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {OPEN_CREATE_DIALOG} from '../state/actions';
 import Topic from './presentation';
-import Shell from '../shell/presentation';
-import FeatureButton from '../feature-button/presentation';
+import Shell from '../shell/container';
+import FeatureButton from '../feature-button/container';
 import FeedbackContainer from '../feedback/container';
 
 class TopicContainer extends Component {
@@ -34,7 +34,9 @@ class TopicContainer extends Component {
                     <FeatureButton
                         onFeatureClick= {() => console.log('Add button')}
                         color={topic.color}/>
-                    <FeedbackContainer feedbackList={this.props.feedbackState[key]}/>
+                    <FeedbackContainer
+                        feedbackList={this.props.feedbackState[key]}
+                        color={topic.color}/>
                 </Shell>
             </Topic>
         );
@@ -43,7 +45,7 @@ class TopicContainer extends Component {
 
     render() {
 
-        console.log('TopicContainer', this);
+        // console.log('TopicContainer', this);
 
         return (
             <section className="Container-topic">

@@ -35,7 +35,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 				const feedback = {
 					badge: 'cake',
 					name: 'Mr Potato',
-					stars: 0,
+					rating: 0,
 					isOptionsActive: false,
 					text: data
 				};

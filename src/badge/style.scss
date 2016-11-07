@@ -1,0 +1,35 @@
+@import '../helpers/style';
+
+@mixin badgeColor($color) {
+
+    &.Badge--#{$color} {
+        background: color($color, 500);
+    }
+}
+
+.Badge {
+    border-radius: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    @each $color in $G-allColors {
+        @include badgeColor($color);
+    }
+
+    &-icon {
+        $size: 1.25rem;
+        $offset: $size / 2;
+        height: $size;
+        left: 50%;
+        margin: -#{$offset} 0 0 -#{$offset};
+        position: absolute;
+        top: 50%;
+        width: $size;
+
+        .Icon {
+            fill: white;
+        }
+    }
+}
