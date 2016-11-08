@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {TOGGLE_FEEDBACK_MINI_MENU} from '../state/actions';
+import {TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING} from '../state/actions';
 import Feedback from './presentation';
 import BadgeContainer from '../badge/container';
 import StarRatingContainer from '../star-rating/container';
@@ -28,13 +28,24 @@ class FeedbackContainer extends Component {
 
     generateStarRating(feedback, key) {
 
+        const onToggleClick = () => {
+
+            this.props.dispatch({
+                type: TOGGLE_FEEDBACK_RATING,
+                data: {
+                    topicKey: this.props.topicKey,
+                    feedbackKey: key
+                }
+            });
+
+        };
+
         return (
             <StarRatingContainer
                 color={this.props.color}
                 rating={feedback.rating}
-                onToggleClick={() => {
-                    console.log('star rating', key);
-                }}/>
+                isRatingToggled={feedback.isRatingToggled}
+                onToggleClick={onToggleClick}/>
         );
 
     }

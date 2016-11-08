@@ -65,11 +65,6 @@
         top: 50%;
         transform: translate(-50%, -50%);
         width: $size;
-
-
-        > .Icon {
-            transition: fill speed(300);
-        }
     }
 
     &-options {

@@ -1,5 +1,5 @@
 import deepFreeze from 'deep-freeze';
-import {OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, SUBMIT_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU} from './actions';
+import {OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, SUBMIT_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING} from './actions';
 import * as defaultState from './default';
 
 // state, action
@@ -61,6 +61,31 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 				const mapFeedbackItem = (item, i) => {
 					return data.feedbackKey === i ? {...item, isOptionsActive: !item.isOptionsActive} : item;
+				};
+
+				const mapFeedbackList = (item, i) => {
+					return data.topicKey === i ? item.map(mapFeedbackItem) : item;
+				};
+
+				return {
+					...state,
+					feedbackState: [...state.feedbackState].map(mapFeedbackList)
+				};
+
+			})();
+
+		case TOGGLE_FEEDBACK_RATING:
+
+			return (() => {
+
+				const toggleRating = (item) => {
+					const isRatingToggled = !item.isRatingToggled;
+					const rating = isRatingToggled ? item.rating + 1 : item.rating - 1;
+					return {...item, isRatingToggled, rating};
+				};
+
+				const mapFeedbackItem = (item, i) => {
+					return data.feedbackKey === i ? toggleRating(item) : item;
 				};
 
 				const mapFeedbackList = (item, i) => {

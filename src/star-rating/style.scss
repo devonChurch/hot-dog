@@ -4,8 +4,23 @@
 
     &.StarRating--#{$color} {
 
+        &.isActive {
+
+            .Icon {
+                fill: color($color, 500);
+            }
+
+            .StarRating-rating {
+                color: color($color, 500);
+            }
+        }
+
         .Icon {
-            fill: color($color, 500);
+            fill: color($color, 200);
+        }
+
+        .StarRating-rating {
+            color: color($color, 200);
         }
     }
 }
@@ -37,6 +52,7 @@
             weight: fontWeight(700);
         }
         text-align: center;
+        transition: color speed(300);
     }
 
 }

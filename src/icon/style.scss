@@ -4,5 +4,6 @@
     $size: 100%;
     fill: color(gray, 900);
     height: $size;
+    transition: fill speed(300);
     width: $size;
 }
