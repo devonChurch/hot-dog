@@ -36,6 +36,7 @@ class TopicContainer extends Component {
                         color={topic.color}/>
                     <FeedbackContainer
                         feedbackList={this.props.feedbackState[key]}
+                        topicKey={key}
                         color={topic.color}/>
                 </Shell>
             </Topic>
@@ -44,8 +45,6 @@ class TopicContainer extends Component {
     }
 
     render() {
-
-        // console.log('TopicContainer', this);
 
         return (
             <section className="Container-topic">

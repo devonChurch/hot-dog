@@ -3,7 +3,7 @@
 .Container-feedback {
     list-style: none;
     margin: 0;
-    padding: 0 space(500);
+    padding: 0;
 }
 
 @mixin feedbackColor($color) {
@@ -31,7 +31,8 @@
 
 .Feedback {
     display: flex;
-    padding: space(500) 0;
+    padding: space(500);
+    padding-right: space(300);
 
     @each $color in $G-allColors {
         @include feedbackColor($color);

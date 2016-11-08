@@ -41,23 +41,35 @@ class FeedbackContainer extends Component {
 
     generateMiniMenu(feedback, key) {
 
+        const onToggleClick = () => {
+
+            this.props.dispatch({
+                type: TOGGLE_FEEDBACK_MINI_MENU,
+                data: {
+                    topicKey: this.props.topicKey,
+                    feedbackKey: key
+                }
+            });
+
+        };
+
+        const options = [
+            {
+                heading: 'Edit',
+                onOptionClick: () => console.log('menu | edit', this.props.topicKey, key)
+            },
+            {
+                heading: 'Remove',
+                onOptionClick: () => console.log('menu | remove', this.props.topicKey, key)
+            }
+        ];
+
         return (
             <MiniMenuContainer
                 color={this.props.color}
                 isActive={feedback.isOptionsActive}
-                onToggleClick={() => {
-                    console.log('menu | toggle', key)
-                }}
-                options={[
-                    {
-                        heading: 'Edit',
-                        onOptionClick: () => console.log('menu | edit', key)
-                    },
-                    {
-                        heading: 'Remove',
-                        onOptionClick: () => console.log('menu | remove', key)
-                    }
-                ]}/>
+                onToggleClick={onToggleClick}
+                options={options}/>
         );
     }
 
@@ -71,9 +83,7 @@ class FeedbackContainer extends Component {
                 starRating={this.generateStarRating(feedback, key)}
                 miniMenu={this.generateMiniMenu(feedback, key)}
                 badge={this.generateBadge(feedback)}
-                key={key}>
-
-            </Feedback>
+                key={key}/>
         );
 
     }

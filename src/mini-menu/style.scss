@@ -5,12 +5,28 @@
     &.MiniMenu--#{$color} {
         color: color($color, 500);
 
-        .MiniMenu-icon > .Icon {
-            fill: color($color, 500);
+        .MiniMenu-icon .Icon {
+            fill: color($color, 200);
         }
 
-        .MiniMenu-optionButton:before {
-            background: color($color, 100);
+        &.isActive,
+        .MiniMenu-toggle:hover {
+
+            .MiniMenu-icon .Icon {
+                fill: color($color, 500);
+            }
+        }
+
+        .MiniMenu-optionButton {
+            color: color($color, 200);
+
+            &:hover {
+                color: color($color, 500);
+            }
+
+            &:before {
+                background: color($color, 100);
+            }
         }
     }
 }
@@ -52,7 +68,7 @@
 
 
         > .Icon {
-
+            transition: fill speed(300);
         }
     }
 
@@ -66,9 +82,9 @@
         position: absolute;
         right: 0;
         top: 100%;
-        transform: translateY(space(500));
+        transform: translateY(space(300));
         transition: {
-            duration: speed(500);
+            duration: speed(300);
             property: opacity, transform;
         }
     }
@@ -100,6 +116,7 @@
         padding: space(300) space(500);
         position: relative;
         text-align: left;
+        transition: color speed(300);
         width: 100%;
     }
 }

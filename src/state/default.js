@@ -31,15 +31,17 @@ const state = {
                 badge: 'cake',
                 name: 'Mr Potato',
                 rating: 0,
-                isOptionsActive: true,
-                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                isRatingToggled: false,
+                isOptionsActive: false
             },
             {
                 badge: 'cake',
                 name: 'Mr Sassuage',
                 rating: 5,
-                isOptionsActive: false,
-                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                isRatingToggled: false,
+                isOptionsActive: false
             }
         ],
         [],
