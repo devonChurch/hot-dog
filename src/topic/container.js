@@ -15,12 +15,37 @@ class TopicContainer extends Component {
 
     }
 
-    startAddFeedbackSequence(data) {
+    generateFeatureButton(color, key) {
 
-        this.props.dispatch({
-            type: OPEN_CREATE_DIALOG,
-            data
-        });
+        const onFeatureClick = () => {
+
+            this.props.dispatch({
+                type: OPEN_CREATE_DIALOG,
+                data: {
+					isActive: true,
+					color,
+					topicKey: key
+				}
+            });
+
+        };
+
+        return (
+            <FeatureButton
+                onFeatureClick= {onFeatureClick}
+                color={color}/>
+        );
+
+    }
+
+    generateFeedback(color, key) {
+
+        return (
+            <FeedbackContainer
+                feedbackList={this.props.feedbackState[key]}
+                topicKey={key}
+                color={color}/>
+        );
 
     }
 
@@ -31,13 +56,8 @@ class TopicContainer extends Component {
                 <Shell
                     heading={topic.heading}
                     color={topic.color}>
-                    <FeatureButton
-                        onFeatureClick= {() => console.log('Add button')}
-                        color={topic.color}/>
-                    <FeedbackContainer
-                        feedbackList={this.props.feedbackState[key]}
-                        topicKey={key}
-                        color={topic.color}/>
+                    {this.generateFeatureButton(topic.color, key)}
+                    {this.generateFeedback(topic.color, key)}
                 </Shell>
             </Topic>
         );

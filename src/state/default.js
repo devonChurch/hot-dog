@@ -3,7 +3,8 @@ const state = {
     createState: {
         isActive: false,
         color: 'gray',
-        topicKey: null
+        topicKey: 0,
+        text: ''
     },
 
     topicState: [

@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import TopicContainer from '../topic/container';
-import Create from '../create/view';
+import CreateContainer from '../create/container';
 
 class AppContainer extends Component {
 
@@ -15,7 +15,7 @@ class AppContainer extends Component {
                 <TopicContainer/>
                 {/*<Topics topics={topics}/>*/}
                 <footer>FOOTER</footer>
-                <Create/>
+                <CreateContainer/>
             </div>
         );
 

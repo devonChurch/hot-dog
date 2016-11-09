@@ -1,5 +1,5 @@
 import deepFreeze from 'deep-freeze';
-import {OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, SUBMIT_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING, REMOVE_FEEDBACK} from './actions';
+import {OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, UPDATE_CREATE_TEXT, SUBMIT_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING, REMOVE_FEEDBACK} from './actions';
 import * as defaultState from './default';
 
 // state, action
@@ -16,7 +16,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 				createState: {
 					isActive: true,
 					color: data.color,
-					topicKey: data.key
+					topicKey: data.topicKey
 				}
 			};
 
@@ -30,27 +30,40 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 				}
 			};
 
+		case UPDATE_CREATE_TEXT:
+
+			return {
+				...state,
+				createState: {
+					...state.createState,
+					text: data
+				}
+			};
+
 		case SUBMIT_CREATE_DIALOG:
 
 			return (() => {
 
-				const {topicKey} = state.createState;
+				const {topicKey, text} = state.createState;
+
+				console.log('SUBMIT_CREATE_DIALOG', text);
+
 				const feedback = {
 					badge: 'cake',
 					name: 'Mr Potato',
 					rating: 0,
-					text: data,
+					text,
 					isRatingToggled: false,
 					isOptionsActive: false
 				};
 
+				const mapFeedbackList = (item, i) => {
+					return topicKey === i ? [...item, feedback] : [...item];
+				};
+
 				return {
 					...state,
-					topicsState: [...state.topicsState].map((item, i) => {
-						const clone = [...item];
-						if (topicKey === i) clone.push(feedback);
-						return clone;
-					})
+					feedbackState: [...state.feedbackState].map(mapFeedbackList)
 				};
 
 			})();
