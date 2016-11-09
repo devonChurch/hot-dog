@@ -4,7 +4,7 @@ import Icon from '../icon/view';
 const StarRating = (props) => {
 
     return (
-        <div className={`StarRating StarRating--${props.color} ${props.isRatingToggled ? 'isActive' : ''}`}>
+        <div className={`StarRating StarRating--${props.color} ${props.isRatingToggled || props.rating ? 'isActive' : ''}`}>
             <button
                 className="StarRating-toggle"
                 onClick={props.onToggleClick}>

@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING} from '../state/actions';
+import {TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING, REMOVE_FEEDBACK} from '../state/actions';
 import Feedback from './presentation';
 import BadgeContainer from '../badge/container';
 import StarRatingContainer from '../star-rating/container';
@@ -71,7 +71,17 @@ class FeedbackContainer extends Component {
             },
             {
                 heading: 'Remove',
-                onOptionClick: () => console.log('menu | remove', this.props.topicKey, key)
+                onOptionClick: () => {
+
+                    this.props.dispatch({
+                        type: REMOVE_FEEDBACK,
+                        data: {
+                            topicKey: this.props.topicKey,
+                            feedbackKey: key
+                        }
+                    });
+
+                }
             }
         ];
 

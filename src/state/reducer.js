@@ -1,5 +1,5 @@
 import deepFreeze from 'deep-freeze';
-import {OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, SUBMIT_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING} from './actions';
+import {OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, SUBMIT_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING, REMOVE_FEEDBACK} from './actions';
 import * as defaultState from './default';
 
 // state, action
@@ -96,6 +96,25 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 					...state,
 					feedbackState: [...state.feedbackState].map(mapFeedbackList)
 				};
+
+			})();
+
+		case REMOVE_FEEDBACK:
+
+			return (() => {
+
+				const removeFeedback = (item, i) => {
+					return [...item.slice(0, i), ...item.slice(i + 1)];
+				};
+
+				const mapFeedbackList = (item, i) => {
+					return data.topicKey === i ? removeFeedback(item, data.feedbackKey) : item;
+				};
+
+				return {
+					...state,
+					feedbackState: [...state.feedbackState].map(mapFeedbackList)
+				}
 
 			})();
 
