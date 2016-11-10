@@ -1,0 +1,39 @@
+@import '../helpers/style';
+
+@mixin addButtonColor($color) {
+
+    &.TextArea--#{$color} {
+        border-color: color($color, 200);
+
+        &:before {
+             background: color($color, 500);
+        }
+    }
+}
+
+.TextArea {
+    border-bottom: 1px solid;
+    position: relative;
+
+    @each $color in $G-allColors {
+        @include addButtonColor($color);
+    }
+
+    &:before { // this should be a div targeted on focus via .textarea:focus + .activeStrip
+        content: '';
+        display: block;
+        height: 1px;
+        left: 50%;
+        position: absolute;
+        top: 100%;
+        transform: translateX(-50%);
+        width: 0;
+    }
+
+    &-input {
+        border: 0;
+        outline: 0;
+        padding: 0;
+        width: 100%;
+    }
+}

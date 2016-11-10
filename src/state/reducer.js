@@ -16,7 +16,8 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 				createState: {
 					isActive: true,
 					color: data.color,
-					topicKey: data.topicKey
+					topicKey: data.topicKey,
+					text: ''
 				}
 			};
 
@@ -45,8 +46,6 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 			return (() => {
 
 				const {topicKey, text} = state.createState;
-
-				console.log('SUBMIT_CREATE_DIALOG', text);
 
 				const feedback = {
 					badge: 'cake',

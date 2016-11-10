@@ -1,0 +1,24 @@
+@import '../helpers/style';
+
+@mixin addButtonColor($color) {
+
+    &.StandardButton--#{$color} {
+        background: color($color, 500);
+
+        &:hover {
+            background: color($color, 900);
+        }
+    }
+}
+
+.StandardButton {
+    @include buttonReset;
+    color: white;
+    display: block;
+    padding: space(200) space(500);
+    transition: background speed(300);
+
+    @each $color in $G-allColors {
+        @include addButtonColor($color);
+    }
+}
