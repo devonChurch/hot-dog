@@ -47,10 +47,10 @@ class CreateContainer extends Component {
 
         return (
             <StandardButtonContainer
-            color={color}
-            onButtonClick={onButtonClick}
-            type="submit"
-            text="Done"/>
+                color={color}
+                onButtonClick={onButtonClick}
+                type="submit"
+                text="Done"/>
         );
 
     }
@@ -76,7 +76,8 @@ class CreateContainer extends Component {
             <TextAreaContainer
                 color={color}
                 name="feedback"
-                placeholder="Enter your feedback"
+                label="Enter your feedback"
+                uniqueReference="Create--textArea"
                 value={text}
                 onTextChange={onTextChange}/>
         );

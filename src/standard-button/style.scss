@@ -5,6 +5,7 @@
     &.StandardButton--#{$color} {
         background: color($color, 500);
 
+        &:focus,
         &:hover {
             background: color($color, 900);
         }

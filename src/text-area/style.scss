@@ -3,37 +3,85 @@
 @mixin addButtonColor($color) {
 
     &.TextArea--#{$color} {
-        border-color: color($color, 200);
 
-        &:before {
-             background: color($color, 500);
+        .TextArea-label {
+            color: color($color, 100);
+        }
+
+        .TextArea-input {
+            color: color($color, 900);
+        }
+
+        .TextArea-focus {
+            background: color($color, 100);
+
+            &:before {
+                background: color($color, 500);
+            }
+        }
+
+        &.isPopulated .TextArea-label,
+        .TextArea-input:focus ~ .TextArea-label {
+            color: color($color, 500);
         }
     }
 }
 
 .TextArea {
-    border-bottom: 1px solid;
-    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: space(500);
 
     @each $color in $G-allColors {
         @include addButtonColor($color);
     }
 
-    &:before { // this should be a div targeted on focus via .textarea:focus + .activeStrip
-        content: '';
+    > * {
         display: block;
-        height: 1px;
-        left: 50%;
-        position: absolute;
-        top: 100%;
-        transform: translateX(-50%);
-        width: 0;
+        width: 100%;
     }
 
     &-input {
         border: 0;
         outline: 0;
         padding: 0;
-        width: 100%;
+    }
+
+    &-label {
+        font-weight: fontWeight(700);
+        order: -1;
+        transform: translateY(1rem);
+        transform-origin: left bottom;
+        transition: {
+            duration: speed(300);
+            property: color, transform;
+        }
+    }
+
+    &-focus {
+        height: 1px;
+        position: relative;
+
+        &:before {
+            content: '';
+            display: block;
+            height: 300%;
+            left: 50%;
+            position: absolute;
+            transform: scaleX(0) translateX(-50%);
+            transform-origin: left center;
+            transition: transform speed(300);
+            width: 100%;
+        }
+    }
+
+    &.isPopulated .TextArea-label,
+    &-input:focus ~ .TextArea-label {
+        transform: scale(0.8) translateY(-0.5rem);
+    }
+
+    &.isPopulated .TextArea-focus:before,
+    &-input:focus ~ .TextArea-focus:before {
+        transform: scaleX(1) translateX(-50%);
     }
 }
