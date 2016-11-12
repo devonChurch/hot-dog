@@ -23,7 +23,6 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 						topicKey: topicKey,
 						feedbackKey: feedbackKey,
 						text
-						// text: featureKey ? state.feedbackState[topicKey][featureKey].text : ''
 					}
 				};
 
