@@ -24,7 +24,9 @@ class TopicContainer extends Component {
                 data: {
 					isActive: true,
 					color,
-					topicKey: key
+					topicKey: key,
+					feedbackKey: null,
+                    text: ''
 				}
             });
 

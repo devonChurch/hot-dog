@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING, REMOVE_FEEDBACK} from '../state/actions';
+import {OPEN_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING, REMOVE_FEEDBACK} from '../state/actions';
 import Feedback from './presentation';
 import BadgeContainer from '../badge/container';
 import StarRatingContainer from '../star-rating/container';
@@ -67,7 +67,22 @@ class FeedbackContainer extends Component {
         const options = [
             {
                 heading: 'Edit',
-                onOptionClick: () => console.log('menu | edit', this.props.topicKey, key)
+                onOptionClick: () => {
+
+                    console.log('menu | edit', this.props.topicKey, key)
+
+                    this.props.dispatch({
+                        type: OPEN_CREATE_DIALOG,
+                        data: {
+                            isActive: true,
+                            color: this.props.color,
+                            topicKey: this.props.topicKey,
+                            feedbackKey: key,
+                            text: feedback.text
+                        }
+                    });
+
+                }
             },
             {
                 heading: 'Remove',

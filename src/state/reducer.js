@@ -11,15 +11,23 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 		case OPEN_CREATE_DIALOG:
 
-			return {
-				...state,
-				createState: {
-					isActive: true,
-					color: data.color,
-					topicKey: data.topicKey,
-					text: ''
-				}
-			};
+			return (() => {
+
+				const {color, topicKey, feedbackKey, text} = data;
+
+				return {
+					...state,
+					createState: {
+						isActive: true,
+						color: color,
+						topicKey: topicKey,
+						feedbackKey: feedbackKey,
+						text
+						// text: featureKey ? state.feedbackState[topicKey][featureKey].text : ''
+					}
+				};
+
+			})();
 
 		case CLOSE_CREATE_DIALOG:
 
@@ -45,25 +53,58 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 			return (() => {
 
-				const {topicKey, text} = state.createState;
+				const {topicKey, feedbackKey, text} = state.createState;
 
-				const feedback = {
-					badge: 'cake',
-					name: 'Mr Potato',
-					rating: 0,
-					text,
-					isRatingToggled: false,
-					isOptionsActive: false
-				};
+				switch (feedbackKey) {
 
-				const mapFeedbackList = (item, i) => {
-					return topicKey === i ? [...item, feedback] : [...item];
-				};
+					case null:
 
-				return {
-					...state,
-					feedbackState: [...state.feedbackState].map(mapFeedbackList)
-				};
+						return (() => {
+
+							console.log('creating new feedback item');
+
+							const feedback = {
+								badge: 'cake',
+								name: 'Mr Potato',
+								rating: 0,
+								text,
+								isRatingToggled: false,
+								isOptionsActive: false
+							};
+
+							const mapFeedbackList = (item, i) => {
+								return topicKey === i ? [...item, feedback] : item;
+							};
+
+							return {
+								...state,
+								feedbackState: [...state.feedbackState].map(mapFeedbackList)
+							};
+
+						})();
+
+					default:
+
+						return (() => {
+
+							console.log('editing current feedback item');
+
+							const mapFeedbackItem = (item, i) => {
+								return feedbackKey === i ? {...item, text} : item;
+							};
+
+							const mapFeedbackList = (item, i) => {
+								return topicKey === i ? item.map(mapFeedbackItem) : item;
+							};
+
+							return {
+								...state,
+								feedbackState: [...state.feedbackState].map(mapFeedbackList)
+							};
+
+						})();
+
+				}
 
 			})();
 

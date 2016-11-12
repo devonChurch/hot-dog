@@ -4,6 +4,7 @@ const state = {
         isActive: false,
         color: 'gray',
         topicKey: 0,
+        feedbackKey: 0,
         text: ''
     },
 

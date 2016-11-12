@@ -61,10 +61,6 @@ class CreateContainer extends Component {
 
         const onTextChange = (e) => {
 
-            console.log(e);
-            console.log(e.target);
-            console.log(e.target.value);
-
             this.props.dispatch({
                 type: UPDATE_CREATE_TEXT,
                 data: e.target.value
@@ -88,9 +84,6 @@ class CreateContainer extends Component {
 
         const {createState} = this.props;
         const heading = this.props.topicState[createState.topicKey].heading;
-
-        // onTextAreaChange={this.onTextAreaChange}
-        // onSubmitForm={this.onSubmitForm}
 
         return (
             <ModalContainer
