@@ -1,7 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import UserContainer from '../user/container';
 import TopicContainer from '../topic/container';
 import CreateContainer from '../create/container';
+import FooterContainer from '../footer/container';
 
 class AppContainer extends Component {
 
@@ -10,11 +12,9 @@ class AppContainer extends Component {
         return (
             <div>
                 <header>HEADER</header>
-                <div>LOGGED IN</div>
-                {/*<section>SECTION</section>*/}
+                <UserContainer/>
                 <TopicContainer/>
-                {/*<Topics topics={topics}/>*/}
-                <footer>FOOTER</footer>
+                <FooterContainer/>
                 <CreateContainer/>
             </div>
         );

@@ -8,11 +8,13 @@
 }
 
 .Badge {
+    $size: space(600);
     border-radius: 50%;
-    height: 100%;
+    height: $size;
     overflow: hidden;
     position: relative;
-    width: 100%;
+    transition: background speed(300);
+    width: $size;
 
     @each $color in $G-allColors {
         @include badgeColor($color);

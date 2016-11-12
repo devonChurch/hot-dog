@@ -8,6 +8,17 @@ const state = {
         text: ''
     },
 
+    userState: [
+        {
+            name: 'John Smith',
+            badge: 'cake'
+        },
+        {
+            name: 'Jane Doe',
+            badge: 'cake'
+        }
+    ],
+
     topicState: [
         {
 			heading: 'Positive',

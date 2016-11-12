@@ -1,0 +1,47 @@
+@import '../helpers/style';
+
+@mixin badgeColor($color) {
+
+    $colorDormant: color($color, 300);
+    $colorHover: color($color, 500);
+    $colorActive: color($color, 900);
+
+    &.Lockup--#{$color} {
+
+        .Badge {
+            background: $colorDormant;
+        }
+
+        .Lockup-name {
+            color: $colorDormant;
+        }
+
+        &.Lockup--interactive:hover {
+
+            .Badge {
+                background: $colorHover;
+            }
+
+            .Lockup-name {
+                color: $colorHover;
+            }
+        }
+    }
+}
+
+.Lockup {
+    @include buttonReset;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    @each $color in $G-allColors {
+        @include badgeColor($color);
+    }
+
+    &-name {
+        font-weight: fontWeight(700);
+        padding-left: space(300);
+        transition: color speed(300);
+    }
+}

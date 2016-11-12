@@ -38,12 +38,6 @@
         @include feedbackColor($color);
     }
 
-    &-badge {
-        $size: space(600);
-        height: $size;
-        width: $size;
-    }
-
     &-content {
         flex-grow: 1;
         padding: 0 space(500) 0 space(300);
