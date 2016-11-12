@@ -4,6 +4,10 @@
     list-style: none;
     margin: 0;
     padding: 0;
+
+    &.isEmpty {
+        padding-top: space(500);
+    }
 }
 
 @mixin feedbackColor($color) {
@@ -11,8 +15,8 @@
     &.Feedback--#{$color} {
         color: color($color, 500);
 
-        &:nth-of-type(1n+2) {
-            border-top: 1px solid color($color, 100);
+        &:before {
+            background: color($color, 100);
         }
 
         .Feedback-name {
@@ -33,9 +37,20 @@
     display: flex;
     padding: space(500);
     padding-right: space(300);
+    position: relative;
 
     @each $color in $G-allColors {
         @include feedbackColor($color);
+    }
+
+    &:nth-of-type(1n+2):before {
+        content: '';
+        display: block;
+        height: 1px;
+        left: space(500);
+        position: absolute;
+        right: space(500);
+        top: 0;
     }
 
     &-content {

@@ -1,7 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {TOGGLE_FEEDBACK_MINI_MENU} from '../state/actions';
-import Icon from '../icon/view';
 
 const Feedback = (props) => {
 

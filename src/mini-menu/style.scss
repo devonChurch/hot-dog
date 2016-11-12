@@ -18,10 +18,9 @@
         }
 
         .MiniMenu-optionButton {
-            color: color($color, 200);
 
             &:hover {
-                color: color($color, 500);
+                color: color($color, 900);
             }
 
             &:before {

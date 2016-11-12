@@ -5,7 +5,6 @@ import Feedback from './presentation';
 import BadgeContainer from '../badge/container';
 import StarRatingContainer from '../star-rating/container';
 import MiniMenuContainer from '../mini-menu/container';
-import Icon from '../icon/view';
 
 class FeedbackContainer extends Component {
 
@@ -134,9 +133,11 @@ class FeedbackContainer extends Component {
 
     render() {
 
+        const {feedbackList} = this.props;
+
         return (
-            <ul className="Container-feedback">
-                {this.props.feedbackList.map(this.generateFeedback)}
+            <ul className={`Container-feedback ${feedbackList.length ? '' : 'isEmpty'}`}>
+                {feedbackList.map(this.generateFeedback)}
             </ul>
         );
 

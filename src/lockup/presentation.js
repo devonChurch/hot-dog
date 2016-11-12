@@ -30,8 +30,6 @@ const wrapperTagOptions = (props) => {
 
 const Lockup = (props) => {
 
-    console.log('creating Lockup');
-
     return (
         <props.wrapperTag {...wrapperTagOptions(props)}>
             <div className="Lockup-badge"></div>

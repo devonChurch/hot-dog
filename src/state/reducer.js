@@ -60,8 +60,6 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 						return (() => {
 
-							console.log('creating new feedback item');
-
 							const feedback = {
 								badge: 'cake',
 								name: 'Mr Potato',
@@ -85,8 +83,6 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 					default:
 
 						return (() => {
-
-							console.log('editing current feedback item');
 
 							const mapFeedbackItem = (item, i) => {
 								return feedbackKey === i ? {...item, text} : item;
