@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import Icon from '../icon/view';
+import IconContainer from '../icon/container';
 
 const StarRating = (props) => {
 
@@ -9,7 +9,7 @@ const StarRating = (props) => {
                 className="StarRating-toggle"
                 onClick={props.onToggleClick}>
                 <div className="StarRating-icon">
-                    <Icon icon="star"/>
+                    <IconContainer icon="star"/>
                 </div>
             </button>
             <div className="StarRating-rating">{props.rating}</div>

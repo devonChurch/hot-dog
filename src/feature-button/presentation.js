@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import Icon from '../icon/view';
+import IconContainer from '../icon/container';
 
 const FeatureButton = (props) => {
 
@@ -9,7 +9,7 @@ const FeatureButton = (props) => {
                 className="FeatureButton-toggle"
                 onClick={props.onFeatureClick}>
                 <span className="FeatureButton-icon">
-                    <Icon icon="plus"/>
+                    <IconContainer icon="plus"/>
                 </span>
             </button>
         </div>

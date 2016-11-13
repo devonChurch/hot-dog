@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import Icon from '../icon/view';
+import IconContainer from '../icon/container';
 
 const generateOption = (option, key) => {
 
@@ -24,7 +24,7 @@ const MiniMenu = (props) => {
                 className="MiniMenu-toggle"
                 onClick={props.onToggleClick}>
                 <span className="MiniMenu-icon">
-                    <Icon icon="menuVertical"/>
+                    <IconContainer icon="menuVertical"/>
                 </span>
             </button>
             <ul className="MiniMenu-options">

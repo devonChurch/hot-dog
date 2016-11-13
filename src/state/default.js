@@ -15,7 +15,39 @@ const state = {
         },
         {
             name: 'Jane Doe',
-            badge: 'cake'
+            badge: 'car'
+        },
+        {
+            name: 'Jane Doe',
+            badge: 'umbrella'
+        },
+        {
+            name: 'Jane Doe',
+            badge: 'dice'
+        },
+        {
+            name: 'Jane Doe',
+            badge: 'smile'
+        },
+        {
+            name: 'Jane Doe',
+            badge: 'flower'
+        },
+        {
+            name: 'Jane Doe',
+            badge: 'heart'
+        },
+        {
+            name: 'Jane Doe',
+            badge: 'lightening'
+        },
+        {
+            name: 'Jane Doe',
+            badge: 'martini'
+        },
+        {
+            name: 'Jane Doe',
+            badge: 'music'
         }
     ],
 
