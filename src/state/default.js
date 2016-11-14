@@ -1,5 +1,11 @@
 const state = {
 
+    loginState: {
+        isActive: false,
+        text: '',
+        icon: ''
+    },
+
     createState: {
         isActive: false,
         color: 'gray',

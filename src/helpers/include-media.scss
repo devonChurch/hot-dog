@@ -1,0 +1,5 @@
+@import '~include-media/dist/include-media';
+
+$breakpoints: (
+    '500': breakpoint(500)
+);

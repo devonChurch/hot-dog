@@ -1,6 +1,27 @@
 import deepFreeze from 'deep-freeze';
-import {OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, UPDATE_CREATE_TEXT, SUBMIT_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING, REMOVE_FEEDBACK} from './actions';
+import {CLOSE_LOGIN_DIALOG, UPDATE_LOGIN_TEXT, UPDATE_LOGIN_ICON, OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, UPDATE_CREATE_TEXT, SUBMIT_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING, REMOVE_FEEDBACK} from './actions';
 import * as defaultState from './default';
+
+// const loginReducer = (state = defaultState, {type, data = {}}) => {
+//
+// 	switch (type) {
+//
+// 		case 'CLOSE_LOGIN_DIALOG':
+//
+// 			return {
+// 				...state,
+// 				createState: {
+// 					...state.loginState,
+// 					isActive: false
+// 				}
+// 			};
+//
+// 		default:
+// 			return state;
+//
+// 	}
+//
+// };
 
 // state, action
 const reducer = (state = defaultState, {type, data = {}}) => {
@@ -8,6 +29,28 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 	deepFreeze(state);
 
 	switch (type) {
+
+		case CLOSE_LOGIN_DIALOG:
+
+			return {
+				...state,
+				loginState: {
+					...state.loginState,
+					isActive: false
+				}
+			};
+
+		case UPDATE_LOGIN_TEXT:
+			return state;
+
+		case UPDATE_LOGIN_ICON:
+			return {
+				...state,
+				loginState: {
+					...state.loginState,
+					icon: data
+				}
+			};
 
 		case OPEN_CREATE_DIALOG:
 
@@ -174,3 +217,4 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 };
 
 export default reducer;
+// export {loginReducer};

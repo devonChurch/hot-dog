@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import UserContainer from '../user/container';
 import TopicContainer from '../topic/container';
 import CreateContainer from '../create/container';
+import LoginContainer from '../login/container';
 import FooterContainer from '../footer/container';
 
 class AppContainer extends Component {
@@ -12,10 +13,13 @@ class AppContainer extends Component {
         return (
             <div>
                 <header>HEADER</header>
-                <UserContainer/>
-                <TopicContainer/>
-                <FooterContainer/>
+                <div className="App-restrictContentWidth">
+                    <UserContainer/>
+                    <TopicContainer/>
+                    <FooterContainer/>
+                </div>
                 <CreateContainer/>
+                <LoginContainer/>
             </div>
         );
 

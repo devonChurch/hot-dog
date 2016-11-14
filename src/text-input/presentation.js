@@ -9,6 +9,7 @@ const TextArea = (props) => {
                 className="TextArea-input"
                 name={props.name}
                 rows="5"
+                placeholder={props.placeholder}
                 minLength="1"
                 value={props.value}
                 onChange={props.onTextChange}/>

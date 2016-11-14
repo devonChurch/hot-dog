@@ -1,0 +1,15 @@
+$G-breakpoint: (
+    // 100: xxx,
+    // 200: xxx,
+    // 300: xxx,
+    // 400: xxx,
+    500: 48rem,// 768px
+    // 600: xxx,
+    // 700: xxx,
+    // 800: xxx,
+    // 900: xxx,
+);
+
+@function breakpoint($type: 500) {
+    @return map-get($G-breakpoint, $type);
+}

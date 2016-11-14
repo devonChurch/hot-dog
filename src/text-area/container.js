@@ -1,16 +1,16 @@
 import React, {Component, PropTypes} from 'react';
-import FeatureButton from './presentation';
+import TextArea from './presentation';
 
-class FeatureButtonContainer extends Component {
+class TextAreaContainer extends Component {
 
     render() {
 
         return (
-            <FeatureButton {...this.props} />
+            <TextArea {...this.props} />
         );
 
     }
 
 }
 
-export default FeatureButtonContainer;
+export default TextAreaContainer;

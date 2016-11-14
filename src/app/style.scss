@@ -1,0 +1,10 @@
+@import '../helpers/style';
+
+.App {
+    background: white;
+
+    &-restrictContentWidth {
+        margin: auto;
+        max-width: 100rem;
+    }
+}

@@ -1,21 +1,17 @@
 @import '../helpers/style';
 
 .Container-topic {
-    display: flex;
-    flex-wrap: wrap;
     padding: space(300);
+
+    @include media('>=500') {
+        column: {
+            count: 2;
+            gap: 0;
+        }
+    }
 }
 
 .Topic {
+    column-break-inside: avoid;
     padding: space(300);
-    width: 50%;
-
-    // &.Topics-topic--red {
-    //     border-color: red;
-    //     color: red;
-    //
-    //     * {
-    //         color: inherit
-    //     };
-    // }
 }

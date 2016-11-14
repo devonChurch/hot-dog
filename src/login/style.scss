@@ -1,0 +1,43 @@
+@import '../helpers/style';
+
+.Login {
+    padding: space(500);
+
+    &-badgeOptions {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0 -#{space(300)};
+        padding: 0;
+    }
+
+    &-badgeOption {
+        padding: 0 space(300);
+    }
+
+    &-badgeOptionlabel {
+        cursor: pointer;
+        display: block;
+        position: relative;
+    }
+
+    &-badgeOptionRadio {
+        position: absolute;
+        opacity: 0;
+
+        &:not(:checked) {
+
+            + .Badge {
+                background: color(gray, 200);
+            }
+
+            &:hover + .Badge {
+                background: color(gray, 500);
+            }
+        }
+
+        &:checked + .Badge {
+            background: color(gray, 900);
+        }
+    }
+}
