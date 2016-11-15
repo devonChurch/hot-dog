@@ -1,19 +1,29 @@
 @import '../helpers/style';
 
 .Footer {
-    padding: space(500);
-    padding-top: 0;
+    padding: space(300) 0 0 0;
 
     &-links {
-        border-top: 1px solid color(gray, 300);
         display: flex;
         flex-wrap: wrap;
         list-style: none;
         margin: 0;
-        padding: space(500) 0 0 0;
+        padding: space(300) 0 0 0;
+        position: relative;
+
+        &:before {
+            background: color(gray, 300);
+            content: '';
+            display: block;
+            height: 1px;
+            left: space(300);
+            position: absolute;
+            right: space(300);
+            top: 0;
+        }
     }
 
     &-link {
-
+        padding: space(300);
     }
 }

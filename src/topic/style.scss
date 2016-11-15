@@ -1,7 +1,6 @@
 @import '../helpers/style';
 
 .Container-topic {
-    padding: space(300);
 
     @include media('>=500') {
         column: {
@@ -12,6 +11,7 @@
 }
 
 .Topic {
-    column-break-inside: avoid;
+    // column-break-inside: avoid;
+    break-inside: avoid;
     padding: space(300);
 }
