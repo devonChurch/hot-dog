@@ -12,6 +12,10 @@
     }
 }
 
+.Container-standardButton {
+    padding: space(300);
+}
+
 .StandardButton {
     @include buttonReset;
     color: white;

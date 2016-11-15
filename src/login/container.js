@@ -4,7 +4,7 @@ import {CLOSE_LOGIN_DIALOG, SUBMIT_LOGIN_DIALOG, UPDATE_LOGIN_TEXT, UPDATE_LOGIN
 import Login from './presentation';
 import ModalContainer from '../modal/container';
 import StandardButtonContainer from '../standard-button/container';
-import TextAreaContainer from '../text-area/container';
+import TextInputContainer from '../text-input/container';
 
 class LoginContainer extends Component {
 
@@ -55,15 +55,15 @@ class LoginContainer extends Component {
 
             console.log('onTextChange');
 
-            // this.props.dispatch({
-            //     type: UPDATE_CREATE_TEXT,
-            //     data: e.target.value
-            // });
+            this.props.dispatch({
+                type: UPDATE_LOGIN_TEXT,
+                data: e.target.value
+            });
 
         };
 
         return (
-            <TextAreaContainer
+            <TextInputContainer
                 color="gray"
                 name="feedback"
                 label="Enter your feedback"
@@ -77,10 +77,13 @@ class LoginContainer extends Component {
     generateBadgeOptions() {
 
         const icons = ['cake', 'car', 'dice', 'flower', 'heart', 'lightening', 'martini', 'music', 'smile', 'umbrella'];
-        const addOptions = (icon) => {
+        const addOptions = (icon, i) => {
+
+            // console.log(`[${this.props.loginState.icon}]   >>>   (!i && !icon) || icon === this.props.loginState.icon   >>>   (${!i} && ${!this.props.loginState.icon}) || ${icon} === ${this.props.loginState.icon}`);
 
             return {
                 icon,
+                checked: (!i && !this.props.loginState.icon) || icon === this.props.loginState.icon,
                 onBadgeClick: () => this.props.dispatch({
                     type: UPDATE_LOGIN_ICON,
                     data: icon

@@ -41,7 +41,13 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 			};
 
 		case UPDATE_LOGIN_TEXT:
-			return state;
+			return {
+				...state,
+				loginState: {
+					...state.loginState,
+					text: data
+				}
+			};
 
 		case UPDATE_LOGIN_ICON:
 			return {

@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import BadgeContainer from '../badge/container';
 
-const wrapperTagOptions = (props) => {
+const wrapperTagProps = (props) => {
 
     const className = `Lockup Lockup--${props.color}`;
 
@@ -31,7 +31,7 @@ const wrapperTagOptions = (props) => {
 const Lockup = (props) => {
 
     return (
-        <props.wrapperTag {...wrapperTagOptions(props)}>
+        <props.wrapperTag {...wrapperTagProps(props)}>
             <div className="Lockup-badge"></div>
                 <BadgeContainer
                     color={props.color}

@@ -1,6 +1,37 @@
 import React, {Component, PropTypes} from 'react';
 import BadgeContainer from '../badge/container';
 
+const radioProps = (item) => {
+
+    console.log('item.checked', item.checked);
+
+    // <input
+    //     className="Login-badgeOptionRadio"
+    //     type="radio"
+    //     name="Login-badgeOption"
+    //     defaultChecked="false"/>
+
+    return {
+            className: 'Login-badgeOptionRadio',
+            type: 'radio',
+            checked: item.checked
+    };
+
+    // switch (true) {
+    //
+    //     case item.checked:
+    //         return {
+    //             ...props,
+    //             defaultChecked: false
+    //         };
+    //
+    //     default:
+    //         return props;
+    //
+    // }
+
+};
+
 const badgeOptions = (item, key) => {
 
     return (
@@ -10,11 +41,7 @@ const badgeOptions = (item, key) => {
             <label
                 className="Login-badgeOptionlabel"
                 onClick={item.onBadgeClick}>
-                <input
-                    className="Login-badgeOptionRadio"
-                    type="radio"
-                    name="Login-badgeOption"
-                    defaultChecked="false"/>
+                <input {...radioProps(item)}/>
                 <BadgeContainer
                     color="gray"
                     icon={item.icon}/>

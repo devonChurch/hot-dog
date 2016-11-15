@@ -2,35 +2,35 @@
 
 @mixin addButtonColor($color) {
 
-    &.TextArea--#{$color} {
+    &.TextInput--#{$color} {
 
-        .TextArea-label {
-            color: color($color, 100);
+        .TextInput-label {
+            color: color($color, 300);
         }
 
-        .TextArea-input {
+        .TextInput-input {
             color: color($color, 900);
         }
 
-        .TextArea-focus {
-            background: color($color, 100);
+        .TextInput-focus {
+            background: color($color, 300);
 
             &:before {
                 background: color($color, 500);
             }
         }
 
-        &.isPopulated .TextArea-label,
-        .TextArea-input:focus ~ .TextArea-label {
+        &.isPopulated .TextInput-label,
+        .TextInput-input:focus ~ .TextInput-label {
             color: color($color, 500);
         }
     }
 }
 
-.TextArea {
+.TextInput {
     display: flex;
     flex-wrap: wrap;
-    padding-bottom: space(500);
+    padding: space(300);
 
     @each $color in $G-allColors {
         @include addButtonColor($color);
@@ -44,7 +44,7 @@
     &-input {
         border: 0;
         outline: 0;
-        padding: 0;
+        padding: 0 0 0.5rem;
     }
 
     &-label {
@@ -75,13 +75,13 @@
         }
     }
 
-    &.isPopulated .TextArea-label,
-    &-input:focus ~ .TextArea-label {
+    &.isPopulated .TextInput-label,
+    &-input:focus ~ .TextInput-label {
         transform: scale(0.8) translateY(-0.5rem);
     }
 
-    &.isPopulated .TextArea-focus:before,
-    &-input:focus ~ .TextArea-focus:before {
+    &.isPopulated .TextInput-focus:before,
+    &-input:focus ~ .TextInput-focus:before {
         transform: scaleX(1) translateX(-50%);
     }
 }

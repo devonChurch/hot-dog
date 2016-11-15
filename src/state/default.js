@@ -1,9 +1,9 @@
 const state = {
 
     loginState: {
-        isActive: false,
+        isActive: true,
         text: '',
-        icon: ''
+        icon: false
     },
 
     createState: {
