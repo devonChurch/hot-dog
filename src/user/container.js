@@ -32,9 +32,12 @@ class UserContainer extends Component {
 
     render() {
 
+        const {thisUser, otherUsers} = this.props.userState;
+        const users = thisUser.name ? [thisUser, ...otherUsers] : otherUsers;
+
         return (
             <ul className="Container-user">
-                {this.props.userState.map(this.generateUser)}
+                {users.map(this.generateUser)}
             </ul>
         );
 

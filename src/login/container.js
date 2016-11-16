@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {CLOSE_LOGIN_DIALOG, SUBMIT_LOGIN_DIALOG, UPDATE_LOGIN_TEXT, UPDATE_LOGIN_ICON} from '../state/actions';
+import {CLOSE_LOGIN_DIALOG, SUBMIT_LOGIN_DIALOG, UPDATE_LOGIN_NAME, UPDATE_LOGIN_ICON} from '../state/actions';
 import Login from './presentation';
 import ModalContainer from '../modal/container';
 import StandardButtonContainer from '../standard-button/container';
@@ -51,16 +51,10 @@ class LoginContainer extends Component {
 
     generateTextInput() {
 
-        const onTextChange = (e) => {
-
-            console.log('onTextChange');
-
-            this.props.dispatch({
-                type: UPDATE_LOGIN_TEXT,
-                data: e.target.value
-            });
-
-        };
+        const onTextChange = (e) => this.props.dispatch({
+            type: UPDATE_LOGIN_NAME,
+            data: e.target.value
+        });
 
         return (
             <TextInputContainer
@@ -68,7 +62,7 @@ class LoginContainer extends Component {
                 name="feedback"
                 label="Enter your feedback"
                 uniqueReference="Login--textInput"
-                value={this.props.loginState.text}
+                value={this.props.loginState.name}
                 onTextChange={onTextChange}/>
         );
 
@@ -76,23 +70,21 @@ class LoginContainer extends Component {
 
     generateBadgeOptions() {
 
-        const icons = ['cake', 'car', 'dice', 'flower', 'heart', 'lightening', 'martini', 'music', 'smile', 'umbrella'];
-        const addOptions = (icon, i) => {
-
-            // console.log(`[${this.props.loginState.icon}]   >>>   (!i && !icon) || icon === this.props.loginState.icon   >>>   (${!i} && ${!this.props.loginState.icon}) || ${icon} === ${this.props.loginState.icon}`);
+        const badges = ['cake', 'car', 'dice', 'flower', 'heart', 'lightening', 'martini', 'music', 'smile', 'umbrella'];
+        const addOptions = (badge) => {
 
             return {
-                icon,
-                checked: (!i && !this.props.loginState.icon) || icon === this.props.loginState.icon,
-                onBadgeClick: () => this.props.dispatch({
+                badge,
+                checked: badge === this.props.loginState.badge, // (!i && !this.props.loginState.icon) || icon === this.props.loginState.icon,
+                onBadgeChange: () => this.props.dispatch({
                     type: UPDATE_LOGIN_ICON,
-                    data: icon
+                    data: badge
                 })
             }
 
         };
 
-        return icons.map(addOptions);
+        return badges.map(addOptions);
 
     }
 

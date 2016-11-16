@@ -3,8 +3,6 @@ import BadgeContainer from '../badge/container';
 
 const radioProps = (item) => {
 
-    console.log('item.checked', item.checked);
-
     // <input
     //     className="Login-badgeOptionRadio"
     //     type="radio"
@@ -14,7 +12,8 @@ const radioProps = (item) => {
     return {
             className: 'Login-badgeOptionRadio',
             type: 'radio',
-            checked: item.checked
+            checked: item.checked,
+            onChange: item.onBadgeChange
     };
 
     // switch (true) {
@@ -39,12 +38,11 @@ const badgeOptions = (item, key) => {
             className="Login-badgeOption"
             key={key}>
             <label
-                className="Login-badgeOptionlabel"
-                onClick={item.onBadgeClick}>
+                className="Login-badgeOptionlabel">
                 <input {...radioProps(item)}/>
                 <BadgeContainer
                     color="gray"
-                    icon={item.icon}/>
+                    icon={item.badge}/>
             </label>
         </li>
     );

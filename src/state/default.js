@@ -2,8 +2,8 @@ const state = {
 
     loginState: {
         isActive: true,
-        text: '',
-        icon: false
+        name: '',
+        badge: 'cake'
     },
 
     createState: {
@@ -14,48 +14,30 @@ const state = {
         text: ''
     },
 
-    userState: [
-        {
-            name: 'John Smith',
-            badge: 'cake'
+    userState: {
+        thisUser: {
+            name: null,
+            badge: null
         },
-        {
-            name: 'Jane Doe',
-            badge: 'car'
-        },
-        {
-            name: 'Jane Doe',
-            badge: 'umbrella'
-        },
-        {
-            name: 'Jane Doe',
-            badge: 'dice'
-        },
-        {
-            name: 'Jane Doe',
-            badge: 'smile'
-        },
-        {
-            name: 'Jane Doe',
-            badge: 'flower'
-        },
-        {
-            name: 'Jane Doe',
-            badge: 'heart'
-        },
-        {
-            name: 'Jane Doe',
-            badge: 'lightening'
-        },
-        {
-            name: 'Jane Doe',
-            badge: 'martini'
-        },
-        {
-            name: 'Jane Doe',
-            badge: 'music'
-        }
-    ],
+        otherUsers: [
+            {
+                name: 'John Smith',
+                badge: 'cake'
+            },
+            {
+                name: 'Jane Doe',
+                badge: 'car'
+            },
+            {
+                name: 'Jane Doe',
+                badge: 'umbrella'
+            },
+            {
+                name: 'Jane Doe',
+                badge: 'dice'
+            }
+        ]
+    },
 
     topicState: [
         {

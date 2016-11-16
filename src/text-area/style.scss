@@ -44,7 +44,8 @@
     &-input {
         border: 0;
         outline: 0;
-        padding: 0;
+        padding: 0 0 1rem;
+        transition: padding speed(300);
     }
 
     &-label {
@@ -73,6 +74,11 @@
             transition: transform speed(300);
             width: 100%;
         }
+    }
+
+    &.isPopulated .TextArea-input,
+    &-input:focus {
+        padding: 1rem 0 1.3rem;
     }
 
     &.isPopulated .TextArea-label,

@@ -1,5 +1,5 @@
 import deepFreeze from 'deep-freeze';
-import {CLOSE_LOGIN_DIALOG, UPDATE_LOGIN_TEXT, UPDATE_LOGIN_ICON, OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, UPDATE_CREATE_TEXT, SUBMIT_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING, REMOVE_FEEDBACK} from './actions';
+import {CLOSE_LOGIN_DIALOG, UPDATE_LOGIN_NAME, UPDATE_LOGIN_ICON, SUBMIT_LOGIN_DIALOG, OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, UPDATE_CREATE_TEXT, SUBMIT_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING, REMOVE_FEEDBACK} from './actions';
 import * as defaultState from './default';
 
 // const loginReducer = (state = defaultState, {type, data = {}}) => {
@@ -40,12 +40,12 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 				}
 			};
 
-		case UPDATE_LOGIN_TEXT:
+		case UPDATE_LOGIN_NAME:
 			return {
 				...state,
 				loginState: {
 					...state.loginState,
-					text: data
+					name: data
 				}
 			};
 
@@ -54,7 +54,19 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 				...state,
 				loginState: {
 					...state.loginState,
-					icon: data
+					badge: data
+				}
+			};
+
+		case SUBMIT_LOGIN_DIALOG:
+			return {
+				...state,
+				userState: {
+					...state.userState,
+					thisUser: {
+						name: state.loginState.name,
+						badge: state.loginState.badge
+					}
 				}
 			};
 
@@ -109,9 +121,11 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 						return (() => {
 
+							const {thisUser} = state.userState;
+
 							const feedback = {
-								badge: 'cake',
-								name: 'Mr Potato',
+								badge: thisUser.badge,
+								name: thisUser.name,
 								rating: 0,
 								text,
 								isRatingToggled: false,
