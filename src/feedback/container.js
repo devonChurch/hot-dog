@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {OPEN_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING, REMOVE_FEEDBACK} from '../state/actions';
+import action from '../state/action';
 import Feedback from './presentation';
 import BadgeContainer from '../badge/container';
 import StarRatingContainer from '../star-rating/container';
@@ -30,7 +30,7 @@ class FeedbackContainer extends Component {
         const onToggleClick = () => {
 
             this.props.dispatch({
-                type: TOGGLE_FEEDBACK_RATING,
+                type: action.TOGGLE_FEEDBACK_RATING,
                 data: {
                     topicKey: this.props.topicKey,
                     feedbackKey: key
@@ -54,7 +54,7 @@ class FeedbackContainer extends Component {
         const toggleFeedbackMiniMenu = (isOptionsActive) => {
 
             this.props.dispatch({
-                type: TOGGLE_FEEDBACK_MINI_MENU,
+                type: action.TOGGLE_FEEDBACK_MINI_MENU,
                 data: {
                     topicKey: this.props.topicKey,
                     feedbackKey: key,
@@ -77,7 +77,7 @@ class FeedbackContainer extends Component {
 
                     toggleFeedbackMiniMenu(false);
                     this.props.dispatch({
-                        type: OPEN_CREATE_DIALOG,
+                        type: action.OPEN_CREATE_DIALOG,
                         data: {
                             isActive: true,
                             color: this.props.color,
@@ -95,7 +95,7 @@ class FeedbackContainer extends Component {
 
                     toggleFeedbackMiniMenu(false);
                     this.props.dispatch({
-                        type: REMOVE_FEEDBACK,
+                        type: action.REMOVE_FEEDBACK,
                         data: {
                             topicKey: this.props.topicKey,
                             feedbackKey: key

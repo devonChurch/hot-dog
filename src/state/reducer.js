@@ -1,5 +1,5 @@
 import deepFreeze from 'deep-freeze';
-import {CLOSE_LOGIN_DIALOG, UPDATE_LOGIN_NAME, UPDATE_LOGIN_ICON, SUBMIT_LOGIN_DIALOG, OPEN_CREATE_DIALOG, CLOSE_CREATE_DIALOG, UPDATE_CREATE_TEXT, SUBMIT_CREATE_DIALOG, TOGGLE_FEEDBACK_MINI_MENU, TOGGLE_FEEDBACK_RATING, REMOVE_FEEDBACK} from './actions';
+import action from './action';
 import * as defaultState from './default';
 
 // const loginReducer = (state = defaultState, {type, data = {}}) => {
@@ -30,7 +30,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 	switch (type) {
 
-		case CLOSE_LOGIN_DIALOG:
+		case action.CLOSE_LOGIN_DIALOG:
 
 			return {
 				...state,
@@ -40,7 +40,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 				}
 			};
 
-		case UPDATE_LOGIN_NAME:
+		case action.UPDATE_LOGIN_NAME:
 			return {
 				...state,
 				loginState: {
@@ -49,7 +49,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 				}
 			};
 
-		case UPDATE_LOGIN_ICON:
+		case action.UPDATE_LOGIN_ICON:
 			return {
 				...state,
 				loginState: {
@@ -58,7 +58,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 				}
 			};
 
-		case SUBMIT_LOGIN_DIALOG:
+		case action.SUBMIT_LOGIN_DIALOG:
 			return {
 				...state,
 				userState: {
@@ -70,7 +70,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 				}
 			};
 
-		case OPEN_CREATE_DIALOG:
+		case action.OPEN_CREATE_DIALOG:
 
 			return (() => {
 
@@ -89,7 +89,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 			})();
 
-		case CLOSE_CREATE_DIALOG:
+		case action.CLOSE_CREATE_DIALOG:
 
 			return {
 				...state,
@@ -99,7 +99,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 				}
 			};
 
-		case UPDATE_CREATE_TEXT:
+		case action.UPDATE_CREATE_TEXT:
 
 			return {
 				...state,
@@ -109,7 +109,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 				}
 			};
 
-		case SUBMIT_CREATE_DIALOG:
+		case action.SUBMIT_CREATE_DIALOG:
 
 			return (() => {
 
@@ -166,7 +166,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 			})();
 
-		case TOGGLE_FEEDBACK_MINI_MENU:
+		case action.TOGGLE_FEEDBACK_MINI_MENU:
 
 			return (() => {
 
@@ -185,7 +185,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 			})();
 
-		case TOGGLE_FEEDBACK_RATING:
+		case action.TOGGLE_FEEDBACK_RATING:
 
 			return (() => {
 
@@ -210,7 +210,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 			})();
 
-		case REMOVE_FEEDBACK:
+		case action.REMOVE_FEEDBACK:
 
 			return (() => {
 

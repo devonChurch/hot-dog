@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {CLOSE_LOGIN_DIALOG, SUBMIT_LOGIN_DIALOG, UPDATE_LOGIN_NAME, UPDATE_LOGIN_ICON} from '../state/actions';
+import action from '../state/action';
 import Login from './presentation';
 import ModalContainer from '../modal/container';
 import StandardButtonContainer from '../standard-button/container';
@@ -28,11 +28,11 @@ class LoginContainer extends Component {
         const onButtonClick = (e) => {
 
             this.props.dispatch({
-                type: SUBMIT_LOGIN_DIALOG
+                type: action.SUBMIT_LOGIN_DIALOG
             });
 
             this.props.dispatch({
-                type: CLOSE_LOGIN_DIALOG
+                type: action.CLOSE_LOGIN_DIALOG
             });
 
             e.preventDefault();
@@ -52,7 +52,7 @@ class LoginContainer extends Component {
     generateTextInput() {
 
         const onTextChange = (e) => this.props.dispatch({
-            type: UPDATE_LOGIN_NAME,
+            type: action.UPDATE_LOGIN_NAME,
             data: e.target.value
         });
 
@@ -77,7 +77,7 @@ class LoginContainer extends Component {
                 badge,
                 checked: badge === this.props.loginState.badge, // (!i && !this.props.loginState.icon) || icon === this.props.loginState.icon,
                 onBadgeChange: () => this.props.dispatch({
-                    type: UPDATE_LOGIN_ICON,
+                    type: action.UPDATE_LOGIN_ICON,
                     data: badge
                 })
             }

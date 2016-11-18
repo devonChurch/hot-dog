@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {OPEN_CREATE_DIALOG} from '../state/actions';
+import action from '../state/action';
 import Topic from './presentation';
 import Shell from '../shell/container';
 import FeatureButton from '../feature-button/container';
@@ -20,7 +20,7 @@ class TopicContainer extends Component {
         const onFeatureClick = () => {
 
             this.props.dispatch({
-                type: OPEN_CREATE_DIALOG,
+                type: action.OPEN_CREATE_DIALOG,
                 data: {
 					isActive: true,
 					color,

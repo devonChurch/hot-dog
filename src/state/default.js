@@ -1,87 +1,89 @@
-const state = {
-
-    loginState: {
-        isActive: true,
-        name: '',
-        badge: 'cake'
-    },
-
-    createState: {
-        isActive: false,
-        color: 'gray',
-        topicKey: 0,
-        feedbackKey: 0,
-        text: ''
-    },
-
-    userState: {
-        thisUser: {
-            name: null,
-            badge: null
-        },
-        otherUsers: [
-            {
-                name: 'John Smith',
-                badge: 'cake'
-            },
-            {
-                name: 'Jane Doe',
-                badge: 'car'
-            },
-            {
-                name: 'Jane Doe',
-                badge: 'umbrella'
-            },
-            {
-                name: 'Jane Doe',
-                badge: 'dice'
-            }
-        ]
-    },
-
-    topicState: [
-        {
-			heading: 'Positive',
-			color: 'green'
-		},
-        {
-			heading: 'Negative',
-			color: 'red'
-		},
-        {
-			heading: 'Ideas',
-			color: 'orange'
-		},
-        {
-			heading: 'Thanks',
-			color: 'blue'
-		}
-    ],
-
-    feedbackState: [
-        [
-            {
-                badge: 'cake',
-                name: 'Mr Potato',
-                rating: 0,
-                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                isRatingToggled: false,
-                isOptionsActive: false
-            },
-            {
-                badge: 'cake',
-                name: 'Mr Sassuage',
-                rating: 5,
-                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                isRatingToggled: false,
-                isOptionsActive: false
-            }
-        ],
-        [],
-        [],
-        []
-    ]
-
+const loginState = {
+    isActive: true,
+    name: '',
+    badge: 'cake'
 };
 
-export default state;
+const createState = {
+    isActive: false,
+    color: 'gray',
+    topicKey: 0,
+    feedbackKey: 0,
+    text: ''
+};
+
+const userState = {
+    thisUser: {
+        name: null,
+        badge: null
+    },
+    otherUsers: [
+        {
+            name: 'John Smith',
+            badge: 'cake'
+        },
+        {
+            name: 'Jane Doe',
+            badge: 'car'
+        },
+        {
+            name: 'Jane Doe',
+            badge: 'umbrella'
+        },
+        {
+            name: 'Jane Doe',
+            badge: 'dice'
+        }
+    ]
+};
+
+const topicState = [
+    {
+        heading: 'Positive',
+        color: 'green'
+    },
+    {
+        heading: 'Negative',
+        color: 'red'
+    },
+    {
+        heading: 'Ideas',
+        color: 'orange'
+    },
+    {
+        heading: 'Thanks',
+        color: 'blue'
+    }
+];
+
+const feedbackState = [
+    [
+        {
+            badge: 'cake',
+            name: 'Mr Potato',
+            rating: 0,
+            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            isRatingToggled: false,
+            isOptionsActive: false
+        },
+        {
+            badge: 'cake',
+            name: 'Mr Sassuage',
+            rating: 5,
+            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            isRatingToggled: false,
+            isOptionsActive: false
+        }
+    ],
+    [],
+    [],
+    []
+];
+
+export {
+    loginState,
+    createState,
+    userState,
+    topicState,
+    feedbackState
+};

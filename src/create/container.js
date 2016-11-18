@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {CLOSE_CREATE_DIALOG, SUBMIT_CREATE_DIALOG, UPDATE_CREATE_TEXT} from '../state/actions';
+import action from '../state/action';
 import Create from './presentation';
 import ModalContainer from '../modal/container';
 import StandardButtonContainer from '../standard-button/container';
@@ -20,7 +20,7 @@ class CreateContainer extends Component {
     onClickOffComponent() {
 
         this.props.dispatch({
-            type: CLOSE_CREATE_DIALOG
+            type: action.CLOSE_CREATE_DIALOG
         });
 
     }
@@ -38,7 +38,7 @@ class CreateContainer extends Component {
         const onButtonClick = (e) => {
 
             this.props.dispatch({
-                type: SUBMIT_CREATE_DIALOG
+                type: action.SUBMIT_CREATE_DIALOG
             });
             this.onClickOffComponent();
             e.preventDefault();
@@ -62,7 +62,7 @@ class CreateContainer extends Component {
         const onTextChange = (e) => {
 
             this.props.dispatch({
-                type: UPDATE_CREATE_TEXT,
+                type: action.UPDATE_CREATE_TEXT,
                 data: e.target.value
             });
 
