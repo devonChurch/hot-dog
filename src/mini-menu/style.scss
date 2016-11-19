@@ -9,7 +9,7 @@
             fill: color($color, 200);
         }
 
-        &.isActive,
+        .MiniMenu-toggle:focus,
         .MiniMenu-toggle:hover {
 
             .MiniMenu-icon .Icon {
@@ -30,21 +30,48 @@
     }
 }
 
+@mixin miniMenuIsOpen {
+    height: auto;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@mixin miniMenuIsClosed {
+    height: 0;
+    opacity: 0;
+    transform: translateY(space(300));
+}
+
+@keyframes miniMenuIsOpen {
+
+    0% {
+        @include miniMenuIsClosed;
+    }
+    100% {
+        @include miniMenuIsOpen;
+    }
+}
+
+@keyframes miniMenuIsClosed {
+
+    0% {
+        @include miniMenuIsOpen;
+    }
+    99% {
+        height: auto;
+        opacity: 0;
+        transform: translateY(space(300));
+    }
+    100% {
+        @include miniMenuIsClosed;
+    }
+}
+
 .MiniMenu {
     position: relative;
 
     @each $color in $G-allColors {
         @include miniMenuColor($color);
-    }
-
-    &.isActive {
-        z-index: zIndex(100);
-
-        .MiniMenu-options {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
-        }
     }
 
     &-toggle {
@@ -53,6 +80,27 @@
         height: $size;
         position: relative;
         width: $size;
+
+        &:focus {
+            pointer-events: none;
+
+            + .MiniMenu-options {
+                animation: {
+                    duration: speed(500);
+                    fill-mode: forwards;
+                    name: miniMenuIsOpen;
+                }
+                z-index: zIndex(100);
+           }
+        }
+
+        &:not(:focus) + .MiniMenu-options {
+            animation: {
+                duration: speed(500);
+                fill-mode: forwards;
+                name: miniMenuIsClosed;
+            }
+        }
     }
 
     &-icon {
@@ -68,19 +116,14 @@
 
     &-options {
         @include paperDepth;
+        @include miniMenuIsClosed;
         background: white;
         list-style: none;
-        opacity: 0;
+        overflow: hidden;
         padding: 0;
-        pointer-events: none;
         position: absolute;
         right: 0;
         top: 100%;
-        transform: translateY(space(300));
-        transition: {
-            duration: speed(300);
-            property: opacity, transform;
-        }
     }
 
     &-option {
