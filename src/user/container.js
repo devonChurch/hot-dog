@@ -2,10 +2,59 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import User from './presentation';
 import LockupContainer from '../lockup/container';
+import MiniMenuContainer from '../mini-menu/container';
 
 class UserContainer extends Component {
 
-    generateUser(item, key) {
+    constructor() {
+
+        super();
+        this.generateUser = this.generateUser.bind(this);
+
+    }
+
+    generateMiniMenu() {
+
+        const onToggleClick = () => {
+
+            console.log('toggle user open state');
+
+        };
+
+        const options = [
+            {
+                heading: 'Edit',
+                onOptionClick: () => {
+
+                    console.log('edit user');
+
+                    // toggleFeedbackMiniMenu(false);
+                    // this.props.dispatch({
+                    //     type: action.OPEN_CREATE_DIALOG,
+                    //     data: {
+                    //         isActive: true,
+                    //         color: this.props.color,
+                    //         topicKey: this.props.topicKey,
+                    //         feedbackKey: key,
+                    //         text: feedback.text
+                    //     }
+                    // });
+
+                }
+            }
+        ];
+
+        return (
+            <MiniMenuContainer
+                color="gray"
+                isActive={true}
+                onToggleClick={onToggleClick}
+                options={options}/>
+        );
+
+    }
+
+    generateLockup(item) {
 
         const onUserClick = () => {
 
@@ -13,7 +62,7 @@ class UserContainer extends Component {
 
         };
 
-        const lockup = (
+        return (
             <LockupContainer
                 color="gray"
                 icon={item.badge}
@@ -22,22 +71,34 @@ class UserContainer extends Component {
                 onLockupClick={onUserClick}/>
         );
 
+    }
+
+    generateUser(item, key) {
+
+        const lockup = this.generateLockup(item);
+        const miniMenu = !key ? this.generateMiniMenu() : false;
+
+        // const props
+
+
+
         return (
             <User
                 key={key}
-                lockup={lockup}/>
+                lockup={lockup}
+                miniMenu={miniMenu}/>
         );
 
     }
 
     render() {
 
-        const {thisUser, otherUsers} = this.props.userState;
-        const users = thisUser.name ? [thisUser, ...otherUsers] : otherUsers;
+        const {loginState, collaboratorState} = this.props;
+        const allUsers = loginState.name ? [loginState, ...collaboratorState] : collaboratorState;
 
         return (
             <ul className="Container-user">
-                {users.map(this.generateUser)}
+                {allUsers.map(this.generateUser)}
             </ul>
         );
 

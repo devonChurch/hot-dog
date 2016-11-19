@@ -3,17 +3,12 @@ import {render} from 'react-dom';
 import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from './state/reducer';
-// import reducer, {loginReducer} from './state/reducer';
 import defaultState from './state/default';
 import defaultProps from './props/default';
 import AppContainer from './app/container';
 const hotDog = document.getElementById('hot-dog');
 
-// console.log('reducer', reducer, 'loginReducer', loginReducer);
-
 function renderMe(store) {
-
-
 
 	render(
 		<Provider store={store}>
@@ -31,11 +26,13 @@ function devTools() {
 }
 
 const store = createStore(
-	reducer,
-	// combineReducers({
-	// 	reducer,
-	// 	loginReducer
-	// }),
+	combineReducers({
+		loginState: reducer.loginReducer,
+		collaboratorState: reducer.collaboratorReducer,
+		topicState: reducer.topicReducer,
+		createState: reducer.createReducer,
+		feedbackState: reducer.feedbackReducer
+	}),
 	defaultState,
 	devTools()
 );

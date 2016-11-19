@@ -33,12 +33,14 @@ class CreateContainer extends Component {
 
     generateStandardButton() {
 
-        const {color} = this.props.createState;
+        const {color, topicKey, feedbackKey, text} = this.props.createState;
+        const {badge, name} = this.props.loginState;
 
         const onButtonClick = (e) => {
 
             this.props.dispatch({
-                type: action.SUBMIT_CREATE_DIALOG
+                type: feedbackKey === null ? action.ADD_FEEDBACK : action.EDIT_FEEDBACK,
+                data: {topicKey, feedbackKey, text, badge, name}
             });
             this.onClickOffComponent();
             e.preventDefault();

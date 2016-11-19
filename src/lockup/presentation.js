@@ -32,10 +32,11 @@ const Lockup = (props) => {
 
     return (
         <props.wrapperTag {...wrapperTagProps(props)}>
-            <div className="Lockup-badge"></div>
+            <div className="Lockup-badge">
                 <BadgeContainer
                     color={props.color}
                     icon={props.icon}/>
+            </div>
             <div className="Lockup-name">{props.name}</div>
         </props.wrapperTag>
     );

@@ -5,6 +5,7 @@ const User = (props) => {
     return (
         <li className="User">
             {props.lockup}
+            {props.miniMenu}
         </li>
     );
 

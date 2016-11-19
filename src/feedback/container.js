@@ -51,22 +51,26 @@ class FeedbackContainer extends Component {
 
     generateMiniMenu(feedback, key) {
 
-        const toggleFeedbackMiniMenu = (isOptionsActive) => {
-
-            this.props.dispatch({
-                type: action.TOGGLE_FEEDBACK_MINI_MENU,
-                data: {
-                    topicKey: this.props.topicKey,
-                    feedbackKey: key,
-                    isOptionsActive
-                }
-            });
-
-        };
+        // const toggleFeedbackMiniMenu = (isOptionsActive) => {
+        //
+        //     console.log('toggleFeedbackMiniMenu');
+        //
+        //     // this.props.dispatch({
+        //     //     type: action.TOGGLE_FEEDBACK_MINI_MENU,
+        //     //     data: {
+        //     //         topicKey: this.props.topicKey,
+        //     //         feedbackKey: key,
+        //     //         isOptionsActive
+        //     //     }
+        //     // });
+        //
+        // };
 
         const onToggleClick = () => {
 
-            toggleFeedbackMiniMenu(!feedback.isOptionsActive);
+            console.log('toggleFeedbackMiniMenu');
+
+            // toggleFeedbackMiniMenu(!feedback.isOptionsActive);
 
         };
 
@@ -75,7 +79,6 @@ class FeedbackContainer extends Component {
                 heading: 'Edit',
                 onOptionClick: () => {
 
-                    toggleFeedbackMiniMenu(false);
                     this.props.dispatch({
                         type: action.OPEN_CREATE_DIALOG,
                         data: {
@@ -93,7 +96,6 @@ class FeedbackContainer extends Component {
                 heading: 'Remove',
                 onOptionClick: () => {
 
-                    toggleFeedbackMiniMenu(false);
                     this.props.dispatch({
                         type: action.REMOVE_FEEDBACK,
                         data: {

@@ -1,5 +1,5 @@
 const loginState = {
-    isActive: true,
+    isActive: false,
     name: '',
     badge: 'cake'
 };
@@ -12,30 +12,24 @@ const createState = {
     text: ''
 };
 
-const userState = {
-    thisUser: {
-        name: null,
-        badge: null
+const collaboratorState = [
+    {
+        name: 'John Smith',
+        badge: 'cake'
     },
-    otherUsers: [
-        {
-            name: 'John Smith',
-            badge: 'cake'
-        },
-        {
-            name: 'Jane Doe',
-            badge: 'car'
-        },
-        {
-            name: 'Jane Doe',
-            badge: 'umbrella'
-        },
-        {
-            name: 'Jane Doe',
-            badge: 'dice'
-        }
-    ]
-};
+    {
+        name: 'Jane Doe',
+        badge: 'car'
+    },
+    {
+        name: 'Jane Doe',
+        badge: 'umbrella'
+    },
+    {
+        name: 'Jane Doe',
+        badge: 'dice'
+    }
+];
 
 const topicState = [
     {
@@ -83,7 +77,7 @@ const feedbackState = [
 export {
     loginState,
     createState,
-    userState,
+    collaboratorState,
     topicState,
     feedbackState
 };

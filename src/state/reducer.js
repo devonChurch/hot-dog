@@ -2,73 +2,74 @@ import deepFreeze from 'deep-freeze';
 import action from './action';
 import * as defaultState from './default';
 
-// const loginReducer = (state = defaultState, {type, data = {}}) => {
-//
-// 	switch (type) {
-//
-// 		case 'CLOSE_LOGIN_DIALOG':
-//
-// 			return {
-// 				...state,
-// 				createState: {
-// 					...state.loginState,
-// 					isActive: false
-// 				}
-// 			};
-//
-// 		default:
-// 			return state;
-//
-// 	}
-//
-// };
-
-// state, action
-const reducer = (state = defaultState, {type, data = {}}) => {
+const loginReducer = (state = defaultState.loginState, {type, data = {}}) => {
 
 	deepFreeze(state);
 
 	switch (type) {
 
 		case action.CLOSE_LOGIN_DIALOG:
-
 			return {
 				...state,
-				loginState: {
-					...state.loginState,
-					isActive: false
-				}
+				isActive: false
 			};
 
 		case action.UPDATE_LOGIN_NAME:
 			return {
 				...state,
-				loginState: {
-					...state.loginState,
-					name: data
-				}
+				name: data
 			};
 
 		case action.UPDATE_LOGIN_ICON:
 			return {
 				...state,
-				loginState: {
-					...state.loginState,
-					badge: data
-				}
+				badge: data
 			};
 
 		case action.SUBMIT_LOGIN_DIALOG:
-			return {
-				...state,
-				userState: {
-					...state.userState,
-					thisUser: {
-						name: state.loginState.name,
-						badge: state.loginState.badge
-					}
-				}
-			};
+			return state;
+
+			// VALIDATION!
+			// Close dialog if validate === true
+
+		default:
+			return state;
+
+	}
+
+};
+
+const collaboratorReducer = (state = defaultState.collaboratorState, {type, data = {}}) => {
+
+	deepFreeze(state);
+
+	switch (type) {
+
+		default:
+			return state;
+
+	}
+
+};
+
+const topicReducer = (state = defaultState.topicState, {type, data = {}}) => {
+
+	deepFreeze(state);
+
+	switch (type) {
+
+		default:
+			return state;
+
+	}
+
+};
+
+const createReducer = (state = defaultState.createState, {type, data = {}}) => {
+
+	deepFreeze(state);
+
+	switch (type) {
 
 		case action.OPEN_CREATE_DIALOG:
 
@@ -78,13 +79,11 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 				return {
 					...state,
-					createState: {
-						isActive: true,
-						color: color,
-						topicKey: topicKey,
-						feedbackKey: feedbackKey,
-						text
-					}
+					isActive: true,
+					color: color,
+					topicKey: topicKey,
+					feedbackKey: feedbackKey,
+					text
 				};
 
 			})();
@@ -93,97 +92,35 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 			return {
 				...state,
-				createState: {
-					...state.createState,
-					isActive: false
-				}
+				isActive: false
 			};
 
 		case action.UPDATE_CREATE_TEXT:
 
 			return {
 				...state,
-				createState: {
-					...state.createState,
-					text: data
-				}
+				text: data
 			};
 
 		case action.SUBMIT_CREATE_DIALOG:
 
-			return (() => {
+			// VALIDATION
+			// CLOSE
 
-				const {topicKey, feedbackKey, text} = state.createState;
+			return state;
 
-				switch (feedbackKey) {
+		default:
+			return state;
 
-					case null:
+	}
 
-						return (() => {
+};
 
-							const {thisUser} = state.userState;
+const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) => {
 
-							const feedback = {
-								badge: thisUser.badge,
-								name: thisUser.name,
-								rating: 0,
-								text,
-								isRatingToggled: false,
-								isOptionsActive: false
-							};
+	deepFreeze(state);
 
-							const mapFeedbackList = (item, i) => {
-								return topicKey === i ? [...item, feedback] : item;
-							};
-
-							return {
-								...state,
-								feedbackState: [...state.feedbackState].map(mapFeedbackList)
-							};
-
-						})();
-
-					default:
-
-						return (() => {
-
-							const mapFeedbackItem = (item, i) => {
-								return feedbackKey === i ? {...item, text} : item;
-							};
-
-							const mapFeedbackList = (item, i) => {
-								return topicKey === i ? item.map(mapFeedbackItem) : item;
-							};
-
-							return {
-								...state,
-								feedbackState: [...state.feedbackState].map(mapFeedbackList)
-							};
-
-						})();
-
-				}
-
-			})();
-
-		case action.TOGGLE_FEEDBACK_MINI_MENU:
-
-			return (() => {
-
-				const mapFeedbackItem = (item, i) => {
-					return data.feedbackKey === i ? {...item, isOptionsActive: !item.isOptionsActive} : item;
-				};
-
-				const mapFeedbackList = (item, i) => {
-					return data.topicKey === i ? item.map(mapFeedbackItem) : item;
-				};
-
-				return {
-					...state,
-					feedbackState: [...state.feedbackState].map(mapFeedbackList)
-				};
-
-			})();
+	switch (type) {
 
 		case action.TOGGLE_FEEDBACK_RATING:
 
@@ -203,10 +140,7 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 					return data.topicKey === i ? item.map(mapFeedbackItem) : item;
 				};
 
-				return {
-					...state,
-					feedbackState: [...state.feedbackState].map(mapFeedbackList)
-				};
+				return state.map(mapFeedbackList);
 
 			})();
 
@@ -222,10 +156,48 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 					return data.topicKey === i ? removeFeedback(item, data.feedbackKey) : item;
 				};
 
-				return {
-					...state,
-					feedbackState: [...state.feedbackState].map(mapFeedbackList)
-				}
+				return state.map(mapFeedbackList);
+
+			})();
+
+		case action.EDIT_FEEDBACK:
+
+			return (() => {
+
+				const {topicKey, feedbackKey, text} = data;
+
+				const mapFeedbackItem = (item, i) => {
+					return feedbackKey === i ? {...item, text} : item;
+				};
+
+				const mapFeedbackList = (item, i) => {
+					return topicKey === i ? item.map(mapFeedbackItem) : item;
+				};
+
+				return state.map(mapFeedbackList);
+
+			})();
+
+		case action.ADD_FEEDBACK:
+
+			return (() => {
+
+				const {topicKey, text, badge, name} = data;
+
+				const feedback = {
+					badge: badge,
+					name: name,
+					rating: 0,
+					text,
+					isRatingToggled: false,
+					isOptionsActive: false
+				};
+
+				const mapFeedbackList = (item, i) => {
+					return topicKey === i ? [...item, feedback] : item;
+				};
+
+				return state.map(mapFeedbackList);
 
 			})();
 
@@ -236,5 +208,10 @@ const reducer = (state = defaultState, {type, data = {}}) => {
 
 };
 
-export default reducer;
-// export {loginReducer};
+export default {
+	loginReducer,
+	collaboratorReducer,
+	topicReducer,
+	createReducer,
+	feedbackReducer
+};
