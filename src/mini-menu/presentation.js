@@ -4,7 +4,8 @@ import IconContainer from '../icon/container';
 const generateOption = (option, key) => {
 
     return (
-        <li className="MiniMenu-option"
+        <li
+            className="MiniMenu-option"
             key={key}>
             <button
                 className="MiniMenu-optionButton"
@@ -20,9 +21,7 @@ const MiniMenu = (props) => {
 
     return (
         <div className={`MiniMenu MiniMenu--${props.color} ${props.isActive ? 'isActive' : ''}`}>
-            <button
-                className="MiniMenu-toggle"
-                onClick={props.onToggleClick}>
+            <button className="MiniMenu-toggle">
                 <span className="MiniMenu-icon">
                     <IconContainer icon="menuVertical"/>
                 </span>
@@ -32,6 +31,7 @@ const MiniMenu = (props) => {
             </ul>
         </div>
     );
+
 };
 
 export default MiniMenu;

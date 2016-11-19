@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import action from '../state/action';
 import User from './presentation';
 import LockupContainer from '../lockup/container';
 import MiniMenuContainer from '../mini-menu/container';
@@ -15,12 +16,6 @@ class UserContainer extends Component {
 
     generateMiniMenu() {
 
-        const onToggleClick = () => {
-
-            console.log('toggle user open state');
-
-        };
-
         const options = [
             {
                 heading: 'Edit',
@@ -28,17 +23,9 @@ class UserContainer extends Component {
 
                     console.log('edit user');
 
-                    // toggleFeedbackMiniMenu(false);
-                    // this.props.dispatch({
-                    //     type: action.OPEN_CREATE_DIALOG,
-                    //     data: {
-                    //         isActive: true,
-                    //         color: this.props.color,
-                    //         topicKey: this.props.topicKey,
-                    //         feedbackKey: key,
-                    //         text: feedback.text
-                    //     }
-                    // });
+                    this.props.dispatch({
+                        type: action.OPEN_LOGIN_DIALOG
+                    });
 
                 }
             }
@@ -48,7 +35,6 @@ class UserContainer extends Component {
             <MiniMenuContainer
                 color="gray"
                 isActive={true}
-                onToggleClick={onToggleClick}
                 options={options}/>
         );
 
@@ -77,10 +63,6 @@ class UserContainer extends Component {
 
         const lockup = this.generateLockup(item);
         const miniMenu = !key ? this.generateMiniMenu() : false;
-
-        // const props
-
-
 
         return (
             <User

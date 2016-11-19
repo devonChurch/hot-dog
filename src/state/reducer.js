@@ -8,6 +8,12 @@ const loginReducer = (state = defaultState.loginState, {type, data = {}}) => {
 
 	switch (type) {
 
+		case action.OPEN_LOGIN_DIALOG:
+			return {
+				...state,
+				isActive: true
+			};
+
 		case action.CLOSE_LOGIN_DIALOG:
 			return {
 				...state,

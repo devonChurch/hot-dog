@@ -51,29 +51,6 @@ class FeedbackContainer extends Component {
 
     generateMiniMenu(feedback, key) {
 
-        // const toggleFeedbackMiniMenu = (isOptionsActive) => {
-        //
-        //     console.log('toggleFeedbackMiniMenu');
-        //
-        //     // this.props.dispatch({
-        //     //     type: action.TOGGLE_FEEDBACK_MINI_MENU,
-        //     //     data: {
-        //     //         topicKey: this.props.topicKey,
-        //     //         feedbackKey: key,
-        //     //         isOptionsActive
-        //     //     }
-        //     // });
-        //
-        // };
-
-        const onToggleClick = () => {
-
-            console.log('toggleFeedbackMiniMenu');
-
-            // toggleFeedbackMiniMenu(!feedback.isOptionsActive);
-
-        };
-
         const options = [
             {
                 heading: 'Edit',
@@ -112,7 +89,6 @@ class FeedbackContainer extends Component {
             <MiniMenuContainer
                 color={this.props.color}
                 isActive={feedback.isOptionsActive}
-                onToggleClick={onToggleClick}
                 options={options}/>
         );
 
