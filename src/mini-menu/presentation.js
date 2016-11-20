@@ -20,7 +20,7 @@ const generateOption = (option, key) => {
 const MiniMenu = (props) => {
 
     return (
-        <div className={`MiniMenu MiniMenu--${props.color} ${props.isActive ? 'isActive' : ''}`}>
+        <div className={`MiniMenu MiniMenu--${props.color}`}>
             <button className="MiniMenu-toggle">
                 <span className="MiniMenu-icon">
                     <IconContainer icon="menuVertical"/>

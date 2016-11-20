@@ -88,7 +88,6 @@ class FeedbackContainer extends Component {
         return (
             <MiniMenuContainer
                 color={this.props.color}
-                isActive={feedback.isOptionsActive}
                 options={options}/>
         );
 
