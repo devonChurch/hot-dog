@@ -11,6 +11,26 @@ const generateLastEdit = (props) => {
 
 };
 
+const generateStarRating = (props) => {
+
+    return !props.starRating ? false : (
+        <div className="Feedback-starRating">
+            {props.starRating}
+        </div>
+    );
+
+};
+
+const generateMiniMenu = (props) => {
+
+    return !props.miniMenu ? false : (
+        <div className="Feedback-miniMenu">
+            {props.miniMenu}
+        </div>
+    );
+
+};
+
 const Feedback = (props) => {
 
     return (
@@ -26,14 +46,8 @@ const Feedback = (props) => {
                 {generateLastEdit(props)}
             </div>
 
-            <div className="Feedback-options">
-                <div className="Feedback-starRating">
-                    {props.starRating}
-                </div>
-                <div className="Feedback-miniMenu">
-                    {props.miniMenu}
-                </div>
-            </div>
+            {generateStarRating(props)}
+            {generateMiniMenu(props)}
 
         </li>
     );

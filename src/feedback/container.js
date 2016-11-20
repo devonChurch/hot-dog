@@ -95,14 +95,18 @@ class FeedbackContainer extends Component {
 
     generateFeedback(feedback, key) {
 
+        const thisUser = this.props.loginState.userId === feedback.userId;
+        const starRating = thisUser ? false : this.generateStarRating(feedback, key);
+        const miniMenu = thisUser ? this.generateMiniMenu(feedback, key) : false;
+
         return (
             <Feedback
                 color={this.props.color}
                 name={feedback.name}
                 text={feedback.text}
                 lastEdit={feedback.lastEdit}
-                starRating={this.generateStarRating(feedback, key)}
-                miniMenu={this.generateMiniMenu(feedback, key)}
+                starRating={starRating}
+                miniMenu={miniMenu}
                 badge={this.generateBadge(feedback)}
                 key={key}/>
         );
