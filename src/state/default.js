@@ -15,19 +15,13 @@ const createState = {
 const collaboratorState = [
     {
         name: 'John Smith',
-        badge: 'cake'
+        badge: 'car',
+        id: 'xxxxxx'
     },
     {
         name: 'Jane Doe',
-        badge: 'car'
-    },
-    {
-        name: 'Jane Doe',
-        badge: 'umbrella'
-    },
-    {
-        name: 'Jane Doe',
-        badge: 'dice'
+        badge: 'heart',
+        id: 'xxxxxx'
     }
 ];
 
@@ -58,7 +52,8 @@ const feedbackState = [
             rating: 0,
             text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             isRatingToggled: false,
-            isOptionsActive: false
+            isOptionsActive: false,
+            lastEdit: 'sat - nov 19 - 11:25am'
         },
         {
             badge: 'cake',
@@ -66,7 +61,8 @@ const feedbackState = [
             rating: 5,
             text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             isRatingToggled: false,
-            isOptionsActive: false
+            isOptionsActive: false,
+            lastEdit: false
         }
     ],
     [],

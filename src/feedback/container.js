@@ -101,6 +101,7 @@ class FeedbackContainer extends Component {
                 color={this.props.color}
                 name={feedback.name}
                 text={feedback.text}
+                lastEdit={feedback.lastEdit}
                 starRating={this.generateStarRating(feedback, key)}
                 miniMenu={this.generateMiniMenu(feedback, key)}
                 badge={this.generateBadge(feedback)}

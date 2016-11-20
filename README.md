@@ -3,7 +3,7 @@
 This repo is still a work in progress.
 
 ## Todo:
-+ Add *last edited* message
++ ~~Add *last edited* message~~
 + Editing the users name or badge should reflect in previous feedback entries
 + User created feedback needs the mini menu while other collaborator feedback needs the star component **only**
 + Ability to modify / add / remove topics
@@ -11,6 +11,8 @@ This repo is still a work in progress.
 + Advanced filters
   + Most stars
   + Date created / modified
++ Optional close button on modal
++ Feedback entry animation for add / remove / edit
 
 ## License
 

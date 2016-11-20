@@ -19,12 +19,12 @@
             background: color($color, 100);
         }
 
-        .Feedback-name {
-
-        }
-
         .Feedback-text {
             color: color($color, 900);
+        }
+
+        .Feedback-lastEditLabel {
+            color: color($color, 300);
         }
 
         .Feedback-starIcon .Icon {
@@ -66,6 +66,20 @@
 
     &-text {
         font-size: fontSize(300);
+    }
+
+    &-lastEdit {
+        display: block;
+        font: {
+            size: fontSize(200);
+            weight: fontWeight(700);
+        }
+        padding-top: space(300);
+        text-transform: uppercase;
+    }
+
+    &-lastEditLabel {
+        padding-right: space(300);
     }
 
     &-options {

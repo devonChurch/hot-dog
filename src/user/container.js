@@ -21,8 +21,6 @@ class UserContainer extends Component {
                 heading: 'Edit',
                 onOptionClick: () => {
 
-                    console.log('edit user');
-
                     this.props.dispatch({
                         type: action.OPEN_LOGIN_DIALOG
                     });

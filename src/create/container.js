@@ -1,10 +1,13 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import action from '../state/action';
+import chronology from '../helpers/chronology';
 import Create from './presentation';
 import ModalContainer from '../modal/container';
 import StandardButtonContainer from '../standard-button/container';
 import TextAreaContainer from '../text-area/container';
+
+console.log('chronology', chronology);
 
 class CreateContainer extends Component {
 
@@ -36,12 +39,40 @@ class CreateContainer extends Component {
         const {color, topicKey, feedbackKey, text} = this.props.createState;
         const {badge, name} = this.props.loginState;
 
+        const generateLastEdit = () => {
+
+            const dateInstance = chronology.generateCurrentDateInstance();
+            const day = chronology.generateThreeLetterDayCode(dateInstance);
+            const month = chronology.generateThreeLetterMonthCode(dateInstance);
+            const date = dateInstance.getDate();
+            const time = chronology.generateTweleveHourTime(dateInstance);
+
+            return `${day} - ${month} ${date} - ${time}`;
+
+        };
+
         const onButtonClick = (e) => {
 
-            this.props.dispatch({
-                type: feedbackKey === null ? action.ADD_FEEDBACK : action.EDIT_FEEDBACK,
-                data: {topicKey, feedbackKey, text, badge, name}
-            });
+            const isAddFeedback = feedbackKey === null;
+
+            if (isAddFeedback) {
+
+                this.props.dispatch({
+                    type: action.ADD_FEEDBACK,
+                    data: {topicKey, text, badge, name}
+                });
+
+            } else {
+
+                const lastEdit = generateLastEdit();
+
+                this.props.dispatch({
+                    type: action.EDIT_FEEDBACK,
+                    data: {topicKey, feedbackKey, text, lastEdit}
+                });
+
+            }
+
             this.onClickOffComponent();
             e.preventDefault();
 

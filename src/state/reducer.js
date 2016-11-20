@@ -170,10 +170,10 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 
 			return (() => {
 
-				const {topicKey, feedbackKey, text} = data;
+				const {topicKey, feedbackKey, text, lastEdit} = data;
 
 				const mapFeedbackItem = (item, i) => {
-					return feedbackKey === i ? {...item, text} : item;
+					return feedbackKey === i ? {...item, text, lastEdit} : item;
 				};
 
 				const mapFeedbackList = (item, i) => {
@@ -196,7 +196,8 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 					rating: 0,
 					text,
 					isRatingToggled: false,
-					isOptionsActive: false
+					isOptionsActive: false,
+					lastEdit: false
 				};
 
 				const mapFeedbackList = (item, i) => {
