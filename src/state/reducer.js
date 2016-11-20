@@ -32,6 +32,12 @@ const loginReducer = (state = defaultState.loginState, {type, data = {}}) => {
 				badge: data
 			};
 
+		case action.UPDATE_LOGIN_USER_ID:
+			return {
+				...state,
+				userId: data
+			};
+
 		case action.SUBMIT_LOGIN_DIALOG:
 			return state;
 
@@ -188,11 +194,12 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 
 			return (() => {
 
-				const {topicKey, text, badge, name} = data;
+				const {topicKey, text, badge, name, userId} = data;
 
 				const feedback = {
-					badge: badge,
-					name: name,
+					badge,
+					name,
+					userId,
 					rating: 0,
 					text,
 					isRatingToggled: false,
@@ -207,6 +214,30 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 				return state.map(mapFeedbackList);
 
 			})();
+
+			case action.UPDATE_THIS_USER_FEEDBACK:
+
+				return (() => {
+
+					const updateUserFeedback = (item) => {
+						return {
+							...item,
+							badge: data.badge,
+							name: data.name
+						}
+					};
+
+					const mapFeedbackItem = (item) => {
+						return data.userId === item.userId ? updateUserFeedback(item) : item;
+					};
+
+					const mapFeedbackList = (item) => {
+						return item.map(mapFeedbackItem);
+					};
+
+					return state.map(mapFeedbackList);
+
+				})();
 
 		default:
 			return state;

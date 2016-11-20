@@ -9,5 +9,21 @@
 }
 
 .User {
+    display: flex;
     padding: space(300);
+
+    &.isThisUser {
+        padding-right: 0;
+
+        .MiniMenu-toggle {
+
+            .Icon {
+                fill: color(gray, 900);
+            }
+        }
+    }
+
+    &:not(.isThisUser) {
+        opacity: 0.5;
+    }
 }

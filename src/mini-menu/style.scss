@@ -6,15 +6,7 @@
         color: color($color, 500);
 
         .MiniMenu-icon .Icon {
-            fill: color($color, 200);
-        }
-
-        .MiniMenu-toggle:focus,
-        .MiniMenu-toggle:hover {
-
-            .MiniMenu-icon .Icon {
-                fill: color($color, 500);
-            }
+            fill: color($color, 500);
         }
 
         .MiniMenu-optionButton {
@@ -81,8 +73,15 @@
         $size: space(600);
         @include buttonReset;
         height: $size;
+        opacity: 0.5;
         position: relative;
+        transition: opacity speed(300);
         width: $size;
+
+        &:focus,
+        &:hover {
+            opacity: 1;
+        }
 
         &:focus {
             pointer-events: none;

@@ -60,11 +60,12 @@ class UserContainer extends Component {
     generateUser(item, key) {
 
         const lockup = this.generateLockup(item);
-        const miniMenu = !key ? this.generateMiniMenu() : false;
+        const miniMenu = item.thisUser ? this.generateMiniMenu() : false;
 
         return (
             <User
                 key={key}
+                isThisUser={item.thisUser}
                 lockup={lockup}
                 miniMenu={miniMenu}/>
         );
@@ -74,7 +75,7 @@ class UserContainer extends Component {
     render() {
 
         const {loginState, collaboratorState} = this.props;
-        const allUsers = loginState.name ? [loginState, ...collaboratorState] : collaboratorState;
+        const allUsers = loginState.name ? [{...loginState, thisUser: true}, ...collaboratorState] : collaboratorState;
 
         return (
             <ul className="Container-user">

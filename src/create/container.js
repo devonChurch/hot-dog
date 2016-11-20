@@ -7,8 +7,6 @@ import ModalContainer from '../modal/container';
 import StandardButtonContainer from '../standard-button/container';
 import TextAreaContainer from '../text-area/container';
 
-console.log('chronology', chronology);
-
 class CreateContainer extends Component {
 
     constructor() {
@@ -37,7 +35,7 @@ class CreateContainer extends Component {
     generateStandardButton() {
 
         const {color, topicKey, feedbackKey, text} = this.props.createState;
-        const {badge, name} = this.props.loginState;
+        const {badge, name, userId} = this.props.loginState;
 
         const generateLastEdit = () => {
 
@@ -53,13 +51,13 @@ class CreateContainer extends Component {
 
         const onButtonClick = (e) => {
 
-            const isAddFeedback = feedbackKey === null;
+            const isAddFeedback = feedbackKey === false;
 
             if (isAddFeedback) {
 
                 this.props.dispatch({
                     type: action.ADD_FEEDBACK,
-                    data: {topicKey, text, badge, name}
+                    data: {topicKey, text, badge, name, userId}
                 });
 
             } else {

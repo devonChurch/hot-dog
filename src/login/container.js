@@ -17,6 +17,18 @@ class LoginContainer extends Component {
 
     }
 
+    componentDidMount() {
+
+        // Check local storange before assigning a new ID
+        // - Also look for name and badge state
+
+        this.props.dispatch({
+            type: action.UPDATE_LOGIN_USER_ID,
+            data: new Date().getTime()
+        });
+
+    }
+
     // validateTextArea() {
     //
     //     // const {textarea} = this.refs;
@@ -27,8 +39,15 @@ class LoginContainer extends Component {
 
         const onButtonClick = (e) => {
 
+            const {badge, name, userId} = this.props.loginState;
+
             this.props.dispatch({
                 type: action.SUBMIT_LOGIN_DIALOG
+            });
+
+            this.props.dispatch({
+                type: action.UPDATE_THIS_USER_FEEDBACK,
+                data: {badge, name, userId}
             });
 
             this.props.dispatch({

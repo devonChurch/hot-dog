@@ -4,31 +4,25 @@
 
     &.StarRating--#{$color} {
 
-        &.isActive {
-
-            .Icon {
-                fill: color($color, 500);
-            }
-
-            .StarRating-rating {
-                color: color($color, 500);
-            }
-        }
-
         .Icon {
-            fill: color($color, 200);
+            fill: color($color, 500);
         }
 
         .StarRating-rating {
-            color: color($color, 200);
+            color: color($color, 500);
         }
     }
 }
 
 .StarRating {
+    transition: opacity speed(300);
 
     @each $color in $G-allColors {
         @include starRatingColor($color);
+    }
+
+    &:not(.isActive) {
+        opacity: 0.5;
     }
 
     &-toggle {

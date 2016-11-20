@@ -1,7 +1,8 @@
 const loginState = {
-    isActive: false,
+    isActive: true,
     name: '',
-    badge: 'cake'
+    badge: 'cake',
+    id: false
 };
 
 const createState = {
@@ -16,12 +17,12 @@ const collaboratorState = [
     {
         name: 'John Smith',
         badge: 'car',
-        id: 'xxxxxx'
+        id: 1479610282826
     },
     {
         name: 'Jane Doe',
         badge: 'heart',
-        id: 'xxxxxx'
+        id: 1479544300421
     }
 ];
 
@@ -47,8 +48,9 @@ const topicState = [
 const feedbackState = [
     [
         {
-            badge: 'cake',
-            name: 'Mr Potato',
+            badge: 'car',
+            name: 'John Smith',
+            userId: 1479610282826,
             rating: 0,
             text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             isRatingToggled: false,
@@ -56,8 +58,9 @@ const feedbackState = [
             lastEdit: 'sat - nov 19 - 11:25am'
         },
         {
-            badge: 'cake',
-            name: 'Mr Sassuage',
+            badge: 'heart',
+            name: 'Jane Doe',
+            userId: 1479544300421,
             rating: 5,
             text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             isRatingToggled: false,

@@ -2,28 +2,20 @@
 
 @mixin badgeColor($color) {
 
-    $colorDormant: color($color, 300);
-    $colorHover: color($color, 500);
-    $colorActive: color($color, 900);
-
     &.Lockup--#{$color} {
 
-        .Badge {
-            background: $colorDormant;
-        }
-
         .Lockup-name {
-            color: $colorDormant;
+            color: color($color, 500);
         }
 
         &.Lockup--interactive:hover {
 
             .Badge {
-                background: $colorHover;
+                background: color($color, 900);
             }
 
             .Lockup-name {
-                color: $colorHover;
+                color: color($color, 900);
             }
         }
     }
