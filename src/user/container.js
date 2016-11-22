@@ -16,23 +16,25 @@ class UserContainer extends Component {
 
     generateMiniMenu() {
 
+        const toggleisActive = (isOptionsActive) => this.props.dispatch({
+            type: action.TOGGLE_CREATE_OPTIONS,
+            data: isOptionsActive
+        });
+
         const options = [
             {
                 heading: 'Edit',
-                onOptionClick: () => {
-
-                    this.props.dispatch({
-                        type: action.OPEN_LOGIN_DIALOG
-                    });
-
-                }
+                onOptionClick: () => this.props.dispatch({
+                    type: action.OPEN_LOGIN_DIALOG
+                })
             }
         ];
 
         return (
             <MiniMenuContainer
                 color="gray"
-                isActive={true}
+                isOptionsActive={this.props.createState.isOptionsActive}
+                toggleisActive={toggleisActive}
                 options={options}/>
         );
 

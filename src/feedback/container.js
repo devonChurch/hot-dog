@@ -27,17 +27,13 @@ class FeedbackContainer extends Component {
 
     generateStarRating(feedback, key) {
 
-        const onToggleClick = () => {
-
-            this.props.dispatch({
-                type: action.TOGGLE_FEEDBACK_RATING,
-                data: {
-                    topicKey: this.props.topicKey,
-                    feedbackKey: key
-                }
-            });
-
-        };
+        const onToggleClick = () => this.props.dispatch({
+            type: action.TOGGLE_FEEDBACK_RATING,
+            data: {
+                topicKey: this.props.topicKey,
+                feedbackKey: key
+            }
+        });
 
         return (
             <StarRatingContainer
@@ -51,43 +47,46 @@ class FeedbackContainer extends Component {
 
     generateMiniMenu(feedback, key) {
 
+        const toggleisActive = (isOptionsActive) => this.props.dispatch({
+            type: action.TOGGLE_FEEDBACK_OPTIONS,
+            data: {
+                topicKey: this.props.topicKey,
+                feedbackKey: key,
+                isOptionsActive
+            }
+        });
+
         const options = [
             {
                 heading: 'Edit',
-                onOptionClick: () => {
-
-                    this.props.dispatch({
-                        type: action.OPEN_CREATE_DIALOG,
-                        data: {
-                            isActive: true,
-                            color: this.props.color,
-                            topicKey: this.props.topicKey,
-                            feedbackKey: key,
-                            text: feedback.text
-                        }
-                    });
-
-                }
+                onOptionClick: () => this.props.dispatch({
+                    type: action.OPEN_CREATE_DIALOG,
+                    data: {
+                        isActive: true,
+                        color: this.props.color,
+                        topicKey: this.props.topicKey,
+                        feedbackKey: key,
+                        text: feedback.text
+                    }
+                })
             },
             {
                 heading: 'Remove',
-                onOptionClick: () => {
-
-                    this.props.dispatch({
-                        type: action.REMOVE_FEEDBACK,
-                        data: {
-                            topicKey: this.props.topicKey,
-                            feedbackKey: key
-                        }
-                    });
-
-                }
+                onOptionClick: () => this.props.dispatch({
+                    type: action.REMOVE_FEEDBACK,
+                    data: {
+                        topicKey: this.props.topicKey,
+                        feedbackKey: key
+                    }
+                })
             }
         ];
 
         return (
             <MiniMenuContainer
                 color={this.props.color}
+                isOptionsActive={feedback.isOptionsActive}
+                toggleisActive={toggleisActive}
                 options={options}/>
         );
 

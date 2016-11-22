@@ -19,13 +19,19 @@ const generateOption = (option, key) => {
 
 const MiniMenu = (props) => {
 
+    console.log('MiniMenu', props);
+
     return (
-        <div className={`MiniMenu MiniMenu--${props.color}`}>
-            <button className="MiniMenu-toggle">
+        <div className={`MiniMenu MiniMenu--${props.color} ${props.isOptionsActive ? 'isActive' : ''}`}>
+            <a
+                className="MiniMenu-toggle"
+                tabIndex="0"
+                onFocus={props.onMiniMenuFocus}
+                onBlur={props.onMiniMenuBlur}>
                 <span className="MiniMenu-icon">
                     <IconContainer icon="menuVertical"/>
                 </span>
-            </button>
+            </a>
             <ul className="MiniMenu-options">
                 {props.options.map(generateOption)}
             </ul>

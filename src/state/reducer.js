@@ -107,6 +107,13 @@ const createReducer = (state = defaultState.createState, {type, data = {}}) => {
 				isActive: false
 			};
 
+		case action.TOGGLE_CREATE_OPTIONS:
+
+			return {
+				...state,
+				isOptionsActive: data
+			};
+
 		case action.UPDATE_CREATE_TEXT:
 
 			return {
@@ -133,6 +140,26 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 	deepFreeze(state);
 
 	switch (type) {
+
+		case action.TOGGLE_FEEDBACK_OPTIONS:
+
+			return (() => {
+
+				const toggleIsOpen = (item) => {
+					return {...item, isOptionsActive: data.isOptionsActive};
+				};
+
+				const mapFeedbackItem = (item, i) => {
+					return data.feedbackKey === i ? toggleIsOpen(item) : item;
+				};
+
+				const mapFeedbackList = (item, i) => {
+					return data.topicKey === i ? item.map(mapFeedbackItem) : item;
+				};
+
+				return state.map(mapFeedbackList);
+
+			})();
 
 		case action.TOGGLE_FEEDBACK_RATING:
 

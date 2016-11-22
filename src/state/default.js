@@ -7,6 +7,7 @@ const loginState = {
 
 const createState = {
     isActive: false,
+    isOptionsActive: false,
     color: 'gray',
     topicKey: 0,
     feedbackKey: 0,
