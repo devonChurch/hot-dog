@@ -17,12 +17,20 @@ const generateOption = (option, key) => {
 
 }
 
+const isActive = (props) => {
+
+    return typeof props.isOptionsActive === 'boolean' ? (() => {
+
+        return props.isOptionsActive ? 'isActive' : 'isDormant';
+
+    })() : '';
+
+};
+
 const MiniMenu = (props) => {
 
-    console.log('MiniMenu', props);
-
     return (
-        <div className={`MiniMenu MiniMenu--${props.color} ${props.isOptionsActive ? 'isActive' : ''}`}>
+        <div className={`MiniMenu MiniMenu--${props.color} ${isActive(props)}`}>
             <a
                 className="MiniMenu-toggle"
                 tabIndex="0"

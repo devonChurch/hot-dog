@@ -23,31 +23,29 @@
 }
 
 @mixin miniMenuisActive {
+    height: auto;
     opacity: 1;
-    pointer-events: auto;
     transform: translateY(0);
-    z-index: zIndex(100);
 }
 
 @mixin miniMenuIsClosed {
+    height: 0;
     opacity: 0;
-    pointer-events: none;
     transform: translateY(space(300));
-    z-index: 0;
 }
 
-@keyframes miniMenuIsMounted {
-
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
+// @keyframes miniMenuIsMounted {
+//
+//     0% {
+//         opacity: 0;
+//     }
+//     50% {
+//         opacity: 0;
+//     }
+//     100% {
+//         opacity: 1;
+//     }
+// }
 
 @keyframes miniMenuisActive {
 
@@ -65,10 +63,9 @@
         @include miniMenuisActive;
     }
     99% {
+        height: auto;
         opacity: 0;
-        pointer-events: auto;
         transform: translateY(space(300));
-        z-index: zIndex(100);
     }
     100% {
         @include miniMenuIsClosed;
@@ -76,36 +73,40 @@
 }
 
 .MiniMenu {
-    animation: {
-        duration: speed(300) * 2;
-        fill-mode: forwards;
-        name: miniMenuIsMounted;
-    }
+    // animation: {
+    //     duration: speed(300) * 2;
+    //     fill-mode: forwards;
+    //     name: miniMenuIsMounted;
+    // }
     position: relative;
 
     @each $color in $G-allColors {
         @include miniMenuColor($color);
     }
 
-    &.isActive .MiniMenu-options {
+    &.isActive {
+        z-index: zIndex(100);
+
+        .MiniMenu-toggle {
+            pointer-events: none;
+        }
+
+        .MiniMenu-options {
+            animation: {
+                duration: speed(300);
+                fill-mode: forwards;
+                name: miniMenuisActive;
+            }
+        }
+    }
+
+    &.isDormant .MiniMenu-options {
         animation: {
             duration: speed(300);
             fill-mode: forwards;
-            name: miniMenuisActive;
+            name: miniMenuIsClosed;
         }
-   }
-
-   &:not(.isActive) .MiniMenu-options {
-       animation: {
-           duration: speed(300);
-           fill-mode: forwards;
-           name: miniMenuIsClosed;
-       }
-   }
-
-   &.isActive .MiniMenu-toggle {
-       pointer-events: none;
-   }
+    }
 
     &-toggle {
         $size: space(600);
@@ -116,32 +117,6 @@
         position: relative;
         transition: opacity speed(300);
         width: $size;
-
-        // &:focus,
-        // &.isActive,
-        // &:hover {
-        //     opacity: 1;
-        // }
-
-        // &:focus {
-        //     pointer-events: none;
-        //
-        // //     + .MiniMenu-options {
-        // //         animation: {
-        // //             duration: speed(300);
-        // //             fill-mode: forwards;
-        // //             name: miniMenuisActive;
-        // //         }
-        // //    }
-        // }
-
-        // &:not(:focus) + .MiniMenu-options {
-        //     animation: {
-        //         duration: speed(300);
-        //         fill-mode: forwards;
-        //         name: miniMenuIsClosed;
-        //     }
-        // }
     }
 
     &-icon {

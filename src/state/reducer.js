@@ -230,7 +230,7 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 					rating: 0,
 					text,
 					isRatingToggled: false,
-					isOptionsActive: false,
+					// isOptionsActive: false,
 					lastEdit: false
 				};
 

@@ -5,13 +5,9 @@ class MiniMenuContainer extends Component {
 
     render() {
 
-        console.log(MiniMenuContainer, this);
-
         const toggleMiniMenuOpen = (isActive) => {
 
             return (e) => {
-
-                console.log('toggleMiniMenuOpen', this.props.toggleisActive, isActive);
 
                 this.props.toggleisActive(isActive);
                 e.preventDefault();
