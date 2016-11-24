@@ -1,5 +1,6 @@
 const loginState = {
     isActive: true,
+    isInitialised: false,
     name: '',
     badge: 'cake',
     id: false

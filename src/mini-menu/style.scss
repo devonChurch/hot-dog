@@ -34,19 +34,6 @@
     transform: translateY(space(300));
 }
 
-// @keyframes miniMenuIsMounted {
-//
-//     0% {
-//         opacity: 0;
-//     }
-//     50% {
-//         opacity: 0;
-//     }
-//     100% {
-//         opacity: 1;
-//     }
-// }
-
 @keyframes miniMenuisActive {
 
     0% {
@@ -73,11 +60,6 @@
 }
 
 .MiniMenu {
-    // animation: {
-    //     duration: speed(300) * 2;
-    //     fill-mode: forwards;
-    //     name: miniMenuIsMounted;
-    // }
     position: relative;
 
     @each $color in $G-allColors {

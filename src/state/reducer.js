@@ -39,7 +39,10 @@ const loginReducer = (state = defaultState.loginState, {type, data = {}}) => {
 			};
 
 		case action.SUBMIT_LOGIN_DIALOG:
-			return state;
+			return {
+				...state,
+				isInitialised: true
+			};
 
 			// VALIDATION!
 			// Close dialog if validate === true

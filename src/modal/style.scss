@@ -37,11 +37,27 @@
     &-content {
         max-width: 62.5rem;
         padding: space(500);
+        position: relative;
         transform: translateY(space(500));
         transition: {
             duration: speed(500);
             property: transform;
         }
         width: 100%;
+    }
+
+    &-close {
+        $offset: space(700);
+        $size: space(500);
+        @include buttonReset;
+        height: $size;
+        position: absolute;
+        right: $offset;
+        top: $offset;
+        width: $size;
+
+        .Icon {
+            fill: white;
+        }
     }
 }

@@ -11,7 +11,7 @@ This repo is still a work in progress.
 + Advanced filters
   + Most stars
   + Date created / modified
-+ Optional close button on modal
++ ~~Optional close button on modal~~
 + Feedback entry animation for add / remove / edit
 + Create and modal validation
 

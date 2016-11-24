@@ -11,6 +11,7 @@ class LoginContainer extends Component {
     constructor() {
 
         super();
+        this.onClickOffComponent = this.onClickOffComponent.bind(this);
         this.generateTextInput = this.generateTextInput.bind(this);
         this.generateStandardButton = this.generateStandardButton.bind(this);
         this.generateBadgeOptions = this.generateBadgeOptions.bind(this);
@@ -25,6 +26,14 @@ class LoginContainer extends Component {
         this.props.dispatch({
             type: action.UPDATE_LOGIN_USER_ID,
             data: new Date().getTime()
+        });
+
+    }
+
+    onClickOffComponent() {
+
+        return !this.props.loginState.isInitialised ? false : this.props.dispatch({
+            type: action.CLOSE_LOGIN_DIALOG
         });
 
     }
@@ -113,7 +122,8 @@ class LoginContainer extends Component {
             <ModalContainer
                 heading="Login"
                 color="gray"
-                isActive={this.props.loginState.isActive}>
+                isActive={this.props.loginState.isActive}
+                onClickOffComponent={this.onClickOffComponent}>
                 <Login
                     textInput={this.generateTextInput()}
                     badgeOptions={this.generateBadgeOptions()}
