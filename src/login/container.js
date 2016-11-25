@@ -23,9 +23,13 @@ class LoginContainer extends Component {
         // Check local storange before assigning a new ID
         // - Also look for name and badge state
 
+        const name = 'Anonymous';
+        const badge = 'cake';
+        const userId = new Date().getTime();
+
         this.props.dispatch({
-            type: action.UPDATE_LOGIN_USER_ID,
-            data: new Date().getTime()
+            type: action.UPDATE_THIS_USER_DETAILS,
+            data: {badge, name, userId}
         });
 
     }
@@ -52,6 +56,11 @@ class LoginContainer extends Component {
 
             this.props.dispatch({
                 type: action.SUBMIT_LOGIN_DIALOG
+            });
+
+            this.props.dispatch({
+                type: action.UPDATE_THIS_USER_DETAILS,
+                data: {badge, name, userId}
             });
 
             this.props.dispatch({

@@ -94,7 +94,7 @@ class FeedbackContainer extends Component {
 
     generateFeedback(feedback, key) {
 
-        const thisUser = this.props.loginState.userId === feedback.userId;
+        const thisUser = this.props.thisUserState.userId === feedback.userId;
         const starRating = thisUser ? false : this.generateStarRating(feedback, key);
         const miniMenu = thisUser ? this.generateMiniMenu(feedback, key) : false;
 

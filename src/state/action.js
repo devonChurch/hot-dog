@@ -3,7 +3,6 @@ const loginActions = {
     CLOSE_LOGIN_DIALOG: 'CLOSE_LOGIN_DIALOG',
     UPDATE_LOGIN_NAME: 'UPDATE_LOGIN_NAME',
     UPDATE_LOGIN_ICON: 'UPDATE_LOGIN_ICON',
-    UPDATE_LOGIN_USER_ID: 'UPDATE_LOGIN_USER_ID',
     SUBMIT_LOGIN_DIALOG: 'SUBMIT_LOGIN_DIALOG'
 };
 
@@ -13,6 +12,11 @@ const createActions = {
     CLOSE_CREATE_DIALOG: 'CLOSE_CREATE_DIALOG',
     UPDATE_CREATE_TEXT: 'CREATE_TEXT_CHANGE',
     SUBMIT_CREATE_DIALOG: 'SUBMIT_CREATE_DIALOG'
+};
+
+const thisUserActions = {
+    UPDATE_THIS_USER_DETAILS: 'UPDATE_THIS_USER_DETAILS',
+    TOGGLE_THIS_USER_OPTIONS: 'TOGGLE_THIS_USER_OPTIONS'
 };
 
 const feedbackActions = {
@@ -27,5 +31,6 @@ const feedbackActions = {
 export default {
     ...loginActions,
     ...createActions,
+    ...thisUserActions,
     ...feedbackActions
 };

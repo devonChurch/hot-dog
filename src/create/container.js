@@ -35,7 +35,7 @@ class CreateContainer extends Component {
     generateStandardButton() {
 
         const {color, topicKey, feedbackKey, text} = this.props.createState;
-        const {badge, name, userId} = this.props.loginState;
+        const {badge, name, userId} = this.props.thisUserState;
 
         const generateLastEdit = () => {
 

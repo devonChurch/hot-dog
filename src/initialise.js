@@ -28,7 +28,8 @@ function devTools() {
 const store = createStore(
 	combineReducers({
 		loginState: reducer.loginReducer,
-		collaboratorState: reducer.collaboratorReducer,
+		thisUserState: reducer.thisUserReducer,
+		otherUserState: reducer.otherUserReducer,
 		topicState: reducer.topicReducer,
 		createState: reducer.createReducer,
 		feedbackState: reducer.feedbackReducer

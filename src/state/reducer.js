@@ -32,12 +32,6 @@ const loginReducer = (state = defaultState.loginState, {type, data = {}}) => {
 				badge: data
 			};
 
-		case action.UPDATE_LOGIN_USER_ID:
-			return {
-				...state,
-				userId: data
-			};
-
 		case action.SUBMIT_LOGIN_DIALOG:
 			return {
 				...state,
@@ -54,7 +48,34 @@ const loginReducer = (state = defaultState.loginState, {type, data = {}}) => {
 
 };
 
-const collaboratorReducer = (state = defaultState.collaboratorState, {type, data = {}}) => {
+const thisUserReducer = (state = defaultState.thisUserState, {type, data = {}}) => {
+
+	deepFreeze(state);
+
+	switch (type) {
+
+		case action.UPDATE_THIS_USER_DETAILS:
+			return {
+				...state,
+				userId: data.userId,
+				name: data.name,
+				badge: data.badge
+			};
+
+		case action.TOGGLE_THIS_USER_OPTIONS:
+			return {
+				...state,
+				isOptionsActive: data
+			};
+
+		default:
+			return state;
+
+	}
+
+};
+
+const otherUserReducer = (state = defaultState.otherUserState, {type, data = {}}) => {
 
 	deepFreeze(state);
 
@@ -278,7 +299,8 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 
 export default {
 	loginReducer,
-	collaboratorReducer,
+	thisUserReducer,
+	otherUserReducer,
 	topicReducer,
 	createReducer,
 	feedbackReducer

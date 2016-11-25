@@ -17,7 +17,7 @@ class UserContainer extends Component {
     generateMiniMenu() {
 
         const toggleisActive = (isOptionsActive) => this.props.dispatch({
-            type: action.TOGGLE_CREATE_OPTIONS,
+            type: action.TOGGLE_THIS_USER_OPTIONS,
             data: isOptionsActive
         });
 
@@ -33,7 +33,7 @@ class UserContainer extends Component {
         return (
             <MiniMenuContainer
                 color="gray"
-                isOptionsActive={this.props.createState.isOptionsActive}
+                isOptionsActive={this.props.thisUserState.isOptionsActive}
                 toggleisActive={toggleisActive}
                 options={options}/>
         );
@@ -76,8 +76,8 @@ class UserContainer extends Component {
 
     render() {
 
-        const {loginState, collaboratorState} = this.props;
-        const allUsers = loginState.name ? [{...loginState, thisUser: true}, ...collaboratorState] : collaboratorState;
+        const {thisUserState, otherUserState} = this.props;
+        const allUsers = [{...thisUserState, thisUser: true}, ...otherUserState];
 
         return (
             <ul className="Container-user">
