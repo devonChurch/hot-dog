@@ -34,7 +34,7 @@ const generateMiniMenu = (props) => {
 const Feedback = (props) => {
 
     return (
-        <li className={`Feedback Feedback--${props.color}`}>
+        <li className={`Feedback Feedback--${props.color} ${props.isFeedbackHidden ? 'isHidden' : ''}`}>
 
             <div className="Feedback-badge">
                 {props.badge}

@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import action from '../state/action';
+import {speed} from '../helpers/all';
 import Feedback from './presentation';
 import BadgeContainer from '../badge/container';
 import StarRatingContainer from '../star-rating/container';
@@ -72,13 +73,29 @@ class FeedbackContainer extends Component {
             },
             {
                 heading: 'Remove',
-                onOptionClick: () => this.props.dispatch({
-                    type: action.REMOVE_FEEDBACK,
-                    data: {
-                        topicKey: this.props.topicKey,
-                        feedbackKey: key
-                    }
-                })
+                onOptionClick: () => {
+
+                    this.props.dispatch({
+                        type: action.HIDE_FEEDBACK,
+                        data: {
+                            topicKey: this.props.topicKey,
+                            feedbackKey: key
+                        }
+                    });
+
+                    setTimeout(() => {
+
+                        this.props.dispatch({
+                            type: action.REMOVE_FEEDBACK,
+                            data: {
+                                topicKey: this.props.topicKey,
+                                feedbackKey: key
+                            }
+                        })
+
+                    }, speed(500));
+
+                }
             }
         ];
 
@@ -104,6 +121,7 @@ class FeedbackContainer extends Component {
                 name={feedback.name}
                 text={feedback.text}
                 lastEdit={feedback.lastEdit}
+                isFeedbackHidden={feedback.isFeedbackHidden}
                 starRating={starRating}
                 miniMenu={miniMenu}
                 badge={this.generateBadge(feedback)}

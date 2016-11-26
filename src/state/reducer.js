@@ -207,6 +207,26 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 
 			})();
 
+		case action.HIDE_FEEDBACK:
+
+			return (() => {
+
+				const hideFeedback = (item) => {
+					return {...item, isFeedbackHidden: true};
+				};
+
+				const mapFeedbackItem = (item, i) => {
+					return data.feedbackKey === i ? hideFeedback(item) : item;
+				};
+
+				const mapFeedbackList = (item, i) => {
+					return data.topicKey === i ? item.map(mapFeedbackItem) : item;
+				};
+
+				return state.map(mapFeedbackList);
+
+			})();
+
 		case action.REMOVE_FEEDBACK:
 
 			return (() => {

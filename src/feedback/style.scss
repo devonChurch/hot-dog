@@ -1,4 +1,4 @@
-@import '../helpers/style';
+@import '../helpers/all';
 
 .Container-feedback {
     list-style: none;
@@ -33,7 +33,43 @@
     }
 }
 
+@mixin feedbackIsActive {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@mixin feedbackIsClosed {
+    opacity: 0;
+    transform: translateX(space(500));
+}
+
+
+@keyframes feedbackIsActive {
+
+    0% {
+        @include feedbackIsClosed;
+    }
+    100% {
+        @include feedbackIsActive;
+    }
+}
+
+@keyframes feedbackIsHidden {
+
+    0% {
+        @include feedbackIsActive;
+    }
+    100% {
+        @include feedbackIsClosed;
+    }
+}
+
 .Feedback {
+    animation: {
+        duration: speed(500);
+        fill-mode: forwards;
+        name: feedbackIsActive;
+    }
     display: flex;
     padding: space(500);
     padding-right: space(300);
@@ -41,6 +77,14 @@
 
     @each $color in $G-allColors {
         @include feedbackColor($color);
+    }
+
+    &.isHidden {
+        animation: {
+            duration: speed(500);
+            fill-mode: forwards;
+            name: feedbackIsHidden;
+        }
     }
 
     &:nth-of-type(1n+2):before {

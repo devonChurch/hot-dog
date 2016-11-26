@@ -1,4 +1,4 @@
-@import '../helpers/style';
+@import '../helpers/all';
 
 @mixin miniMenuColor($color) {
 
@@ -22,7 +22,7 @@
     }
 }
 
-@mixin miniMenuisActive {
+@mixin miniMenuIsActive {
     height: auto;
     opacity: 1;
     transform: translateY(0);
@@ -34,20 +34,20 @@
     transform: translateY(space(300));
 }
 
-@keyframes miniMenuisActive {
+@keyframes miniMenuIsActive {
 
     0% {
         @include miniMenuIsClosed;
     }
     100% {
-        @include miniMenuisActive;
+        @include miniMenuIsActive;
     }
 }
 
 @keyframes miniMenuIsClosed {
 
     0% {
-        @include miniMenuisActive;
+        @include miniMenuIsActive;
     }
     99% {
         height: auto;
@@ -77,7 +77,7 @@
             animation: {
                 duration: speed(300);
                 fill-mode: forwards;
-                name: miniMenuisActive;
+                name: miniMenuIsActive;
             }
         }
     }
