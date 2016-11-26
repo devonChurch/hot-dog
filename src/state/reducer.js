@@ -32,6 +32,13 @@ const loginReducer = (state = defaultState.loginState, {type, data = {}}) => {
 				badge: data
 			};
 
+		case action.RESET_LOGIN_DETAILS:
+			return {
+				...state,
+				name: data.name,
+				badge: data.badge
+			};
+
 		case action.SUBMIT_LOGIN_DIALOG:
 			return {
 				...state,

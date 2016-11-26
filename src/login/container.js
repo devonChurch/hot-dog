@@ -23,7 +23,7 @@ class LoginContainer extends Component {
         // Check local storange before assigning a new ID
         // - Also look for name and badge state
 
-        const name = 'Anonymous';
+        const name = ''; // 'Anonymous';
         const badge = 'cake';
         const userId = new Date().getTime();
 
@@ -32,13 +32,29 @@ class LoginContainer extends Component {
             data: {badge, name, userId}
         });
 
+        this.props.dispatch({
+            type: action.RESET_LOGIN_DETAILS,
+            data: {badge, name}
+        });
+
     }
 
     onClickOffComponent() {
 
-        return !this.props.loginState.isInitialised ? false : this.props.dispatch({
-            type: action.CLOSE_LOGIN_DIALOG
-        });
+        return !this.props.loginState.isInitialised ? false : (() => {
+
+            const {badge, name} = this.props.thisUserState;
+
+            this.props.dispatch({
+                type: action.RESET_LOGIN_DETAILS,
+                data: {badge, name}
+            });
+
+            this.props.dispatch({
+                type: action.CLOSE_LOGIN_DIALOG
+            });
+
+        })();
 
     }
 

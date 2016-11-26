@@ -12,7 +12,7 @@ This repo is still a work in progress.
   + Most stars
   + Date created / modified
 + ~~Optional close button on modal~~
-+ Feedback entry animation for add / remove / edit
++ ~~Feedback entry animation for add / remove / edit~~
 + Create and modal validation
 
 ## License
