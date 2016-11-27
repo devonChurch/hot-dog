@@ -190,18 +190,31 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 
 			return (() => {
 
+				const {feedbackId, userId} = data;
+
 				const toggleRating = (item) => {
-					const isRatingToggled = !item.isRatingToggled;
-					const rating = isRatingToggled ? item.rating + 1 : item.rating - 1;
-					return {...item, isRatingToggled, rating};
-				};
 
-				const mapFeedbackItem = (item, i) => {
-					return data.feedbackKey === i ? toggleRating(item) : item;
-				};
+					const ratingIndex = item.rating.indexOf(userId);
 
-				const mapFeedbackList = (item, i) => {
-					return data.topicKey === i ? item.map(mapFeedbackItem) : item;
+					switch (ratingIndex) {
+
+						case -1:
+							return {
+								...item,
+								rating: [...item.rating, userId]
+							}
+
+						default:
+							return {
+								...item,
+								rating: [...item.rating.slice(0, ratingIndex), ...item.rating.slice(ratingIndex + 1)]
+							}
+
+					}
+				}
+
+				const mapFeedbackList = (item) => {
+					return feedbackId === item.feedbackId ? toggleRating(item) : item;
 				};
 
 				return state.map(mapFeedbackList);

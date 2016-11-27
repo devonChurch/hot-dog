@@ -4,7 +4,7 @@ import IconContainer from '../icon/container';
 const StarRating = (props) => {
 
     return (
-        <div className={`StarRating StarRating--${props.color} ${props.isRatingToggled || props.rating ? 'isActive' : ''}`}>
+        <div className={`StarRating StarRating--${props.color} ${props.rating.length ? 'isActive' : ''}`}>
             <button
                 className="StarRating-toggle"
                 onClick={props.onToggleClick}>
@@ -12,7 +12,7 @@ const StarRating = (props) => {
                     <IconContainer icon="star"/>
                 </div>
             </button>
-            <div className="StarRating-rating">{props.rating}</div>
+            <div className="StarRating-rating">{props.rating.length}</div>
         </div>
     );
 };

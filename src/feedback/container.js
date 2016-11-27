@@ -41,18 +41,24 @@ class FeedbackContainer extends Component {
 
     generateStarRating(feedback) {
 
-        const onToggleClick = () => this.props.dispatch({
-            type: action.TOGGLE_FEEDBACK_RATING,
-            data: {
-                feedbackId: feedback.feedbackId
-            }
-        });
+        const onToggleClick = () => {
+
+            const {userId} = this.props.thisUserState;
+
+            this.props.dispatch({
+                type: action.TOGGLE_FEEDBACK_RATING,
+                data: {
+                    userId,
+                    feedbackId: feedback.feedbackId
+                }
+            });
+
+        };
 
         return (
             <StarRatingContainer
                 color={this.props.color}
                 rating={feedback.rating}
-                isRatingToggled={feedback.isRatingToggled}
                 onToggleClick={onToggleClick}/>
         );
 

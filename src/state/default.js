@@ -67,9 +67,11 @@ const feedbackState = [
         userId: 1479610282826,
         topicId: 1473610282823,
         feedbackId: 137510262863,
-        rating: 0,
+        rating: [
+            1479610282826,
+            1479544300421
+        ],
         text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        isRatingToggled: false,
         isOptionsActive: false,
         lastEdit: 'sat - nov 19 - 11:25am'
     },
@@ -79,9 +81,8 @@ const feedbackState = [
         userId: 1479544300421,
         topicId: 1473610282823,
         feedbackId: 1474640242843,
-        rating: 5,
+        rating: [],
         text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        isRatingToggled: false,
         isOptionsActive: false,
         lastEdit: false
     }
