@@ -10,7 +10,7 @@
     }
 }
 
-@mixin feedbackColor($color) {
+@mixin feedbackItemColor($color) {
 
     &.Feedback--#{$color} {
         color: color($color, 500);
@@ -80,7 +80,7 @@
     // transform-style: preserve-3d;
 
     @each $color in $G-allColors {
-        @include feedbackColor($color);
+        @include feedbackItemColor($color);
     }
 
     &.isVisible {

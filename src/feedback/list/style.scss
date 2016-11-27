@@ -1,30 +1,43 @@
 @import '../../helpers/all';
 
-@mixin feedbackColor($color) {
+@mixin feedbackListColor($color) {
 
-    // &.Feedback--#{$color} {
-    //     color: color($color, 500);
-    //
-    //     &:before {
-    //         background: color($color, 100);
-    //     }
-    //
-    //     .Feedback-text {
-    //         color: color($color, 900);
-    //     }
-    //
-    //     .Feedback-lastEditLabel {
-    //         color: color($color, 300);
-    //     }
-    //
-    //     .Feedback-starIcon .Icon {
-    //         fill: color($color, 500);
-    //     }
-    // }
+    &.FeedbackList--#{$color} {
+
+        .FeedbackList-noItems {
+            color: color($color, 500);
+        }
+
+        .FeedbackList-noItemsIcon .Icon {
+            fill: color($color, 500);
+        }
+    }
 }
 
 .FeedbackList {
     list-style: none;
     margin: 0;
     padding: 0;
+
+    @each $color in $G-allColors {
+        @include feedbackListColor($color);
+    }
+
+    &-noItems {
+        align-items: center;
+        display: flex;
+        padding: space(500);
+    }
+
+    &-noItemsIcon {
+        $size: space(500);
+        height: $size;
+        width: $size;
+    }
+
+    &-noItemsText {
+        font-weight: fontWeight(700);
+        margin: 0;
+        padding-left: space(300);
+    }
 }

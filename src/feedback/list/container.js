@@ -123,7 +123,7 @@ class FeedbackListContainer extends Component {
         const {feedbackList} = this.props;
 
         return (
-            <FeedbackList totalFeedbackItems={feedbackList.length}>
+            <FeedbackList {...this.props}>
                 {feedbackList.map(this.generateFeedback)}
             </FeedbackList>
         );

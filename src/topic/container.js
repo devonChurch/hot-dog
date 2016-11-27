@@ -44,7 +44,9 @@ class TopicContainer extends Component {
         const feedbackList = this.props.feedbackState.filter((item) => item.topicId === topicId);
 
         return (
-            <FeedbackListContainer feedbackList={feedbackList}/>
+            <FeedbackListContainer
+                color={color}
+                feedbackList={feedbackList}/>
         );
 
     }
