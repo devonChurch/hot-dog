@@ -3,9 +3,9 @@ import React, {Component, PropTypes} from 'react';
 const generateLastEdit = (props) => {
 
     return !props.lastEdit ? false : (
-        <span className="Feedback-lastEdit">
-            <span className="Feedback-lastEditLabel">Last Edited:</span>
-            <span className="Feedback-lastEditTime">{props.lastEdit}</span>
+        <span className="FeedbackItem-lastEdit">
+            <span className="FeedbackItem-lastEditLabel">Last Edited:</span>
+            <span className="FeedbackItem-lastEditTime">{props.lastEdit}</span>
         </span>
     );
 
@@ -14,7 +14,7 @@ const generateLastEdit = (props) => {
 const generateStarRating = (props) => {
 
     return !props.starRating ? false : (
-        <div className="Feedback-starRating">
+        <div className="FeedbackItem-starRating">
             {props.starRating}
         </div>
     );
@@ -24,34 +24,36 @@ const generateStarRating = (props) => {
 const generateMiniMenu = (props) => {
 
     return !props.miniMenu ? false : (
-        <div className="Feedback-miniMenu">
+        <div className="FeedbackItem-miniMenu">
             {props.miniMenu}
         </div>
     );
 
 };
 
-const Feedback = (props) => {
+const FeedbackItem = (props) => {
 
     return (
-        <li className={`Feedback Feedback--${props.color} ${props.isFeedbackHidden ? 'isHidden' : ''}`}>
+        <li className={`FeedbackItem FeedbackItem--${props.color} ${props.isFeedbackVisible ? 'isVisible' : ''}`}>
+            <div className="FeedbackItem-wrapper">
 
-            <div className="Feedback-badge">
-                {props.badge}
+                <div className="FeedbackItem-badge">
+                    {props.badge}
+                </div>
+
+                <div className="FeedbackItem-content">
+                    <span className="FeedbackItem-name">{props.name}</span>
+                    <span className="FeedbackItem-text">{props.text}</span>
+                    {generateLastEdit(props)}
+                </div>
+
+                {generateStarRating(props)}
+                {generateMiniMenu(props)}
+
             </div>
-
-            <div className="Feedback-content">
-                <span className="Feedback-name">{props.name}</span>
-                <span className="Feedback-text">{props.text}</span>
-                {generateLastEdit(props)}
-            </div>
-
-            {generateStarRating(props)}
-            {generateMiniMenu(props)}
-
         </li>
     );
 
 };
 
-export default Feedback;
+export default FeedbackItem;

@@ -74,6 +74,7 @@ const feedbackState = [
         ],
         text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         isOptionsActive: false,
+        isFeedbackVisible: true,
         lastEdit: 'sat - nov 19 - 11:25am'
     },
     {
@@ -86,6 +87,7 @@ const feedbackState = [
         rating: [],
         text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         isOptionsActive: false,
+        isFeedbackVisible: true,
         lastEdit: false
     }
 ];

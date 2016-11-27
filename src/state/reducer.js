@@ -214,14 +214,14 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 
 			})();
 
-		case action.HIDE_FEEDBACK:
+		case action.TOGGLE_FEEDBACK_VISIBILITY:
 
 			return (() => {
 
-				const {feedbackId} = data;
+				const {feedbackId, isFeedbackVisible} = data;
 
 				const mapFeedbackList = (item) => {
-					return feedbackId === item.feedbackId ? {...item, isFeedbackHidden: true} : item;
+					return feedbackId === item.feedbackId ? {...item, isFeedbackVisible} : item;
 				};
 
 				return state.map(mapFeedbackList);
@@ -274,6 +274,7 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 					rating: 0,
 					text,
 					isRatingToggled: false,
+					isFeedbackVisible: false,
 					// isOptionsActive: false,
 					lastEdit: false
 				};

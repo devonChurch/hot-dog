@@ -1,102 +1,41 @@
 @import '../../helpers/all';
 
-.Container-feedback {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    &.isEmpty {
-        padding-top: space(500);
-    }
-}
-
 @mixin feedbackItemColor($color) {
 
-    &.Feedback--#{$color} {
+    &.FeedbackItem--#{$color} {
         color: color($color, 500);
 
         &:before {
             background: color($color, 100);
         }
 
-        .Feedback-text {
+        .FeedbackItem-text {
             color: color($color, 900);
         }
 
-        .Feedback-lastEditLabel {
+        .FeedbackItem-lastEditLabel {
             color: color($color, 300);
         }
 
-        .Feedback-starIcon .Icon {
+        .FeedbackItem-starIcon .Icon {
             fill: color($color, 500);
         }
     }
 }
 
-// @mixin feedbackIsActive {
-//     opacity: 1;
-//     transform: translateX(0);
-// }
-//
-// @mixin feedbackIsClosed {
-//     opacity: 0;
-//     transform: translateX(space(500));
-// }
-//
-//
-// @keyframes feedbackIsActive {
-//
-//     0% {
-//         @include feedbackIsClosed;
-//     }
-//     100% {
-//         @include feedbackIsActive;
-//     }
-// }
-//
-// @keyframes feedbackIsHidden {
-//
-//     0% {
-//         @include feedbackIsActive;
-//     }
-//     100% {
-//         @include feedbackIsClosed;
-//     }
-// }
-
-.Feedback {
-    // animation: {
-    //     duration: speed(500);
-    //     fill-mode: forwards;
-    //     name: feedbackIsActive;
-    // }
-    display: flex;
-    // opacity: 0; // <---------
+.FeedbackItem {
     padding: space(500);
     padding-right: space(300);
     position: relative;
-    // transform: translateX(space(500)); // <---------
-    // transform: translateZ(1000px);
-    // transform-style: preserve-3d;
 
     @each $color in $G-allColors {
         @include feedbackItemColor($color);
     }
 
-    &.isVisible {
+    &.isVisible .FeedbackItem-wrapper {
+        margin: 0;
         opacity: 1;
-        transform: translateX(0);
     }
-
-    // &.isHidden {
-    //     // animation: {
-    //     //     duration: speed(500);
-    //     //     fill-mode: forwards;
-    //     //     name: feedbackIsHidden;
-    //     // }
-    //     opacity: 0;
-    //     transform: translateX(space(500));
-    // }
 
     &:nth-of-type(1n+2):before {
         content: '';
@@ -106,6 +45,21 @@
         position: absolute;
         right: space(500);
         top: 0;
+    }
+
+    &-wrapper {
+        display: flex;
+        margin-left: space(500);
+        opacity: 0;
+        transition: {
+            duration: speed(500);
+            // We need to use "margin" here and not a "transform" due to transforms
+            // creating a new z-index stacking order which stops the child MiniMenu
+            // from being able to overlap other elements on the page when its options
+            // are open as its z-index context no longer relates to the root <html/>.
+            property: margin, opacity;
+        }
+        width: 100%;
     }
 
     &-content {

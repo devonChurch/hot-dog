@@ -62,6 +62,7 @@
 .MiniMenu {
     position: relative;
     // z-index: 1;
+    transform-style: flat;
 
     @each $color in $G-allColors {
         @include miniMenuColor($color);

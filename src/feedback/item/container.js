@@ -17,14 +17,17 @@ class FeedbackItemContainer extends Component {
 
     componentDidMount() {
 
-        // this.props.dispatch({
-        //     type: action.TOGGLE_FEEDBACK_VISIBILITY,
-        //     data: {
-        //         // WE NEED TO REFERENCE A SINGLE ID HERE!
-        //         topicKey: this.props.topicKey,
-        //         feedbackKey: key
-        //     }
-        // });
+        setTimeout(() => {
+
+            this.props.dispatch({
+                type: action.TOGGLE_FEEDBACK_VISIBILITY,
+                data: {
+                    isFeedbackVisible: true,
+                    feedbackId: this.props.feedbackId
+                }
+            });
+
+        }, 0);
 
     }
 
@@ -92,8 +95,11 @@ class FeedbackItemContainer extends Component {
                 onOptionClick: () => {
 
                     this.props.dispatch({
-                        type: action.HIDE_FEEDBACK,
-                        data: {feedbackId}
+                        type: action.TOGGLE_FEEDBACK_VISIBILITY,
+                        data: {
+                            isFeedbackVisible: false,
+                            feedbackId
+                        }
                     });
 
                     setTimeout(() => {
@@ -132,7 +138,7 @@ class FeedbackItemContainer extends Component {
                 name={props.name}
                 text={props.text}
                 lastEdit={props.lastEdit}
-                isFeedbackHidden={props.isFeedbackHidden}
+                isFeedbackVisible={props.isFeedbackVisible}
                 starRating={starRating}
                 miniMenu={miniMenu}
                 badge={this.generateBadge(props)}/>
