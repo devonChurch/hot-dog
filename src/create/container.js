@@ -78,6 +78,7 @@ class CreateContainer extends Component {
                         text,
                         badge,
                         name,
+                        color,
                         userId
                     }
                 });

@@ -1,0 +1,30 @@
+@import '../../helpers/all';
+
+@mixin feedbackColor($color) {
+
+    // &.Feedback--#{$color} {
+    //     color: color($color, 500);
+    //
+    //     &:before {
+    //         background: color($color, 100);
+    //     }
+    //
+    //     .Feedback-text {
+    //         color: color($color, 900);
+    //     }
+    //
+    //     .Feedback-lastEditLabel {
+    //         color: color($color, 300);
+    //     }
+    //
+    //     .Feedback-starIcon .Icon {
+    //         fill: color($color, 500);
+    //     }
+    // }
+}
+
+.FeedbackList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

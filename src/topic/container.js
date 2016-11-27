@@ -4,7 +4,7 @@ import action from '../state/action';
 import Topic from './presentation';
 import Shell from '../shell/container';
 import FeatureButton from '../feature-button/container';
-import FeedbackContainer from '../feedback/container';
+import FeedbackListContainer from '../feedback/list/container';
 
 class TopicContainer extends Component {
 
@@ -44,17 +44,8 @@ class TopicContainer extends Component {
         const feedbackList = this.props.feedbackState.filter((item) => item.topicId === topicId);
 
         return (
-            <FeedbackContainer
-                feedbackList={feedbackList}
-                color={color}/>
+            <FeedbackListContainer feedbackList={feedbackList}/>
         );
-
-        // return (
-        //     <FeedbackContainer
-        //         feedbackList={this.props.feedbackState[key]}
-        //         topicKey={key}
-        //         color={color}/>
-        // );
 
     }
 

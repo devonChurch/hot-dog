@@ -138,13 +138,6 @@ const createReducer = (state = defaultState.createState, {type, data = {}}) => {
 				isActive: false
 			};
 
-		case action.TOGGLE_CREATE_OPTIONS:
-
-			return {
-				...state,
-				isOptionsActive: data
-			};
-
 		case action.UPDATE_CREATE_TEXT:
 
 			return {
@@ -269,11 +262,12 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 
 			return (() => {
 
-				const {topicId, feedbackId, text, badge, name, userId} = data;
+				const {topicId, feedbackId, text, badge, name, color, userId} = data;
 
 				const feedback = {
 					badge,
 					name,
+					color,
 					userId,
 					topicId,
 					feedbackId,

@@ -64,6 +64,7 @@ const feedbackState = [
     {
         badge: 'car',
         name: 'John Smith',
+        color: 'green',
         userId: 1479610282826,
         topicId: 1473610282823,
         feedbackId: 137510262863,
@@ -78,6 +79,7 @@ const feedbackState = [
     {
         badge: 'heart',
         name: 'Jane Doe',
+        color: 'green',
         userId: 1479544300421,
         topicId: 1473610282823,
         feedbackId: 1474640242843,
