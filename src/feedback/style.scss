@@ -33,59 +33,70 @@
     }
 }
 
-@mixin feedbackIsActive {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-@mixin feedbackIsClosed {
-    opacity: 0;
-    transform: translateX(space(500));
-}
-
-
-@keyframes feedbackIsActive {
-
-    0% {
-        @include feedbackIsClosed;
-    }
-    100% {
-        @include feedbackIsActive;
-    }
-}
-
-@keyframes feedbackIsHidden {
-
-    0% {
-        @include feedbackIsActive;
-    }
-    100% {
-        @include feedbackIsClosed;
-    }
-}
+// @mixin feedbackIsActive {
+//     opacity: 1;
+//     transform: translateX(0);
+// }
+//
+// @mixin feedbackIsClosed {
+//     opacity: 0;
+//     transform: translateX(space(500));
+// }
+//
+//
+// @keyframes feedbackIsActive {
+//
+//     0% {
+//         @include feedbackIsClosed;
+//     }
+//     100% {
+//         @include feedbackIsActive;
+//     }
+// }
+//
+// @keyframes feedbackIsHidden {
+//
+//     0% {
+//         @include feedbackIsActive;
+//     }
+//     100% {
+//         @include feedbackIsClosed;
+//     }
+// }
 
 .Feedback {
-    animation: {
-        duration: speed(500);
-        fill-mode: forwards;
-        name: feedbackIsActive;
-    }
+    // animation: {
+    //     duration: speed(500);
+    //     fill-mode: forwards;
+    //     name: feedbackIsActive;
+    // }
     display: flex;
+    // opacity: 0; // <---------
     padding: space(500);
     padding-right: space(300);
     position: relative;
+    // transform: translateX(space(500)); // <---------
+    // transform: translateZ(1000px);
+    // transform-style: preserve-3d;
 
     @each $color in $G-allColors {
         @include feedbackColor($color);
     }
 
-    &.isHidden {
-        animation: {
-            duration: speed(500);
-            fill-mode: forwards;
-            name: feedbackIsHidden;
-        }
+    &.isVisible {
+        opacity: 1;
+        transform: translateX(0);
     }
+
+    // &.isHidden {
+    //     // animation: {
+    //     //     duration: speed(500);
+    //     //     fill-mode: forwards;
+    //     //     name: feedbackIsHidden;
+    //     // }
+    //     opacity: 0;
+    //     transform: translateX(space(500));
+    // }
 
     &:nth-of-type(1n+2):before {
         content: '';

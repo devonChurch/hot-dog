@@ -16,6 +16,19 @@ class FeedbackContainer extends Component {
 
     }
 
+    componentDidMount() {
+
+        // this.props.dispatch({
+        //     type: action.TOGGLE_FEEDBACK_VISIBILITY,
+        //     data: {
+        //         // WE NEED TO REFERENCE A SINGLE ID HERE!
+        //         topicKey: this.props.topicKey,
+        //         feedbackKey: key
+        //     }
+        // });
+
+    }
+
     generateBadge(feedback) {
 
         return (
@@ -26,13 +39,12 @@ class FeedbackContainer extends Component {
 
     }
 
-    generateStarRating(feedback, key) {
+    generateStarRating(feedback) {
 
         const onToggleClick = () => this.props.dispatch({
             type: action.TOGGLE_FEEDBACK_RATING,
             data: {
-                topicKey: this.props.topicKey,
-                feedbackKey: key
+                feedbackId: feedback.feedbackId
             }
         });
 
@@ -46,13 +58,12 @@ class FeedbackContainer extends Component {
 
     }
 
-    generateMiniMenu(feedback, key) {
+    generateMiniMenu(feedback) {
 
         const toggleisActive = (isOptionsActive) => this.props.dispatch({
             type: action.TOGGLE_FEEDBACK_OPTIONS,
             data: {
-                topicKey: this.props.topicKey,
-                feedbackKey: key,
+                feedbackId: feedback.feedbackId,
                 isOptionsActive
             }
         });
@@ -65,8 +76,7 @@ class FeedbackContainer extends Component {
                     data: {
                         isActive: true,
                         color: this.props.color,
-                        topicKey: this.props.topicKey,
-                        feedbackKey: key,
+                        feedbackId: feedback.feedbackId,
                         text: feedback.text
                     }
                 })
@@ -78,8 +88,7 @@ class FeedbackContainer extends Component {
                     this.props.dispatch({
                         type: action.HIDE_FEEDBACK,
                         data: {
-                            topicKey: this.props.topicKey,
-                            feedbackKey: key
+                            feedbackId: feedback.feedbackId,
                         }
                     });
 
@@ -88,8 +97,7 @@ class FeedbackContainer extends Component {
                         this.props.dispatch({
                             type: action.REMOVE_FEEDBACK,
                             data: {
-                                topicKey: this.props.topicKey,
-                                feedbackKey: key
+                                feedbackId: feedback.feedbackId,
                             }
                         })
 
@@ -112,8 +120,8 @@ class FeedbackContainer extends Component {
     generateFeedback(feedback, key) {
 
         const thisUser = this.props.thisUserState.userId === feedback.userId;
-        const starRating = thisUser ? false : this.generateStarRating(feedback, key);
-        const miniMenu = thisUser ? this.generateMiniMenu(feedback, key) : false;
+        const starRating = thisUser ? false : this.generateStarRating(feedback);
+        const miniMenu = thisUser ? this.generateMiniMenu(feedback) : false;
 
         return (
             <Feedback

@@ -7,10 +7,9 @@ const loginState = {
 
 const createState = {
     isActive: false,
-    // isOptionsActive: false,
     color: 'gray',
-    topicKey: 0,
-    feedbackKey: 0,
+    topicId: false,
+    feedbackId: false,
     text: ''
 };
 
@@ -37,48 +36,55 @@ const otherUserState = [
 const topicState = [
     {
         heading: 'Positive',
-        color: 'green'
+        color: 'green',
+        userId: 1479610282826,
+        topicId: 1473610282823
     },
     {
         heading: 'Negative',
-        color: 'red'
+        color: 'red',
+        userId: 1479610282826,
+        topicId: 147544300551
     },
     {
         heading: 'Ideas',
-        color: 'orange'
+        color: 'orange',
+        userId: 1479544300421,
+        topicId: 1474610582825
     },
     {
         heading: 'Thanks',
-        color: 'blue'
+        color: 'blue',
+        userId: 1479544300421,
+        topicId: 1469546306266
     }
 ];
 
 const feedbackState = [
-    [
-        {
-            badge: 'car',
-            name: 'John Smith',
-            userId: 1479610282826,
-            rating: 0,
-            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            isRatingToggled: false,
-            isOptionsActive: false,
-            lastEdit: 'sat - nov 19 - 11:25am'
-        },
-        {
-            badge: 'heart',
-            name: 'Jane Doe',
-            userId: 1479544300421,
-            rating: 5,
-            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            isRatingToggled: false,
-            isOptionsActive: false,
-            lastEdit: false
-        }
-    ],
-    [],
-    [],
-    []
+    {
+        badge: 'car',
+        name: 'John Smith',
+        userId: 1479610282826,
+        topicId: 1473610282823,
+        feedbackId: 137510262863,
+        rating: 0,
+        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        isRatingToggled: false,
+        isOptionsActive: false,
+        lastEdit: 'sat - nov 19 - 11:25am'
+    },
+    {
+        badge: 'heart',
+        name: 'Jane Doe',
+        userId: 1479544300421,
+        topicId: 1473610282823,
+        feedbackId: 1474640242843,
+        rating: 5,
+        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        isRatingToggled: false,
+        isOptionsActive: false,
+        lastEdit: false
+    }
 ];
 
 export {

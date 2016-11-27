@@ -118,14 +118,14 @@ const createReducer = (state = defaultState.createState, {type, data = {}}) => {
 
 			return (() => {
 
-				const {color, topicKey, feedbackKey, text} = data;
+				const {color, topicId, feedbackId, text} = data;
 
 				return {
 					...state,
 					isActive: true,
-					color: color,
-					topicKey: topicKey,
-					feedbackKey: feedbackKey,
+					color,
+					topicId,
+					feedbackId,
 					text
 				};
 
@@ -176,16 +176,10 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 
 			return (() => {
 
-				const toggleIsOpen = (item) => {
-					return {...item, isOptionsActive: data.isOptionsActive};
-				};
+				const {feedbackId, isOptionsActive} = data;
 
-				const mapFeedbackItem = (item, i) => {
-					return data.feedbackKey === i ? toggleIsOpen(item) : item;
-				};
-
-				const mapFeedbackList = (item, i) => {
-					return data.topicKey === i ? item.map(mapFeedbackItem) : item;
+				const mapFeedbackList = (item) => {
+					return feedbackId === item.feedbackId ? {...item, isOptionsActive} : item;
 				};
 
 				return state.map(mapFeedbackList);
@@ -218,16 +212,10 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 
 			return (() => {
 
-				const hideFeedback = (item) => {
-					return {...item, isFeedbackHidden: true};
-				};
+				const {feedbackId} = data;
 
-				const mapFeedbackItem = (item, i) => {
-					return data.feedbackKey === i ? hideFeedback(item) : item;
-				};
-
-				const mapFeedbackList = (item, i) => {
-					return data.topicKey === i ? item.map(mapFeedbackItem) : item;
+				const mapFeedbackList = (item) => {
+					return feedbackId === item.feedbackId ? {...item, isFeedbackHidden: true} : item;
 				};
 
 				return state.map(mapFeedbackList);
@@ -238,15 +226,15 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 
 			return (() => {
 
-				const removeFeedback = (item, i) => {
-					return [...item.slice(0, i), ...item.slice(i + 1)];
+				const {feedbackId} = data;
+
+				const mapFeedbackList = (item) => {
+					return feedbackId !== item.feedbackId;
 				};
 
-				const mapFeedbackList = (item, i) => {
-					return data.topicKey === i ? removeFeedback(item, data.feedbackKey) : item;
-				};
+				return state.filter(mapFeedbackList);
 
-				return state.map(mapFeedbackList);
+
 
 			})();
 
@@ -254,14 +242,10 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 
 			return (() => {
 
-				const {topicKey, feedbackKey, text, lastEdit} = data;
+				const {feedbackId, text, lastEdit} = data;
 
-				const mapFeedbackItem = (item, i) => {
-					return feedbackKey === i ? {...item, text, lastEdit} : item;
-				};
-
-				const mapFeedbackList = (item, i) => {
-					return topicKey === i ? item.map(mapFeedbackItem) : item;
+				const mapFeedbackList = (item) => {
+					return feedbackId === item.feedbackId ? {...item, text, lastEdit} : item;
 				};
 
 				return state.map(mapFeedbackList);
@@ -272,12 +256,14 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 
 			return (() => {
 
-				const {topicKey, text, badge, name, userId} = data;
+				const {topicId, feedbackId, text, badge, name, userId} = data;
 
 				const feedback = {
 					badge,
 					name,
 					userId,
+					topicId,
+					feedbackId,
 					rating: 0,
 					text,
 					isRatingToggled: false,
@@ -285,11 +271,10 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 					lastEdit: false
 				};
 
-				const mapFeedbackList = (item, i) => {
-					return topicKey === i ? [...item, feedback] : item;
-				};
-
-				return state.map(mapFeedbackList);
+				return [
+					...state,
+					feedback
+				];
 
 			})();
 
@@ -305,12 +290,8 @@ const feedbackReducer = (state = defaultState.feedbackState, {type, data = {}}) 
 						}
 					};
 
-					const mapFeedbackItem = (item) => {
-						return data.userId === item.userId ? updateUserFeedback(item) : item;
-					};
-
 					const mapFeedbackList = (item) => {
-						return item.map(mapFeedbackItem);
+						return data.userId === item.userId ? updateUserFeedback(item) : item;
 					};
 
 					return state.map(mapFeedbackList);

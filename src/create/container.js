@@ -34,7 +34,7 @@ class CreateContainer extends Component {
 
     generateStandardButton() {
 
-        const {color, topicKey, feedbackKey, text} = this.props.createState;
+        const {color, topicId, feedbackId, text} = this.props.createState;
         const {badge, name, userId} = this.props.thisUserState;
 
         const generateLastEdit = () => {
@@ -49,24 +49,37 @@ class CreateContainer extends Component {
 
         };
 
+        const generateFeedbackId = () => {
+
+            return new Date().getTime();
+
+        };
+
         const onButtonClick = (e) => {
 
-            const isAddFeedback = feedbackKey === false;
+            const isEditFeedback = feedbackId;
 
-            if (isAddFeedback) {
-
-                this.props.dispatch({
-                    type: action.ADD_FEEDBACK,
-                    data: {topicKey, text, badge, name, userId}
-                });
-
-            } else {
+            if (isEditFeedback) {
 
                 const lastEdit = generateLastEdit();
 
                 this.props.dispatch({
                     type: action.EDIT_FEEDBACK,
-                    data: {topicKey, feedbackKey, text, lastEdit}
+                    data: {feedbackId, text, lastEdit}
+                });
+
+            } else {
+
+                this.props.dispatch({
+                    type: action.ADD_FEEDBACK,
+                    data: {
+                        feedbackId: generateFeedbackId(),
+                        topicId,
+                        text,
+                        badge,
+                        name,
+                        userId
+                    }
                 });
 
             }
@@ -111,14 +124,22 @@ class CreateContainer extends Component {
 
     }
 
+    generateHeading() {
+
+        const {topicId} = this.props.createState;
+        const topic = this.props.topicState.filter((item) => item.topicId === topicId);
+
+        return topic.length ? topic[0].heading : 'Create';
+
+    }
+
     render() {
 
         const {createState} = this.props;
-        const heading = this.props.topicState[createState.topicKey].heading;
 
         return (
             <ModalContainer
-                heading={heading}
+                heading={this.generateHeading()}
                 color={createState.color}
                 isActive={createState.isActive}
                 onClickOffComponent={this.onClickOffComponent}>

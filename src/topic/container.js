@@ -15,7 +15,7 @@ class TopicContainer extends Component {
 
     }
 
-    generateFeatureButton(color, key) {
+    generateFeatureButton(color, topicId) {
 
         const onFeatureClick = () => {
 
@@ -24,8 +24,7 @@ class TopicContainer extends Component {
                 data: {
 					isActive: true,
 					color,
-					topicKey: key,
-					feedbackKey: false,
+					topicId,
                     text: ''
 				}
             });
@@ -40,14 +39,22 @@ class TopicContainer extends Component {
 
     }
 
-    generateFeedback(color, key) {
+    generateFeedback(color, topicId) {
+
+        const feedbackList = this.props.feedbackState.filter((item) => item.topicId === topicId);
 
         return (
             <FeedbackContainer
-                feedbackList={this.props.feedbackState[key]}
-                topicKey={key}
+                feedbackList={feedbackList}
                 color={color}/>
         );
+
+        // return (
+        //     <FeedbackContainer
+        //         feedbackList={this.props.feedbackState[key]}
+        //         topicKey={key}
+        //         color={color}/>
+        // );
 
     }
 
@@ -58,8 +65,8 @@ class TopicContainer extends Component {
                 <Shell
                     heading={topic.heading}
                     color={topic.color}>
-                    {this.generateFeatureButton(topic.color, key)}
-                    {this.generateFeedback(topic.color, key)}
+                    {this.generateFeatureButton(topic.color, topic.topicId)}
+                    {this.generateFeedback(topic.color, topic.topicId)}
                 </Shell>
             </Topic>
         );
