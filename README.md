@@ -15,6 +15,10 @@ This repo is still a work in progress.
 + ~~Feedback entry animation for add / remove / edit~~
 + Create and modal validation
 
+## Bugs:
++ Feedback add button z-index overlap
++ Login reset values on submit create an infinite update loop
+
 ## License
 
 MIT

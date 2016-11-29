@@ -30,6 +30,7 @@ const store = createStore(
 		loginState: reducer.loginReducer,
 		thisUserState: reducer.thisUserReducer,
 		otherUserState: reducer.otherUserReducer,
+		filterState: reducer.filterReducer,
 		topicState: reducer.topicReducer,
 		createState: reducer.createReducer,
 		feedbackState: reducer.feedbackReducer

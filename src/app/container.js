@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import HeaderContainer from '../header/container';
 import UserContainer from '../user/container';
 import TopicContainer from '../topic/container';
 import CreateContainer from '../create/container';
@@ -12,7 +13,7 @@ class AppContainer extends Component {
 
         return (
             <div>
-                <header>HEADER</header>
+                <HeaderContainer/>
                 <div className="App-restrictContentWidth">
                     <UserContainer/>
                     <TopicContainer/>

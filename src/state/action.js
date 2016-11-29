@@ -19,6 +19,11 @@ const thisUserActions = {
     TOGGLE_THIS_USER_OPTIONS: 'TOGGLE_THIS_USER_OPTIONS'
 };
 
+const filterActions = {
+    UPDATE_FILTER_SELECTED_OPTION: 'UPDATE_FILTER_SELECTED_OPTION',
+    TOGGLE_FILTER_OPTIONS: 'TOGGLE_FILTER_OPTIONS'
+};
+
 const feedbackActions = {
     TOGGLE_FEEDBACK_OPTIONS: 'TOGGLE_FEEDBACK_OPTIONS',
     TOGGLE_FEEDBACK_RATING: 'TOGGLE_FEEDBACK_RATING',
@@ -33,5 +38,6 @@ export default {
     ...loginActions,
     ...createActions,
     ...thisUserActions,
+    ...filterActions,
     ...feedbackActions
 };

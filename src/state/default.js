@@ -33,6 +33,11 @@ const otherUserState = [
     }
 ];
 
+const filterState = {
+    isOptionsActive: false,
+    selectedOption: 'Recent'
+};
+
 const topicState = [
     {
         heading: 'Positive',
@@ -97,6 +102,7 @@ export {
     createState,
     thisUserState,
     otherUserState,
+    filterState,
     topicState,
     feedbackState
 };

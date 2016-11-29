@@ -95,6 +95,31 @@ const otherUserReducer = (state = defaultState.otherUserState, {type, data = {}}
 
 };
 
+const filterReducer = (state = defaultState.filterState, {type, data = {}}) => {
+
+	deepFreeze(state);
+
+	switch (type) {
+
+		case action.UPDATE_FILTER_SELECTED_OPTION:
+			return {
+				...state,
+				selectedOption: data
+			};
+
+		case action.TOGGLE_FILTER_OPTIONS:
+			return {
+				...state,
+				isOptionsActive: data
+			};
+
+		default:
+			return state;
+
+	}
+
+};
+
 const topicReducer = (state = defaultState.topicState, {type, data = {}}) => {
 
 	deepFreeze(state);
@@ -317,6 +342,7 @@ export default {
 	loginReducer,
 	thisUserReducer,
 	otherUserReducer,
+	filterReducer,
 	topicReducer,
 	createReducer,
 	feedbackReducer

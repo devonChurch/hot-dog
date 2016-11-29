@@ -6,9 +6,7 @@ class StandardButtonContainer extends Component {
     render() {
 
         return (
-            <div className="Container-standardButton">
-                <StandardButton {...this.props} />
-            </div>
+            <StandardButton {...this.props}/>
         );
 
     }

@@ -1,9 +1,18 @@
 @import '../helpers/all';
 
-@mixin addButtonColor($color) {
+@mixin addButtonColor($color, $tint: 500) {
 
-    &.StandardButton--#{$color} {
+    &.StandardButton--#{$color} .StandardButton-button{
         background: color($color, 500);
+
+        &:focus,
+        &:hover {
+            background: color($color, 900);
+        }
+    }
+
+    &.StandardButton--#{$color}.StandardButton--dark .StandardButton-button{
+        background: color($color, 700);
 
         &:focus,
         &:hover {
@@ -12,18 +21,18 @@
     }
 }
 
-.Container-standardButton {
-    padding: space(300);
-}
-
 .StandardButton {
-    @include buttonReset;
-    color: white;
-    display: block;
-    padding: space(200) space(500);
-    transition: background speed(300);
+    padding: space(300);
 
     @each $color in $G-allColors {
         @include addButtonColor($color);
+    }
+
+    &-button {
+        @include buttonReset;
+        color: white;
+        display: block;
+        padding: space(200) space(500);
+        transition: background speed(300);
     }
 }

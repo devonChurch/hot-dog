@@ -61,16 +61,12 @@
 
 .MiniMenu {
     position: relative;
-    // z-index: 1;
-    transform-style: flat;
 
     @each $color in $G-allColors {
         @include miniMenuColor($color);
     }
 
     &.isActive {
-        // transform: translateZ(1000px);
-        // transform-style: preserve-3d;
         z-index: zIndex(100);
 
         .MiniMenu-toggle {
