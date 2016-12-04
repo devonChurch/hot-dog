@@ -15,6 +15,7 @@
         property: opacity;
     }
     width: 100%;
+    z-index: zIndex(500);
 
     &.isActive {
         opacity: 1;

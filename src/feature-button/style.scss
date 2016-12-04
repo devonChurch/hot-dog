@@ -30,6 +30,7 @@
 .FeatureButton {
     height: 0;
     position: relative;
+    z-index: zIndex(100);
 
     @each $color in $G-allColors {
         @include addButtonColor($color);

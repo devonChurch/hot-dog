@@ -67,7 +67,7 @@
     }
 
     &.isActive {
-        z-index: zIndex(100);
+        z-index: zIndex(200);
 
         .MiniMenu-toggle {
             pointer-events: none;
